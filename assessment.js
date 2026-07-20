@@ -1,119 +1,139 @@
-const questions = [
+const questions = document.querySelectorAll(".question");
 
-{
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
 
-question: "How old are you?",
+const progressBar = document.getElementById("progressBar");
+const questionNumber = document.getElementById("questionNumber");
 
-answers: [
+const heightInput = document.getElementById("height");
+const weightInput = document.getElementById("weight");
+const bmiDisplay = document.getElementById("bmiValue");
 
-{text:"Under 40",score:0},
-
-{text:"40-49",score:1},
-
-{text:"50-59",score:2},
-
-{text:"60+",score:3}
-
-]
-
-},
-
-{
-
-question:"How long have you had diabetes?",
-
-answers:[
-
-{text:"I do not have diabetes",score:0},
-
-{text:"Less than 5 years",score:1},
-
-{text:"5-10 years",score:2},
-
-{text:"More than 10 years",score:3}
-
-]
-
-},
-
-{
-
-question:"How often do you exercise?",
-
-answers:[
-
-{text:"5+ days/week",score:0},
-
-{text:"3-4 days/week",score:1},
-
-{text:"1-2 days/week",score:2},
-
-{text:"Rarely",score:3}
-
-]
-
-}
-
-];
-
+let bmi = 0;
 let currentQuestion = 0;
 
-let totalScore = 0;
+// 초기 화면 표시
+showQuestion();
 
-function loadQuestion(){
+// -------------------- 화면 표시 --------------------
+function showQuestion() {
 
-document.getElementById("progress").innerHTML=
-"Question "+(currentQuestion+1)+" of "+questions.length;
+    questions.forEach(q => q.classList.remove("active"));
 
-document.getElementById("question").innerHTML=
-questions[currentQuestion].question;
+    questions[currentQuestion].classList.add("active");
 
-let answersDiv=document.getElementById("answers");
+    questionNumber.textContent =
+        `Question ${currentQuestion + 1} of ${questions.length}`;
 
-answersDiv.innerHTML="";
+    const progress =
+        ((currentQuestion + 1) / questions.length) * 100;
 
-questions[currentQuestion].answers.forEach(answer=>{
+    progressBar.style.width = progress + "%";
 
-answersDiv.innerHTML+=`
+    prevBtn.style.display =
+        currentQuestion === 0 ? "none" : "inline-block";
 
-<button class="answer-btn"
+    nextBtn.textContent =
+        currentQuestion === questions.length - 1
+            ? "Submit Assessment"
+            : "Next →";
+}
 
-onclick="selectAnswer(${answer.score})">
+// -------------------- BMI 계산 --------------------
+function calculateBMI() {
 
-${answer.text}
+    const height = parseFloat(heightInput.value);
+    const weight = parseFloat(weightInput.value);
 
-</button><br><br>
+    if (!height || !weight) {
+        bmiDisplay.textContent = "--";
+        return;
+    }
 
-`;
+    bmi = weight / Math.pow(height / 100, 2);
 
+    let category = "";
+
+    if (bmi < 18.5) {
+        category = "🔵 Underweight";
+    } else if (bmi < 25) {
+        category = "🟢 Healthy";
+    } else if (bmi < 30) {
+        category = "🟠 Overweight";
+    } else {
+        category = "🔴 Obese";
+    }
+
+    bmiDisplay.textContent = `${bmi.toFixed(1)} (${category})`;
+}
+
+// 입력할 때마다 BMI 자동 계산
+heightInput.addEventListener("input", calculateBMI);
+weightInput.addEventListener("input", calculateBMI);
+
+// -------------------- 현재 질문 검증 --------------------
+function validateQuestion() {
+
+    const current = questions[currentQuestion];
+
+    const numbers = current.querySelectorAll("input[type='number']");
+    const radios = current.querySelectorAll("input[type='radio']");
+
+    // BMI 질문
+    if (numbers.length > 0) {
+
+        let filled = true;
+
+        numbers.forEach(input => {
+            if (input.value.trim() === "") {
+                filled = false;
+            }
+        });
+
+        if (!filled) {
+            alert("Please enter your height and weight.");
+            return false;
+        }
+
+        return true;
+    }
+
+    // 라디오 질문
+    if (radios.length > 0) {
+
+        const checked = Array.from(radios).some(r => r.checked);
+
+        if (!checked) {
+            alert("Please select an answer before continuing.");
+            return false;
+        }
+    }
+
+    return true;
+}
+
+// -------------------- 버튼 이벤트 --------------------
+nextBtn.addEventListener("click", () => {
+
+    if (!validateQuestion()) return;
+
+    if (currentQuestion < questions.length - 1) {
+
+        currentQuestion++;
+        showQuestion();
+
+    } else {
+
+        alert("Assessment submitted! (Scoring will be added later.)");
+    }
 });
 
-}
+prevBtn.addEventListener("click", () => {
 
-function selectAnswer(score){
+    if (currentQuestion > 0) {
 
-totalScore+=score;
-
-nextQuestion();
-
-}
-
-function nextQuestion(){
-
-currentQuestion++;
-
-if(currentQuestion<questions.length){
-
-loadQuestion();
-
-}
-
-else{
-
-alert("Assessment Complete!\nYour Score: "+totalScore);
-
-}
-
-}
-
-loadQuestion();
+        currentQuestion--;
+        showQuestion();
+    }
+});
