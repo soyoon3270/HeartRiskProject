@@ -5,30 +5,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HeartGuard</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
 
-    <div class="container">
+<section class="hero">
 
-        <h1>🫀 Is Your Heart At Risk?</h1>
+    <div class="hero-left">
 
-        <h2>Could Diabetes Be Affecting Your Heart?</h2>
+        <!-- 심장 이미지 -->
+        <div class="heart-container">
+
+            <img src="images/heart.png" alt="Heart" class="heart">
+
+            <div class="tag oxygen">
+                Oxygen Level
+            </div>
+
+            <div class="tag pressure">
+                Blood Pressure
+            </div>
+
+            <div class="tag sugar">
+                Blood Sugar
+            </div>
+
+            <div class="tag bmi">
+                BMI
+            </div>
+
+            <div class="tag smoking">
+                Smoking
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="hero-right">
+
+        <h1>
+            PROTECT YOUR<br>
+            HEART TODAY
+        </h1>
 
         <p>
-            A quick educational assessment to help you understand your
-            potential risk of diabetic cardiomyopathy.
+
+            Understand your cardiovascular health through
+            a personalized assessment based on your lifestyle,
+            medical history, and daily habits.
+
         </p>
 
         <button onclick="startAssessment()">
-            Start Assessment
+            Start Assessment →
         </button>
 
     </div>
 
-    <script src="script.js"></script>
+</section>
+
+<section class="cards">
+
+    <div class="card">
+
+        <h3>❤️ Assess Your Risk</h3>
+
+        <p>
+            Complete a quick evidence-based assessment in
+            under 3 minutes.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>📊 Personalized Results</h3>
+
+        <p>
+            Learn which lifestyle factors contribute most to
+            your cardiovascular risk.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>💡 Prevention Tips</h3>
+
+        <p>
+            Receive practical recommendations for improving
+            long-term heart health.
+        </p>
+
+    </div>
+
+</section>
+
+<script>
+
+function startAssessment(){
+
+    window.location.href="about.html";
+
+}
+
+</script>
 
 </body>
-
 </html>
