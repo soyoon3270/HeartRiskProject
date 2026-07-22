@@ -1,225 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HeartGuard Assessment</title>
-
     <link rel="stylesheet" href="assessment.css">
 </head>
-
 <body>
+<div class="container">
 
-    <div class="container">
+    <h1 id="pageTitle">🫀 HeartGuard Assessment</h1>
 
-        <h1>🫀 HeartGuard Assessment</h1>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
 
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBar"></div>
+    <p id="questionNumber">Question 1 of 14</p>
+
+    <form id="assessmentForm">
+
+        <!-- Question 1 -->
+        <div class="question active">
+
+            <h2 id="q1Title">1. What is your gender?</h2>
+
+            <label id="maleOption"><input type="radio" name="gender" value="male"> Male</label><br>
+            <label id="femaleOption"><input type="radio" name="gender" value="female"> Female</label><br>
+            <label id="naGenderOption"><input type="radio" name="gender" value="na"> Prefer not to say</label>
+
         </div>
 
-        <p id="questionNumber">Question 1 of 14</p>
 
-        <form id="assessmentForm">
-
-            <!-- Question 1 -->
-            <div class="question active">
-                <h2>1. What is your gender?</h2>
-
-                <label><input type="radio" name="gender" value="male"> Male</label><br>
-                <label><input type="radio" name="gender" value="female"> Female</label><br>
-                <label><input type="radio" name="gender" value="na"> Prefer not to say</label>
-            </div>
-
-            <!-- Question 2 -->
-            <div class="question">
-
-                <h2>2. What is your age group?</h2>
-
-                <label><input type="radio" name="age" value="under30"> Under 30</label><br>
-                <label><input type="radio" name="age" value="30-39"> 30–39</label><br>
-                <label><input type="radio" name="age" value="40-49"> 40–49</label><br>
-                <label><input type="radio" name="age" value="50-59"> 50–59</label><br>
-                <label><input type="radio" name="age" value="60-69"> 60–69</label><br>
-                <label><input type="radio" name="age" value="70plus"> 70+</label>
-
-            </div>
-
-            <!-- Question 3 -->
-
+        <!-- Question 2 -->
         <div class="question">
 
-            <h2>3. Height & Weight</h2>
+            <h2 id="q2Title">2. What is your age group?</h2>
 
-            <label>
-             Height (cm)
-             <input type="number" id="height" placeholder="170">
+            <label id="under30Option"><input type="radio" name="age" value="under30"> Under 30</label><br>
+            <label id="age30Option"><input type="radio" name="age" value="30-39"> 30–39</label><br>
+            <label id="age40Option"><input type="radio" name="age" value="40-49"> 40–49</label><br>
+            <label id="age50Option"><input type="radio" name="age" value="50-59"> 50–59</label><br>
+            <label id="age60Option"><input type="radio" name="age" value="60-69"> 60–69</label><br>
+            <label id="age70Option"><input type="radio" name="age" value="70plus"> 70+</label>
+
+        </div>
+
+
+        <!-- Question 3 -->
+        <div class="question">
+
+            <h2 id="q3Title">3. Height & Weight</h2>
+
+            <label id="heightLabel">
+                Height (cm)
+                <input type="number" id="height" placeholder="170">
             </label>
 
-             <br><br>
+            <br><br>
 
-             <label>
-              Weight (kg)
-               <input type="number" id="weight" placeholder="70">
-              </label>
+            <label id="weightLabel">
+                Weight (kg)
+                <input type="number" id="weight" placeholder="70">
+            </label>
 
-             <br><br>
+            <br><br>
 
-              <p><strong>Your BMI:</strong> <span id="bmiValue">--</span></p>
+            <p>
+                <strong id="bmiLabel">Your BMI:</strong> 
+                <span id="bmiValue">--</span>
+            </p>
+
+        </div>
+
+
+        <!-- Question 4 -->
+        <div class="question">
+
+            <h2 id="q4Title">4. Have you been diagnosed with diabetes?</h2>
+
+            <label id="type1Option"><input type="radio" name="diabetes" value="type1"> Yes, Type 1</label><br>
+            <label id="type2Option"><input type="radio" name="diabetes" value="type2"> Yes, Type 2</label><br>
+            <label id="prediabetesOption"><input type="radio" name="diabetes" value="prediabetes"> Prediabetes</label><br>
+            <label id="noDiabetesOption"><input type="radio" name="diabetes" value="no"> No</label>
+
+        </div>
+
+
+        <!-- Question 5 -->
+        <div class="question">
+
+            <h2 id="q5Title">5. How long have you been diagnosed?</h2>
+
+            <label id="lt5Option"><input type="radio" name="duration" value="lt5"> Less than 5 years</label><br>
+            <label id="fiveTenOption"><input type="radio" name="duration" value="5to10"> 5–10 years</label><br>
+            <label id="gt10Option"><input type="radio" name="duration" value="gt10"> More than 10 years</label><br>
+            <label id="naDurationOption"><input type="radio" name="duration" value="na"> Not applicable</label>
+
+        </div>
+
+
+        <!-- Question 6 -->
+        <div class="question">
+
+            <h2 id="q6Title">6. Do you take any medications or use glucose trackers?</h2>
+
+            <label id="noneTreatmentOption"><input type="radio" name="treatment" value="none"> No treatment</label><br>
+            <label id="oralOption"><input type="radio" name="treatment" value="oral"> Oral medication</label><br>
+            <label id="insulinOption"><input type="radio" name="treatment" value="insulin"> Insulin injections</label><br>
+            <label id="cgmOption"><input type="radio" name="treatment" value="cgm"> Continuous Glucose Monitor (CGM)</label><br>
+            <label id="pumpOption"><input type="radio" name="treatment" value="pump"> Insulin pump</label><br>
+            <label id="multipleOption"><input type="radio" name="treatment" value="multiple"> Multiple of the above</label><br>
+            <label id="naTreatmentOption"><input type="radio" name="treatment" value="na"> Not applicable</label>
+
+        </div>
+
+            <!-- Question 7 -->
+<div class="question">
+
+    <h2 id="q7Title">7. How many days per week do you engage in intense workouts?</h2>
+
+    <label id="exercise5Option"><input type="radio" name="exercise" value="5"> 5–7 days</label><br>
+    <label id="exercise3Option"><input type="radio" name="exercise" value="3"> 3–4 days</label><br>
+    <label id="exercise1Option"><input type="radio" name="exercise" value="1"> 1–2 days</label><br>
+    <label id="exercise0Option"><input type="radio" name="exercise" value="0"> Rarely or never</label>
 
 </div>
 
-            <!-- Question 4 -->
-            <div class="question">
 
-                <h2>4. Have you been diagnosed with diabetes?</h2>
+<!-- Question 8 -->
+<div class="question">
 
-                <label><input type="radio" name="diabetes" value="type1"> Yes, Type 1</label><br>
-                <label><input type="radio" name="diabetes" value="type2"> Yes, Type 2</label><br>
-                <label><input type="radio" name="diabetes" value="prediabetes"> Prediabetes</label><br>
-                <label><input type="radio" name="diabetes" value="no"> No</label>
+    <h2 id="q8Title">8. How often do you drink sugary beverages?</h2>
 
-            </div>
+    <label id="sugarNeverOption"><input type="radio" name="sugar" value="never"> Never</label><br>
+    <label id="sugar12Option"><input type="radio" name="sugar" value="1-2"> 1–2 times per week</label><br>
+    <label id="sugar36Option"><input type="radio" name="sugar" value="3-6"> 3–6 times per week</label><br>
+    <label id="sugarDailyOption"><input type="radio" name="sugar" value="daily"> Once a day</label><br>
+    <label id="sugar3DailyOption"><input type="radio" name="sugar" value="3daily"> More than three times a day</label>
 
-            <!-- Question 5 -->
-            <div class="question">
+</div>
 
-                <h2>5. How long have you been diagnosed?</h2>
 
-                <label><input type="radio" name="duration" value="lt5"> Less than 5 years</label><br>
-                <label><input type="radio" name="duration" value="5to10"> 5–10 years</label><br>
-                <label><input type="radio" name="duration" value="gt10"> More than 10 years</label><br>
-                <label><input type="radio" name="duration" value="na"> Not applicable</label>
+<!-- Question 9 -->
+<div class="question">
 
-            </div>
+    <h2 id="q9Title">9. Do you currently smoke or use tobacco products?</h2>
 
-            <!-- Question 6 -->
-            <div class="question">
+    <label id="smokingNeverOption"><input type="radio" name="smoking" value="never"> Never</label><br>
+    <label id="smokingFormerOption"><input type="radio" name="smoking" value="former"> Former smoker</label><br>
+    <label id="smokingSometimesOption"><input type="radio" name="smoking" value="sometimes"> Occasionally</label><br>
+    <label id="smokingDailyOption"><input type="radio" name="smoking" value="daily"> Daily</label>
 
-                <h2>6. Do you take any medications or use glucose trackers?</h2>
+</div>
 
-                <label><input type="radio" name="treatment" value="none"> No treatment</label><br>
-                <label><input type="radio" name="treatment" value="oral"> Oral medication</label><br>
-                <label><input type="radio" name="treatment" value="insulin"> Insulin injections</label><br>
-                <label><input type="radio" name="treatment" value="cgm"> Continuous Glucose Monitor (CGM)</label><br>
-                <label><input type="radio" name="treatment" value="pump"> Insulin pump</label><br>
-                <label><input type="radio" name="treatment" value="multiple"> Multiple of the above</label><br>
-                <label><input type="radio" name="treatment" value="na"> Not applicable</label>
 
-            </div>
+<!-- Question 10 -->
+<div class="question">
 
-            <!-- Question 7 -->
-            <div class="question">
+    <h2 id="q10Title">10. Do you have high blood pressure?</h2>
 
-                <h2>7. How many days per week do you engage in intense workouts?</h2>
+    <label id="bpYesOption"><input type="radio" name="bp" value="yes"> Yes</label><br>
+    <label id="bpNoOption"><input type="radio" name="bp" value="no"> No</label><br>
+    <label id="bpUnsureOption"><input type="radio" name="bp" value="unsure"> Unsure</label>
 
-                <label><input type="radio" name="exercise" value="5"> 5–7 days</label><br>
-                <label><input type="radio" name="exercise" value="3"> 3–4 days</label><br>
-                <label><input type="radio" name="exercise" value="1"> 1–2 days</label><br>
-                <label><input type="radio" name="exercise" value="0"> Rarely or never</label>
+</div>
 
-            </div>
 
-            <!-- Question 8 -->
-            <div class="question">
+<!-- Question 11 -->
+<div class="question">
 
-                <h2>8. How often do you drink sugary beverages?</h2>
+    <h2 id="q11Title">11. Do you get short of breath regularly?</h2>
 
-                <label><input type="radio" name="sugar" value="never"> Never</label><br>
-                <label><input type="radio" name="sugar" value="1-2"> 1–2 times per week</label><br>
-                <label><input type="radio" name="sugar" value="3-6"> 3–6 times per week</label><br>
-                <label><input type="radio" name="sugar" value="daily"> Once a day</label><br>
-                <label><input type="radio" name="sugar" value="3daily"> More than three times a day</label>
+    <label id="breathYesOption"><input type="radio" name="breath" value="yes"> Yes</label><br>
+    <label id="breathNoOption"><input type="radio" name="breath" value="no"> No</label>
 
-            </div>
+</div>
 
-            <!-- Question 9 -->
-            <div class="question">
 
-                <h2>9. Do you currently smoke or use tobacco products?</h2>
+<!-- Question 12 -->
+<div class="question">
 
-                <label><input type="radio" name="smoking" value="never"> Never</label><br>
-                <label><input type="radio" name="smoking" value="former"> Former smoker</label><br>
-                <label><input type="radio" name="smoking" value="sometimes"> Occasionally</label><br>
-                <label><input type="radio" name="smoking" value="daily"> Daily</label>
+    <h2 id="q12Title">12. Have you noticed swelling in your ankles or feet?</h2>
 
-            </div>
+    <p class="tip" id="swellingTip">
+        Try pressing your skin gently for 5 seconds. If an indentation remains briefly after you remove your thumb, this may be a sign of swelling.
+    </p>
 
-            <!-- Question 10 -->
-            <div class="question">
+    <label id="swellingYesOption"><input type="radio" name="swelling" value="yes"> Yes</label><br>
+    <label id="swellingNoOption"><input type="radio" name="swelling" value="no"> No</label>
 
-                <h2>10. Do you have high blood pressure?</h2>
+</div>
 
-                <label><input type="radio" name="bp" value="yes"> Yes</label><br>
-                <label><input type="radio" name="bp" value="no"> No</label><br>
-                <label><input type="radio" name="bp" value="unsure"> Unsure</label>
 
-            </div>
+<!-- Question 13 -->
+<div class="question">
 
-            <!-- Question 11 -->
-            <div class="question">
+    <h2 id="q13Title">13. Has a doctor ever told you that you have high cholesterol?</h2>
 
-                <h2>11. Do you get short of breath regularly?</h2>
+    <label id="cholesterolYesOption"><input type="radio" name="cholesterol" value="yes"> Yes</label><br>
+    <label id="cholesterolNoOption"><input type="radio" name="cholesterol" value="no"> No</label>
 
-                <label><input type="radio" name="breath" value="yes"> Yes</label><br>
-                <label><input type="radio" name="breath" value="no"> No</label>
+</div>
 
-            </div>
 
-            <!-- Question 12 -->
-            <div class="question">
+<!-- Question 14 -->
+<div class="question">
 
-                <h2>12. Have you noticed swelling in your ankles or feet?</h2>
+    <h2 id="q14Title">
+        14. Has an immediate family member (parent or sibling) been diagnosed with cardiovascular disease before age 55 (men) or age 65 (women)?
+    </h2>
 
-                <p class="tip">
-                    Try pressing your skin gently for 5 seconds. If an indentation remains briefly after you remove your thumb, this may be a sign of swelling.
-                </p>
+    <label id="familyYesOption"><input type="radio" name="family" value="yes"> Yes</label><br>
+    <label id="familyNoOption"><input type="radio" name="family" value="no"> No</label><br>
+    <label id="familyUnsureOption"><input type="radio" name="family" value="unsure"> Unsure</label>
 
-                <label><input type="radio" name="swelling" value="yes"> Yes</label><br>
-                <label><input type="radio" name="swelling" value="no"> No</label>
+</div>
 
-            </div>
 
-            <!-- Question 13 -->
-            <div class="question">
+<div class="buttons">
 
-                <h2>13. Has a doctor ever told you that you have high cholesterol?</h2>
+    <button id="prevBtn" type="button">
+        ← Previous
+    </button>
 
-                <label><input type="radio" name="cholesterol" value="yes"> Yes</label><br>
-                <label><input type="radio" name="cholesterol" value="no"> No</label>
+    <button id="nextBtn" type="button">
+        Next →
+    </button>
 
-            </div>
+</div>
+</div>
 
-            <!-- Question 14 -->
-            <div class="question">
-
-                <h2>14. Has an immediate family member (parent or sibling) been diagnosed with cardiovascular disease before age 55 (men) or age 65 (women)?</h2>
-
-                <label><input type="radio" name="family" value="yes"> Yes</label><br>
-                <label><input type="radio" name="family" value="no"> No</label><br>
-                <label><input type="radio" name="family" value="unsure"> Unsure</label>
-
-            </div>
-
-        </form>
-
-        <div class="buttons">
-
-            <button id="prevBtn" type="button">
-                ← Previous
-            </button>
-
-            <button id="nextBtn" type="button">
-                Next →
-            </button>
-
-        </div>
-
-    </div>
-
-    <script src="assessment.js"></script>
+<script src="assessment.js"></script>
 
 </body>
-
 </html>

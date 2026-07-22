@@ -15,18 +15,17 @@
 
 <div class="container">
 
-    <div class="badge">
+    <div class="badge" id="badge">
         ❤️ HeartGuard Results
     </div>
 
-
-    <h1>Your Cardiovascular Risk</h1>
-
+    <h1 id="pageTitle">
+        Your Cardiovascular Risk
+    </h1>
 
     <div class="risk-circle">
         <span id="score">0</span>
     </div>
-
 
     <div class="riskBar">
         <div id="riskFill"></div>
@@ -34,54 +33,112 @@
 
     <p id="riskPercent"></p>
 
-
     <h2 id="riskLevel">
         Loading...
     </h2>
 
-
-    <p class="description">
+    <p class="description" id="description">
         Your assessment indicates several lifestyle and health
         factors that may influence your future cardiovascular risk.
     </p>
 
+    <!-- Overall Summary -->
 
-    <div class="reasons">
+    <div class="summary">
 
-        <h3>
-            Why did I receive this score?
-        </h3>
+        <h3 id="summaryTitle">📝 Overall Summary</h3>
 
-        <ul id="reasonList"></ul>
+        <p id="summaryText">
+            Loading summary...
+        </p>
 
     </div>
 
+    <!-- Personalized Analysis -->
+
+    <div class="analysis">
+
+        <h3 id="analysisTitle">📊 Personalized Analysis</h3>
+
+        <p id="analysisText">
+            Loading analysis...
+        </p>
+
+    </div>
+
+    <!-- Possible Conditions -->
+
+    <div class="conditions">
+
+        <h3 id="conditionsTitle">🫀 Possible Conditions</h3>
+
+        <div class="condition-grid">
+
+            <div class="condition-card">
+
+                <h4 id="cadTitle">❤️ Coronary Artery Disease</h4>
+
+                <p id="cadText">
+                    Loading...
+                </p>
+
+            </div>
+
+            <div class="condition-card">
+
+                <h4 id="hfTitle">🫀 Heart Failure</h4>
+
+                <p id="hfText">
+                    Loading...
+                </p>
+
+            </div>
+
+            <div class="condition-card">
+
+                <h4 id="strokeTitle">🧠 Stroke</h4>
+
+                <p id="strokeText">
+                    Loading...
+                </p>
+
+            </div>
+
+            <div class="condition-card">
+
+                <h4 id="dcmTitle">🩸 Diabetic Cardiomyopathy</h4>
+
+                <p id="dcmText">
+                    Loading...
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Prevention -->
 
     <div class="recommendations">
 
-        <h3>
-            Recommended Next Steps
+        <h3 id="preventionTitle">
+            💡 Prevention Tips
         </h3>
 
-        <ul>
-            <li>🏃 Exercise regularly to improve cardiovascular health.</li>
-            <li>🥗 Reduce excessive sugar and processed foods.</li>
-            <li>🩺 Monitor blood pressure and glucose levels.</li>
-            <li>💧 Maintain a balanced lifestyle and healthy habits.</li>
-            <li>👨‍⚕️ Seek medical advice if you experience concerning symptoms.</li>
+        <ul id="preventionList">
+
         </ul>
 
     </div>
 
-
-    <button onclick="window.location.href='index.html'">
+    <button id="backButton" onclick="window.location.href='index.html'">
         Back Home
     </button>
 
-
 </div>
 
-
+<script src="translations.js"></script>
 <script src="result.js"></script>
 
 </body>

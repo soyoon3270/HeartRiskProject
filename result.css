@@ -279,3 +279,144 @@ transform:translateY(-6px);
     font-size:18px;
 
 }
+/* ---------- Summary ---------- */
+
+.summary{
+
+    margin-top:40px;
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    text-align:left;
+
+}
+
+.summary h3{
+
+    font-size:28px;
+    margin-bottom:20px;
+
+}
+
+.summary p{
+
+    font-size:19px;
+    line-height:1.9;
+    color:#5d6c7b;
+
+}
+
+
+/* ---------- Analysis ---------- */
+
+.analysis{
+
+    margin-top:40px;
+    background:white;
+    padding:45px;
+    border-radius:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    text-align:left;
+    min-height:380px;
+
+}
+
+.analysis h3{
+
+    font-size:30px;
+    margin-bottom:25px;
+
+}
+
+.analysis p{
+
+    font-size:20px;
+    line-height:2;
+    color:#5d6c7b;
+
+}
+
+
+/* ---------- Conditions ---------- */
+
+.conditions{
+
+    margin-top:40px;
+    text-align:left;
+
+}
+
+.conditions h3{
+
+    font-size:30px;
+    margin-bottom:25px;
+
+}
+
+.condition-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+
+}
+
+.condition-card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:22px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    min-height:220px;
+
+    transition:.3s;
+
+}
+
+.condition-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.condition-card h4{
+
+    font-size:24px;
+
+    margin-bottom:15px;
+
+}
+
+.condition-card p{
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    color:#66758d;
+
+}
+
+
+/* ---------- Prevention ---------- */
+
+.recommendations{
+
+    margin-top:40px;
+
+}
+
+.recommendations li{
+
+    margin:18px 0;
+
+    font-size:19px;
+
+}

@@ -11,32 +11,39 @@
 
 <body>
 
+<div class="language-switch">
+
+    <button onclick="setLanguage('en')">🇺🇸 EN</button>
+
+    <button onclick="setLanguage('es')">🇲🇽 ES</button>
+
+</div>
+
 <section class="hero">
 
     <div class="hero-left">
 
-        <!-- 심장 이미지 -->
         <div class="heart-container">
 
             <img src="images/heart.png" alt="Heart" class="heart">
 
-            <div class="tag oxygen">
+            <div class="tag oxygen" id="oxygenTag">
                 Oxygen Level
             </div>
 
-            <div class="tag pressure">
+            <div class="tag pressure" id="pressureTag">
                 Blood Pressure
             </div>
 
-            <div class="tag sugar">
+            <div class="tag sugar" id="sugarTag">
                 Blood Sugar
             </div>
 
-            <div class="tag bmi">
+            <div class="tag bmi" id="bmiTag">
                 BMI
             </div>
 
-            <div class="tag smoking">
+            <div class="tag smoking" id="smokingTag">
                 Smoking
             </div>
 
@@ -46,21 +53,27 @@
 
     <div class="hero-right">
 
-        <h1>
-            PROTECT YOUR<br>
-            HEART TODAY
-        </h1>
+        <h1 id="title">
+        
+        PROTECT YOUR <br>
+        HEART TODAY <br>
 
-        <p>
+    </h1>
 
-            Understand your cardiovascular health through
-            a personalized assessment based on your lifestyle,
-            medical history, and daily habits.
+        <p id="subtitle">
+
+        Understand your cardiovascular health through
+        a personalized assessment based on your lifestyle,
+        medical history, and daily habits.
 
         </p>
 
-        <button onclick="startAssessment()">
-            Start Assessment →
+        <button 
+        id="startButton"
+        onclick="startAssessment()"
+        
+        Start Assessment →
+
         </button>
 
     </div>
@@ -69,11 +82,15 @@
 
 <section class="cards">
 
-    <div class="card">
+    <div class="card1Title">
 
-        <h3>❤️ Assess Your Risk</h3>
+        <h3 id="card"
 
-        <p>
+        ❤️ Assess Your Risk
+
+        </h3>
+
+        <p id="card1Text">
             Complete a quick evidence-based assessment in
             under 3 minutes.
         </p>
@@ -82,9 +99,9 @@
 
     <div class="card">
 
-        <h3>📊 Personalized Results</h3>
+        <h3 id="card2Title">📊 Personalized Results</h3>
 
-        <p>
+        <p id="card2Text">
             Learn which lifestyle factors contribute most to
             your cardiovascular risk.
         </p>
@@ -93,9 +110,9 @@
 
     <div class="card">
 
-        <h3>💡 Prevention Tips</h3>
+        <h3 id="card3Title">💡 Prevention Tips</h3>
 
-        <p>
+        <p id="card3Text">
             Receive practical recommendations for improving
             long-term heart health.
         </p>
@@ -104,15 +121,9 @@
 
 </section>
 
-<script>
-
-function startAssessment(){
-
-    window.location.href="about.html";
-
-}
-
-</script>
+<script src="language.js"></script>
+<script src="index.js"></script>
 
 </body>
+
 </html>
