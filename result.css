@@ -174,3 +174,108 @@ background:#3554b8;
 transform:translateY(-3px);
 
 }
+.riskBar{
+
+width:100%;
+
+height:18px;
+
+background:#e5e7eb;
+
+border-radius:20px;
+
+margin:30px 0;
+
+overflow:hidden;
+
+}
+
+#riskFill{
+
+height:100%;
+
+width:0%;
+
+background:#F57C00;
+
+transition:.8s;
+
+border-radius:20px;
+
+}
+
+#riskPercent{
+
+font-size:22px;
+
+font-weight:bold;
+
+margin-bottom:30px;
+
+}
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:20px;
+
+margin:25px 0;
+
+}
+
+.disease{
+
+background:white;
+
+padding:25px;
+
+border-radius:18px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+text-align:center;
+
+font-size:18px;
+
+transition:.3s;
+
+}
+
+.disease:hover{
+
+transform:translateY(-6px);
+
+}
+.reasons{
+
+    margin-top:45px;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    text-align:left;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+
+.reasons h3{
+
+    margin-bottom:20px;
+
+}
+
+
+.reasons li{
+
+    margin:15px 0;
+
+    font-size:18px;
+
+}

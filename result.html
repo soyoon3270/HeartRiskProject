@@ -5,91 +5,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HeartGuard Results</title>
+
     <link rel="stylesheet" href="result.css">
 </head>
 
 <body>
 
-    <div class="background-circle"></div>
+<div class="background-circle"></div>
 
-    <div class="container">
+<div class="container">
 
-        <div class="badge">
-            ❤️ HeartGuard Results
-        </div>
+    <div class="badge">
+        ❤️ HeartGuard Results
+    </div>
 
-        <h1>Your Cardiovascular Risk</h1>
 
-        <div class="risk-circle">
-            <span id="score">0</span>
-        </div>
+    <h1>Your Cardiovascular Risk</h1>
 
-        <h2 id="riskLevel">Loading...</h2>
 
-        <p class="description">
-            Your assessment indicates several lifestyle and health
-            factors that may increase your future cardiovascular risk.
-        </p>
+    <div class="risk-circle">
+        <span id="score">0</span>
+    </div>
 
-        <div class="recommendations">
 
-            <h3>Recommended Next Steps</h3>
+    <div class="riskBar">
+        <div id="riskFill"></div>
+    </div>
 
-            <ul>
-                <li>🏃 Exercise at least 150 minutes per week.</li>
-                <li>🥗 Reduce sugary drinks and processed foods.</li>
-                <li>🩺 Monitor your blood pressure regularly.</li>
-                <li>🩸 Keep your blood glucose under control.</li>
-                <li>👨‍⚕️ Consult a healthcare professional if symptoms persist.</li>
-            </ul>
+    <p id="riskPercent"></p>
 
-        </div>
 
-        <button onclick="window.location.href='index.html'">
-            Back Home
-        </button>
+    <h2 id="riskLevel">
+        Loading...
+    </h2>
+
+
+    <p class="description">
+        Your assessment indicates several lifestyle and health
+        factors that may influence your future cardiovascular risk.
+    </p>
+
+
+    <div class="reasons">
+
+        <h3>
+            Why did I receive this score?
+        </h3>
+
+        <ul id="reasonList"></ul>
 
     </div>
 
-    <script>
 
-        const score = Number(localStorage.getItem("heartguardScore"));
+    <div class="recommendations">
 
-        const scoreText = document.getElementById("score");
-        const riskLevel = document.getElementById("riskLevel");
-        const circle = document.querySelector(".risk-circle");
+        <h3>
+            Recommended Next Steps
+        </h3>
 
-        scoreText.textContent = isNaN(score) ? 0 : score;
+        <ul>
+            <li>🏃 Exercise regularly to improve cardiovascular health.</li>
+            <li>🥗 Reduce excessive sugar and processed foods.</li>
+            <li>🩺 Monitor blood pressure and glucose levels.</li>
+            <li>💧 Maintain a balanced lifestyle and healthy habits.</li>
+            <li>👨‍⚕️ Seek medical advice if you experience concerning symptoms.</li>
+        </ul>
 
-        if (score <= 10) {
+    </div>
 
-            riskLevel.textContent = "🟢 Low Risk";
-            circle.style.background = "#4CAF50";
 
-        }
+    <button onclick="window.location.href='index.html'">
+        Back Home
+    </button>
 
-        else if (score <= 19) {
 
-            riskLevel.textContent = "🟡 Mild Risk";
-            circle.style.background = "#FBC02D";
+</div>
 
-        }
 
-        else if (score <= 29) {
-
-            riskLevel.textContent = "🟠 Moderate Risk";
-            circle.style.background = "#F57C00";
-
-        }
-
-        else {
-
-            riskLevel.textContent = "🔴 High Risk";
-            circle.style.background = "#D32F2F";
-
-        }
-
-    </script>
+<script src="result.js"></script>
 
 </body>
 
