@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeartGuard Results</title>
+    <link rel="stylesheet" href="result.css">
+</head>
+
+<body>
+
+    <div class="background-circle"></div>
+
+    <div class="container">
+
+        <div class="badge">
+            ❤️ HeartGuard Results
+        </div>
+
+        <h1>Your Cardiovascular Risk</h1>
+
+        <div class="risk-circle">
+            <span id="score">0</span>
+        </div>
+
+        <h2 id="riskLevel">Loading...</h2>
+
+        <p class="description">
+            Your assessment indicates several lifestyle and health
+            factors that may increase your future cardiovascular risk.
+        </p>
+
+        <div class="recommendations">
+
+            <h3>Recommended Next Steps</h3>
+
+            <ul>
+                <li>🏃 Exercise at least 150 minutes per week.</li>
+                <li>🥗 Reduce sugary drinks and processed foods.</li>
+                <li>🩺 Monitor your blood pressure regularly.</li>
+                <li>🩸 Keep your blood glucose under control.</li>
+                <li>👨‍⚕️ Consult a healthcare professional if symptoms persist.</li>
+            </ul>
+
+        </div>
+
+        <button onclick="window.location.href='index.html'">
+            Back Home
+        </button>
+
+    </div>
+
+    <script>
+
+        const score = Number(localStorage.getItem("heartguardScore"));
+
+        const scoreText = document.getElementById("score");
+        const riskLevel = document.getElementById("riskLevel");
+        const circle = document.querySelector(".risk-circle");
+
+        scoreText.textContent = isNaN(score) ? 0 : score;
+
+        if (score <= 10) {
+
+            riskLevel.textContent = "🟢 Low Risk";
+            circle.style.background = "#4CAF50";
+
+        }
+
+        else if (score <= 19) {
+
+            riskLevel.textContent = "🟡 Mild Risk";
+            circle.style.background = "#FBC02D";
+
+        }
+
+        else if (score <= 29) {
+
+            riskLevel.textContent = "🟠 Moderate Risk";
+            circle.style.background = "#F57C00";
+
+        }
+
+        else {
+
+            riskLevel.textContent = "🔴 High Risk";
+            circle.style.background = "#D32F2F";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
