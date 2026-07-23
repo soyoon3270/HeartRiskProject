@@ -86,3 +86,61 @@ if (score >= 20) {
 
 document.querySelector(".recommendations ul").innerHTML =
     tips.map(tip => `<li>${tip}</li>`).join("");
+
+const answers =
+JSON.parse(localStorage.getItem("heartguardAnswers"));
+
+const container =
+document.getElementById("personalizedAnalysis");
+
+const age =
+analysisData.age[answers.age];
+
+container.innerHTML += `
+<div class="analysis-card">
+<h2>${age.title}</h2>
+<p><strong>Population Insight</strong></p>
+<p>${age.average}</p>
+<p><strong>Why it matters</strong></p>
+<p>${age.explanation}</p>
+</div>
+`;
+
+let bmiKey;
+
+if(answers.bmi<18.5)
+    bmiKey="underweight";
+else if(answers.bmi<25)
+    bmiKey="healthy";
+else if(answers.bmi<30)
+    bmiKey="overweight";
+else
+    bmiKey="obese";
+
+const bmiInfo=
+analysisData.bmi[bmiKey];
+
+container.innerHTML+=`
+<div class="analysis-card">
+<h2>${bmiInfo.title}</h2>
+<p><strong>Population Insight</strong></p>
+<p>${bmiInfo.average}</p>
+<p><strong>Why it matters</strong></p>
+<p>${bmiInfo.explanation}</p>
+</div>
+`;
+
+["exercise", "smoking", "bp", "cholesterol", "family"].forEach(category => {
+    const info = analysisData[category]?.[answers[category]];
+    if (!info) return;
+
+    container.innerHTML += `
+        <div class="analysis-card">
+            <h2>${info.title}</h2>
+            <p><strong>Population Insight</strong></p>
+            <p>${info.average}</p>
+            <p><strong>Why it matters</strong></p>
+            <p>${info.explanation}</p>
+        </div>
+    `;
+});
