@@ -507,51 +507,12 @@ nextBtn.addEventListener("click", () => {
 
     } else {
 
-       const score = calculateScore();
+        const score = calculateScore();
 
-localStorage.setItem("heartguardScore", score);
+        localStorage.setItem("heartguardScore", score);
 
-const bmi = parseFloat(document.getElementById("bmiValue").textContent);
+        window.location.href = "result.html";
 
-let bmiCategory;
-
-if (bmi < 18.5) {
-    bmiCategory = "underweight";
-} else if (bmi < 25) {
-    bmiCategory = "healthy";
-} else if (bmi < 30) {
-    bmiCategory = "overweight";
-} else {
-    bmiCategory = "obese";
-}
-
-// Save all survey responses
-const answers = {
-    gender: document.querySelector('input[name="gender"]:checked')?.value,
-    age: document.querySelector('input[name="age"]:checked')?.value,
-    diabetes: document.querySelector('input[name="diabetes"]:checked')?.value,
-    duration: document.querySelector('input[name="duration"]:checked')?.value,
-    treatment: document.querySelector('input[name="treatment"]:checked')?.value,
-    exercise: document.querySelector('input[name="exercise"]:checked')?.value,
-    sugar: document.querySelector('input[name="sugar"]:checked')?.value,
-    smoking: document.querySelector('input[name="smoking"]:checked')?.value,
-    bp: document.querySelector('input[name="bp"]:checked')?.value,
-    breath: document.querySelector('input[name="breath"]:checked')?.value,
-    swelling: document.querySelector('input[name="swelling"]:checked')?.value,
-    cholesterol: document.querySelector('input[name="cholesterol"]:checked')?.value,
-    family: document.querySelector('input[name="family"]:checked')?.value,
-    activity: document.querySelector('input[name="activity"]:checked')?.value,
-    diet: document.querySelector('input[name="diet"]:checked')?.value,
-    bmi: bmiCategory
-
-};
-
-localStorage.setItem(
-    "heartguardAnswers",
-    JSON.stringify(answers)
-);
-
-window.location.href = "result.html";
     }
 
 });
