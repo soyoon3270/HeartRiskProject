@@ -493,9 +493,25 @@ nextBtn.addEventListener("click", () => {
 
         const score = calculateScore();
 
-        localStorage.setItem("heartguardScore", score);
+localStorage.setItem("heartguardScore", score);
 
-        window.location.href = "result.html";
+// Save every survey response
+const answers = {
+    age: document.querySelector('input[name="age"]:checked')?.value,
+    bmi: Number(document.getElementById("bmi").value),
+    exercise: document.querySelector('input[name="exercise"]:checked')?.value,
+    smoking: document.querySelector('input[name="smoking"]:checked')?.value,
+    bp: document.querySelector('input[name="bp"]:checked')?.value,
+    cholesterol: document.querySelector('input[name="cholesterol"]:checked')?.value,
+    family: document.querySelector('input[name="family"]:checked')?.value
+};
+
+localStorage.setItem(
+    "heartguardAnswers",
+    JSON.stringify(answers)
+);
+
+window.location.href = "result.html";
 
     }
 
