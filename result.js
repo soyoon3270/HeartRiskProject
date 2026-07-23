@@ -91,7 +91,7 @@ const answers =
 JSON.parse(localStorage.getItem("heartguardAnswers"));
 
 const container =
-document.getElementById("personalizedAnalysis");
+document.getElementById("analysisText");
 
 const age =
 analysisData.age[answers.age];
