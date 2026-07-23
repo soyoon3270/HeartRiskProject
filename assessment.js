@@ -525,15 +525,6 @@ if (bmi < 18.5) {
     bmiCategory = "obese";
 }
 
-const answers = {
-    age: document.querySelector('input[name="age"]:checked')?.value,
-    bmi: bmiCategory,
-    exercise: document.querySelector('input[name="exercise"]:checked')?.value,
-    smoking: document.querySelector('input[name="smoking"]:checked')?.value,
-    bp: document.querySelector('input[name="bp"]:checked')?.value,
-    cholesterol: document.querySelector('input[name="cholesterol"]:checked')?.value,
-    family: document.querySelector('input[name="family"]:checked')?.value
-};
 // Save all survey responses
 const answers = {
     gender: document.querySelector('input[name="gender"]:checked')?.value,
@@ -551,6 +542,7 @@ const answers = {
     family: document.querySelector('input[name="family"]:checked')?.value,
     activity: document.querySelector('input[name="activity"]:checked')?.value,
     diet: document.querySelector('input[name="diet"]:checked')?.value,
+    bmi: bmiCategory
 
 };
 
