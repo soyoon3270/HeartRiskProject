@@ -89,6 +89,7 @@ document.querySelector(".recommendations ul").innerHTML =
 
 const answers =
 JSON.parse(localStorage.getItem("heartguardAnswers"));
+console.log(answers);
 
 if (!answers) {
 
@@ -130,7 +131,7 @@ function addCard(info){
 }
 
 // AGE
-
+console.log(analysisData);
 addCard(
 analysisData.age[answers.age]
 );
