@@ -175,8 +175,14 @@ no:{
 title:"Family History",
 average:"No known family history reduces inherited cardiovascular risk.",
 explanation:"Lifestyle remains the strongest factor you can control."
-}
+},
 
+unsure: {
+  title: "Family History",
+  average: "Not knowing your family history makes inherited cardiovascular risk harder to estimate.",
+  explanation: "If possible, ask family members about any history of heart disease. Even without this information, maintaining healthy habits remains important."
+}
+  
 }
 
 };
