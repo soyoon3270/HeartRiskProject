@@ -287,8 +287,38 @@ nextBtn.addEventListener("click", () => {
 
         const score = calculateScore();
 
-        localStorage.setItem("heartguardScore", score);
+const answers = {
 
+    age: document.querySelector("input[name='age']:checked")?.value,
+
+    bmi: bmi,
+
+    diabetes: document.querySelector("input[name='diabetes']:checked")?.value,
+
+    duration: document.querySelector("input[name='duration']:checked")?.value,
+
+    treatment: document.querySelector("input[name='treatment']:checked")?.value,
+
+    exercise: document.querySelector("input[name='exercise']:checked")?.value,
+
+    sugar: document.querySelector("input[name='sugar']:checked")?.value,
+
+    smoking: document.querySelector("input[name='smoking']:checked")?.value,
+
+    bp: document.querySelector("input[name='bp']:checked")?.value,
+
+    breath: document.querySelector("input[name='breath']:checked")?.value,
+
+    swelling: document.querySelector("input[name='swelling']:checked")?.value,
+
+    cholesterol: document.querySelector("input[name='cholesterol']:checked")?.value,
+
+    family: document.querySelector("input[name='family']:checked")?.value
+
+};
+
+localStorage.setItem("heartguardAnswers", JSON.stringify(answers));
+localStorage.setItem("heartguardScore", score);
         window.location.href = "result.html";
 
     }
