@@ -90,57 +90,86 @@ document.querySelector(".recommendations ul").innerHTML =
 const answers =
 JSON.parse(localStorage.getItem("heartguardAnswers"));
 
-const container =
-document.getElementById("analysisText");
+if (!answers) {
 
-const age =
-analysisData.age[answers.age];
+    document.getElementById("analysisText").innerHTML =
+        "No survey responses were found.";
 
-container.innerHTML += `
-<div class="analysis-card">
-<h2>${age.title}</h2>
-<p><strong>Population Insight</strong></p>
-<p>${age.average}</p>
-<p><strong>Why it matters</strong></p>
-<p>${age.explanation}</p>
-</div>
-`;
+    throw new Error("heartguardAnswers not found.");
+
+}
+
+const container = document.getElementById("analysisText");
+
+container.innerHTML = "";
+
+function addCard(info){
+
+    if(!info) return;
+
+    container.innerHTML += `
+
+    <div class="analysis-card">
+
+        <h3>${info.title}</h3>
+
+        <p><strong>Population Insight</strong></p>
+
+        <p>${info.average}</p>
+
+        <p><strong>How this contributes to cardiovascular risk</strong></p>
+
+        <p>${info.explanation}</p>
+
+        <hr>
+
+    </div>
+
+    `;
+
+}
+
+// AGE
+
+addCard(
+analysisData.age[answers.age]
+);
+
+// BMI
 
 let bmiKey;
 
-if(answers.bmi<18.5)
+if(answers.bmi < 18.5)
     bmiKey="underweight";
-else if(answers.bmi<25)
+
+else if(answers.bmi < 25)
     bmiKey="healthy";
-else if(answers.bmi<30)
+
+else if(answers.bmi < 30)
     bmiKey="overweight";
+
 else
     bmiKey="obese";
 
-const bmiInfo=
-analysisData.bmi[bmiKey];
+addCard(
+analysisData.bmi[bmiKey]
+);
 
-container.innerHTML+=`
-<div class="analysis-card">
-<h2>${bmiInfo.title}</h2>
-<p><strong>Population Insight</strong></p>
-<p>${bmiInfo.average}</p>
-<p><strong>Why it matters</strong></p>
-<p>${bmiInfo.explanation}</p>
-</div>
-`;
+// Remaining categories
 
-["exercise", "smoking", "bp", "cholesterol", "family"].forEach(category => {
-    const info = analysisData[category]?.[answers[category]];
-    if (!info) return;
+[
+"exercise",
+"smoking",
+"bp",
+"cholesterol",
+"family"
 
-    container.innerHTML += `
-        <div class="analysis-card">
-            <h2>${info.title}</h2>
-            <p><strong>Population Insight</strong></p>
-            <p>${info.average}</p>
-            <p><strong>Why it matters</strong></p>
-            <p>${info.explanation}</p>
-        </div>
-    `;
+].forEach(category=>{
+
+    addCard(
+
+        analysisData[category]?.[answers[category]]
+
+    );
+
 });
