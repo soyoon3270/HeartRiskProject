@@ -66,3 +66,15 @@ if (score >= 20) {
 
 document.querySelector(".recommendations ul").innerHTML =
     tips.map(tip => `<li>${tip}</li>`).join("");
+
+const answers = {
+    age: document.querySelector('input[name="age"]:checked')?.value,
+    bmi: parseFloat(document.getElementById("bmiValue").textContent),
+    exercise: document.querySelector('input[name="exercise"]:checked')?.value,
+    smoking: document.querySelector('input[name="smoking"]:checked')?.value,
+    bp: document.querySelector('input[name="bp"]:checked')?.value,
+    cholesterol: document.querySelector('input[name="cholesterol"]:checked')?.value,
+    family: document.querySelector('input[name="family"]:checked')?.value
+};
+
+localStorage.setItem("heartguardAnswers", JSON.stringify(answers));
