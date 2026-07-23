@@ -337,6 +337,34 @@ transform:translateY(-6px);
 
 }
 
+.analysis-card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.1);
+
+}
+
+.analysis-card h2{
+
+    color:#1E88E5;
+
+    margin-bottom:15px;
+
+}
+
+.analysis-card p{
+
+    line-height:1.6;
+
+}
+
 
 /* ---------- Conditions ---------- */
 
