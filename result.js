@@ -66,3 +66,39 @@ if (score >= 20) {
 
 document.querySelector(".recommendations ul").innerHTML =
     tips.map(tip => `<li>${tip}</li>`).join("");
+
+const answers = JSON.parse(
+    localStorage.getItem("heartguardAnswers")
+);
+
+const analysisText = document.getElementById("analysisText");
+
+if (!answers) {
+    analysisText.textContent =
+        "No survey responses were found.";
+} else {
+
+    const cards = [];
+
+    function addCard(data) {
+        if (!data) return;
+
+        cards.push(`
+            <div class="analysis-card">
+                <h4>${data.title}</h4>
+                <p><strong>${data.average}</strong></p>
+                <p>${data.explanation}</p>
+            </div>
+        `);
+    }
+
+    addCard(analysisData.age?.[answers.age]);
+    addCard(analysisData.bmi?.[answers.bmi]);
+    addCard(analysisData.exercise?.[answers.exercise]);
+    addCard(analysisData.smoking?.[answers.smoking]);
+    addCard(analysisData.bp?.[answers.bp]);
+    addCard(analysisData.cholesterol?.[answers.cholesterol]);
+    addCard(analysisData.family?.[answers.family]);
+
+    analysisText.innerHTML = cards.join("");
+}
