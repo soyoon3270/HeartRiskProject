@@ -2,20 +2,22 @@ const score = Number(localStorage.getItem("heartguardScore")) || 0;
 
 // Elements
 const scoreText = document.getElementById("score");
+const scoreOutOf = document.getElementById("scoreOutOf");
 const riskLevel = document.getElementById("riskLevel");
 const circle = document.querySelector(".risk-circle");
-const riskFill = document.getElementById("riskFill");
-const riskPercent = document.getElementById("riskPercent");
+const riskMarker = document.getElementById("riskMarker");
 const reasonList = document.getElementById("reasonList");
 
 // Display score
 scoreText.textContent = score;
+if (scoreOutOf) scoreOutOf.textContent = "out of 40";
 
-// Progress bar
+// Display score
+scoreText.textContent = score;
+
+// Risk position on gradient bar
 const percentage = Math.min(Math.round((score / 40) * 100), 100);
-
-riskFill.style.width = percentage + "%";
-riskPercent.textContent = `${percentage}% estimated cardiovascular risk factors`;
+if (riskMarker) riskMarker.style.left = `calc(${percentage}% - 2px)`;
 
 // Risk classification
 if(score <= 11){
@@ -67,38 +69,14 @@ if (score >= 20) {
 document.querySelector(".recommendations ul").innerHTML =
     tips.map(tip => `<li>${tip}</li>`).join("");
 
-const answers = JSON.parse(
-    localStorage.getItem("heartguardAnswers")
-);
+const answers = {
+    age: document.querySelector('input[name="age"]:checked')?.value,
+    bmi: parseFloat(document.getElementById("bmiValue").textContent),
+    exercise: document.querySelector('input[name="exercise"]:checked')?.value,
+    smoking: document.querySelector('input[name="smoking"]:checked')?.value,
+    bp: document.querySelector('input[name="bp"]:checked')?.value,
+    cholesterol: document.querySelector('input[name="cholesterol"]:checked')?.value,
+    family: document.querySelector('input[name="family"]:checked')?.value
+};
 
-const analysisText = document.getElementById("analysisText");
-
-if (!answers) {
-    analysisText.textContent =
-        "No survey responses were found.";
-} else {
-
-    const cards = [];
-
-    function addCard(data) {
-        if (!data) return;
-
-        cards.push(`
-            <div class="analysis-card">
-                <h4>${data.title}</h4>
-                <p><strong>${data.average}</strong></p>
-                <p>${data.explanation}</p>
-            </div>
-        `);
-    }
-
-    addCard(analysisData.age?.[answers.age]);
-    addCard(analysisData.bmi?.[answers.bmi]);
-    addCard(analysisData.exercise?.[answers.exercise]);
-    addCard(analysisData.smoking?.[answers.smoking]);
-    addCard(analysisData.bp?.[answers.bp]);
-    addCard(analysisData.cholesterol?.[answers.cholesterol]);
-    addCard(analysisData.family?.[answers.family]);
-
-    analysisText.innerHTML = cards.join("");
-}
+localStorage.setItem("heartguardAnswers", JSON.stringify(answers));

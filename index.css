@@ -157,3 +157,127 @@ body{
     background:#22346b;
     color:white;
 }
+.trust-badges{
+    display:flex;
+    gap:12px 14px;
+    flex-wrap:wrap;
+    margin:8px 0 28px;
+}
+
+.trust-badges span{
+    background:white;
+    padding:12px 20px;
+    border-radius:24px;
+    font-size:14px;
+    font-weight:600;
+    color:#3d4e6e;
+    box-shadow:0 4px 10px rgba(0,0,0,.06);
+    white-space:nowrap;
+}
+
+/* Sneak Peek */
+.sneak-peek{
+    text-align:center;
+    padding:60px 80px 20px;
+}
+
+.sneak-peek h2{
+    font-size:36px;
+    margin-bottom:10px;
+    color:#1f2d5a;
+}
+
+.sneak-sub{
+    color:#66758d;
+    margin-bottom:35px;
+    font-size:18px;
+}
+
+.sneak-card{
+    max-width:600px;
+    margin:0 auto;
+    background:white;
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    display:flex;
+    gap:35px;
+    align-items:center;
+    text-align:left;
+}
+
+.sneak-score{
+    flex-shrink:0;
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    background:#F57C00;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    font-size:36px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.sneak-score p{
+    font-size:13px;
+    margin-top:6px;
+    font-weight:600;
+}
+
+.sneak-list{
+    list-style:none;
+    font-size:16px;
+    line-height:2;
+    color:#4a5a78;
+}
+
+.sneak-note{
+    margin-top:20px;
+    font-size:13px;
+    color:#9aa5b8;
+}
+
+/* Site Footer */
+.site-footer{
+    background:#22346b;
+    color:#c9d3ea;
+    padding:50px 80px 30px;
+    margin-top:40px;
+}
+
+.footer-inner{
+    max-width:850px;
+    margin:auto;
+    text-align:center;
+    font-size:14px;
+    line-height:1.9;
+}
+
+.footer-brand{
+    font-size:20px;
+    font-weight:bold;
+    color:white;
+    margin-bottom:12px;
+}
+
+.footer-disclaimer{
+    margin-top:10px;
+    color:#9fb0d6;
+}
+
+.footer-copyright{
+    margin-top:15px;
+    font-size:12px;
+    color:#7d8ec9;
+}
+
+@media (max-width:700px){
+    .sneak-card{
+        flex-direction:column;
+        text-align:center;
+    }
+}

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HeartGuard Assessment</title>
     <link rel="stylesheet" href="assessment.css">
+    <link rel="stylesheet" href="footer.css">
 </head>
 <body>
 <div class="container">
@@ -20,15 +21,22 @@
     <form id="assessmentForm">
 
         <!-- Question 1 -->
-        <div class="question active">
+<div class="question active">
+    <h2>1. What is your gender?</h2>
 
-            <h2 id="q1Title">1. What is your gender?</h2>
+    <label><input type="radio" name="gender" value="male"> Male</label><br>
+    <label><input type="radio" name="gender" value="female"> Female</label>
 
-            <label id="maleOption"><input type="radio" name="gender" value="male"> Male</label><br>
-            <label id="femaleOption"><input type="radio" name="gender" value="female"> Female</label><br>
-            <label id="naGenderOption"><input type="radio" name="gender" value="na"> Prefer not to say</label>
 
-        </div>
+<h2 style="margin-top:35px;">Ethnicity <span style="font-weight:normal;font-size:16px;color:#888;">(optional, select all that apply)</span></h2>
+
+    <label><input type="checkbox" name="ethnicity" value="hispanic" data-optional> Hispanic / Latino</label><br>
+    <label><input type="checkbox" name="ethnicity" value="indigenous" data-optional> Asian</label><br>
+    <label><input type="checkbox" name="ethnicity" value="indigenous" data-optional> White</label><br>
+    <label><input type="checkbox" name="ethnicity" value="indigenous" data-optional> Black</label><br>
+    <label><input type="checkbox" name="ethnicity" value="other" data-optional> Other</label><br>
+    <label><input type="checkbox" name="ethnicity" value="na" data-optional> Prefer not to say</label>
+</div>
 
 
         <!-- Question 2 -->
@@ -100,19 +108,18 @@
 
 
         <!-- Question 6 -->
-        <div class="question">
+        <!-- Question 6 -->
+<div class="question">
+    <h2>6. Do you take any medications or use glucose trackers?</h2>
+    <p class="tip">Select all that apply.</p>
 
-            <h2 id="q6Title">6. Do you take any medications or use glucose trackers?</h2>
-
-            <label id="noneTreatmentOption"><input type="radio" name="treatment" value="none"> No treatment</label><br>
-            <label id="oralOption"><input type="radio" name="treatment" value="oral"> Oral medication</label><br>
-            <label id="insulinOption"><input type="radio" name="treatment" value="insulin"> Insulin injections</label><br>
-            <label id="cgmOption"><input type="radio" name="treatment" value="cgm"> Continuous Glucose Monitor (CGM)</label><br>
-            <label id="pumpOption"><input type="radio" name="treatment" value="pump"> Insulin pump</label><br>
-            <label id="multipleOption"><input type="radio" name="treatment" value="multiple"> Multiple of the above</label><br>
-            <label id="naTreatmentOption"><input type="radio" name="treatment" value="na"> Not applicable</label>
-
-        </div>
+    <label><input type="checkbox" name="treatment" value="none"> No treatment</label><br>
+    <label><input type="checkbox" name="treatment" value="oral"> Oral medication</label><br>
+    <label><input type="checkbox" name="treatment" value="insulin"> Insulin injections</label><br>
+    <label><input type="checkbox" name="treatment" value="cgm"> Continuous Glucose Monitor (CGM)</label><br>
+    <label><input type="checkbox" name="treatment" value="pump"> Insulin pump</label><br>
+    <label><input type="checkbox" name="treatment" value="na"> Not applicable (I don't have diabetes)</label>
+</div>
 
             <!-- Question 7 -->
 <div class="question">
@@ -242,29 +249,24 @@
 
 <!-- Question 16 -->
 <div class="question">
+<!-- Question: Diet Pattern -->
 
-    <h2 id="q16Title">
-        16. How would you describe your typical diet?
-    </h2>
+    <h2>16. How would you describe your typical diet?</h2>
 
-    <label id="dietHealthyOption">
-        <input type="radio" name="diet" value="healthy">
-        Mostly home-cooked meals with vegetables, beans, grilled chicken or fish
+    <label><input type="radio" name="diet" value="homecooked">
+        I eat home-cooked meals (vegetables, beans, grilled chicken or fish) almost every day, rarely eating out
     </label><br>
 
-    <label id="dietMixedOption">
-        <input type="radio" name="diet" value="mixed">
-        A mix of home-cooked meals and foods like tacos, tortas, or quesadillas
+    <label><input type="radio" name="diet" value="mostlyhome">
+        I mostly eat home-cooked meals, but eat out or order food 1–2 times a week
     </label><br>
 
-    <label id="dietFastFoodOption">
-        <input type="radio" name="diet" value="fastfood">
-        Fast food or street food several times a week (tacos, hamburgers, pizza, fried foods)
+    <label><input type="radio" name="diet" value="eatingout">
+        I eat out, order delivery, or eat street food (tacos, tortas, pizza) 3–5 times a week
     </label><br>
 
-    <label id="dietProcessedOption">
-        <input type="radio" name="diet" value="processed">
-        Mostly fried, processed, or sugary foods and drinks
+    <label><input type="radio" name="diet" value="processed">
+        I rarely cook at home — most days I eat fried, processed, or sugary foods
     </label>
 
 </div>
@@ -284,6 +286,10 @@
 </div>
 
 <script src="assessment.js"></script>
-
+<div class="corner-footer">
+    🔒 Your responses are never shared or sold.<br>
+    Educational tool only — not a medical diagnosis.<br>
+    © 2026 HeartGuard
+</div>
 </body>
 </html>

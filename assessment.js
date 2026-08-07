@@ -92,62 +92,41 @@ weightInput.addEventListener("input", calculateBMI);
 function validateQuestion() {
 
     const current = questions[currentQuestion];
+    const numbers = current.querySelectorAll("input[type='number']");
+    const radios = current.querySelectorAll("input[type='radio']");
+    const checkboxes = current.querySelectorAll("input[type='checkbox']");
 
-    const numbers =
-        current.querySelectorAll("input[type='number']");
-
-    const radios =
-        current.querySelectorAll("input[type='radio']");
-
-    // BMI 질문
     if (numbers.length > 0) {
-
         let complete = true;
-
-        numbers.forEach(input => {
-
-            if (input.value.trim() === "") {
-
-                complete = false;
-
-            }
-
-        });
-
-        if (!complete) {
-
-            alert("Please enter your height and weight.");
-
-            return false;
-
-        }
-
+        numbers.forEach(input => { if (input.value.trim() === "") complete = false; });
+        if (!complete) { alert("Please enter your height and weight."); return false; }
         calculateBMI();
-
         return true;
-
     }
 
-    // Radio 질문
     if (radios.length > 0) {
-
-        const checked =
-            Array.from(radios).some(r => r.checked);
-
-        if (!checked) {
-
-            alert("Please select an answer.");
-
-            return false;
-
+        const groupNames = [...new Set(Array.from(radios).map(r => r.name))];
+        for (const name of groupNames) {
+            const groupInputs = current.querySelectorAll(`input[name='${name}']`);
+            const isOptional = groupInputs[0].hasAttribute("data-optional");
+            const checked = Array.from(groupInputs).some(r => r.checked);
+            if (!checked && !isOptional) {
+                alert("Please select an answer.");
+                return false;
+            }
         }
+    }
 
+    if (checkboxes.length > 0) {
+        const checked = Array.from(checkboxes).some(c => c.checked);
+        if (!checked) {
+            alert("Please select at least one option.");
+            return false;
+        }
     }
 
     return true;
-
 }
-
 // ==========================
 // 점수 계산
 // ==========================
@@ -268,17 +247,15 @@ switch(duration){
 }
 
 
-/* -----------------------
-   Treatment
------------------------ */
+// Treatment
+    const treatments = Array.from(
+        document.querySelectorAll("input[name='treatment']:checked")
+    ).map(t => t.value);
 
-const treatment = document.querySelector('input[name="treatment"]:checked')?.value;
-
-if(treatment === "none"){
-
-    score += 1;
-
-}
+    if (treatments.includes("none")) score += 1;
+    if (treatments.length > 1 && !treatments.includes("na") && !treatments.includes("none")) {
+        score += 1; // multiple active treatments = more advanced management
+    }
 
 
 /* -----------------------
@@ -507,11 +484,10 @@ nextBtn.addEventListener("click", () => {
 
     } else {
 
-        const score = calculateScore();
+       const score = calculateScore();
 
 localStorage.setItem("heartguardScore", score);
 
-// BMI category
 const bmi = parseFloat(document.getElementById("bmiValue").textContent);
 
 let bmiCategory;
@@ -526,14 +502,25 @@ if (bmi < 18.5) {
     bmiCategory = "obese";
 }
 
+// Save all survey responses
 const answers = {
+    gender: document.querySelector('input[name="gender"]:checked')?.value,
     age: document.querySelector('input[name="age"]:checked')?.value,
-    bmi: bmiCategory,
+    diabetes: document.querySelector('input[name="diabetes"]:checked')?.value,
+    duration: document.querySelector('input[name="duration"]:checked')?.value,
+    treatment: document.querySelector('input[name="treatment"]:checked')?.value,
     exercise: document.querySelector('input[name="exercise"]:checked')?.value,
+    sugar: document.querySelector('input[name="sugar"]:checked')?.value,
     smoking: document.querySelector('input[name="smoking"]:checked')?.value,
     bp: document.querySelector('input[name="bp"]:checked')?.value,
+    breath: document.querySelector('input[name="breath"]:checked')?.value,
+    swelling: document.querySelector('input[name="swelling"]:checked')?.value,
     cholesterol: document.querySelector('input[name="cholesterol"]:checked')?.value,
-    family: document.querySelector('input[name="family"]:checked')?.value
+    family: document.querySelector('input[name="family"]:checked')?.value,
+    activity: document.querySelector('input[name="activity"]:checked')?.value,
+    diet: document.querySelector('input[name="diet"]:checked')?.value,
+    bmi: bmiCategory
+
 };
 
 localStorage.setItem(
@@ -542,7 +529,6 @@ localStorage.setItem(
 );
 
 window.location.href = "result.html";
-
     }
 
 });
