@@ -133,3 +133,83 @@ function retakeAssessment() {
     localStorage.removeItem("heartguardAnswers");
     window.location.href = "assessment.html";
 }
+
+// ==========================
+// Category risk points (mirrors assessment.js scoring)
+// ==========================
+const categoryPointTables = {
+    age: { under30:0, "30-39":1, "40-49":2, "50-59":3, "60-69":4, "70plus":5 },
+    bmi: { underweight:1, healthy:0, overweight:2, obese:3 },
+    diabetes: { type1:3, type2:4, prediabetes:2, no:0 },
+    exercise: { "5":0, "3":1, "1":2, "0":3 },
+    diet: { homecooked:0, mostlyhome:1, eatingout:3, processed:4 },
+    activity: { sitting:3, standing:2, physical:0 },
+    sugar: { never:0, "1-2":1, "3-6":2, daily:3, "3daily":4 },
+    smoking: { never:0, former:1, sometimes:2, daily:3 },
+    bp: { yes:3, no:0, unsure:1 },
+    cholesterol: { yes:2, no:0 },
+    family: { yes:2, no:0, unsure:0 }
+};
+
+function renderAnalysis() {
+
+    const highlightsEl = document.getElementById("analysisHighlights");
+    const accordionEl = document.getElementById("analysisAccordion");
+    if (!highlightsEl || !accordionEl || typeof analysisData === "undefined") return;
+
+    const items = [];
+
+    Object.keys(categoryPointTables).forEach(category => {
+
+        const answerValue = answers[category];
+        if (!answerValue) return;
+
+        const points = categoryPointTables[category][answerValue] ?? 0;
+        const data = analysisData[category]?.[answerValue];
+        if (!data) return;
+
+        items.push({ category, points, ...data });
+
+    });
+
+    // Sort by risk points, highest first
+    items.sort((a, b) => b.points - a.points);
+
+    const HIGH_RISK_THRESHOLD_COUNT = 4;
+    const highlighted = items.slice(0, HIGH_RISK_THRESHOLD_COUNT).filter(i => i.points > 0);
+    const rest = items.filter(i => !highlighted.includes(i));
+
+    // Render highlighted cards
+    highlightsEl.innerHTML = highlighted.map(item => `
+        <div class="highlight-card">
+            <h4>⚠️ ${item.title}</h4>
+            <p><strong>${item.average}</strong></p>
+            <p>${item.explanation}</p>
+        </div>
+    `).join("");
+
+    // Render accordion for the rest
+    accordionEl.innerHTML = rest.map((item, i) => `
+        <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(${i})">
+                <span>${item.title}</span>
+                <span id="accIcon${i}">▸</span>
+            </button>
+            <div class="accordion-body" id="accBody${i}">
+                <p>${item.average}</p>
+                <p>${item.explanation}</p>
+            </div>
+        </div>
+    `).join("");
+
+}
+
+function toggleAccordion(index) {
+    const body = document.getElementById(`accBody${index}`);
+    const icon = document.getElementById(`accIcon${index}`);
+    if (!body) return;
+    const isOpen = body.classList.toggle("open");
+    icon.textContent = isOpen ? "▾" : "▸";
+}
+
+renderAnalysis();

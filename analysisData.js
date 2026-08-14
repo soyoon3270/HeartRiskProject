@@ -184,5 +184,118 @@ unsure: {
 }
   
 }
+,
+
+diabetes:{
+
+    type1:{
+        title:"Diabetes: Type 1",
+        average:"Type 1 diabetes significantly increases long-term cardiovascular risk.",
+        explanation:"Consistent blood sugar management is one of the most important ways to protect your heart and blood vessels."
+    },
+
+    type2:{
+        title:"Diabetes: Type 2",
+        average:"Type 2 diabetes is strongly linked to heart disease, including diabetic cardiomyopathy.",
+        explanation:"Managing blood sugar, blood pressure, and cholesterol together provides the greatest protection for your heart."
+    },
+
+    prediabetes:{
+        title:"Prediabetes",
+        average:"Prediabetes already begins to affect blood vessels before full diabetes develops.",
+        explanation:"Lifestyle changes at this stage can often prevent progression to type 2 diabetes and reduce cardiovascular risk."
+    },
+
+    no:{
+        title:"Diabetes",
+        average:"No diagnosed diabetes reduces one major pathway to cardiovascular disease.",
+        explanation:"Maintaining healthy blood sugar levels through diet and exercise helps keep it that way."
+    }
+
+},
+
+diet:{
+
+    homecooked:{
+        title:"Diet",
+        average:"A diet built around home-cooked, whole foods is associated with lower cardiovascular risk.",
+        explanation:"Keep favoring vegetables, lean proteins, and minimally processed ingredients."
+    },
+
+    mostlyhome:{
+        title:"Diet",
+        average:"A mostly home-cooked diet with some eating out provides a reasonable balance.",
+        explanation:"Reducing fast food or processed meals a bit further could lower long-term risk even more."
+    },
+
+    eatingout:{
+        title:"Diet",
+        average:"Frequent eating out or street food several times a week increases exposure to excess sodium, sugar, and unhealthy fats.",
+        explanation:"Try replacing a few weekly meals with home-cooked alternatives to reduce cardiovascular strain."
+    },
+
+    processed:{
+        title:"Diet",
+        average:"A diet high in fried, processed, or sugary foods is one of the strongest modifiable risk factors for heart disease.",
+        explanation:"Gradually introducing whole foods and home-cooked meals can meaningfully improve cardiovascular health over time."
+    }
+
+},
+
+activity:{
+
+    sitting:{
+        title:"Daily Activity",
+        average:"Spending most of the day sitting is linked to higher cardiovascular risk, independent of exercise habits.",
+        explanation:"Standing up and moving briefly every hour can help offset the effects of prolonged sitting."
+    },
+
+    standing:{
+        title:"Daily Activity",
+        average:"Spending most of the day standing is generally better for cardiovascular health than sitting.",
+        explanation:"Combining this with regular movement further supports heart health."
+    },
+
+    physical:{
+        title:"Daily Activity",
+        average:"Regular physically demanding activity throughout the day supports strong cardiovascular health.",
+        explanation:"Keep it up — consistent movement is one of the best protective habits."
+    }
+
+},
+
+sugar:{
+
+    never:{
+        title:"Sugary Beverages",
+        average:"Avoiding sugary drinks significantly lowers your risk of diabetes and related heart complications.",
+        explanation:"Continue choosing water or unsweetened beverages."
+    },
+
+    "1-2":{
+        title:"Sugary Beverages",
+        average:"Occasional sugary drinks have a relatively small impact on cardiovascular risk.",
+        explanation:"Keeping this to a minimum continues to protect long-term heart health."
+    },
+
+    "3-6":{
+        title:"Sugary Beverages",
+        average:"Drinking sugary beverages several times a week contributes to chronic high blood sugar over time.",
+        explanation:"Cutting back gradually can reduce strain on blood vessels and the heart."
+    },
+
+    daily:{
+        title:"Sugary Beverages",
+        average:"Daily sugary drink consumption is a major contributor to insulin resistance and vascular damage.",
+        explanation:"Reducing sugary drinks is one of the most effective changes you can make for your heart."
+    },
+
+    "3daily":{
+        title:"Sugary Beverages",
+        average:"Very high sugary drink consumption places significant strain on blood sugar regulation and cardiovascular health.",
+        explanation:"This is one of the most impactful areas to address — even cutting back gradually can make a real difference."
+    }
+
+}
 
 };
