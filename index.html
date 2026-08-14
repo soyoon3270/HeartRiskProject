@@ -14,9 +14,9 @@
 
 <div class="language-switch">
 
-    <button onclick="setLanguage('en')">🇺🇸 EN</button>
+    <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">🇺🇸 EN</button>
 
-    <button onclick="setLanguage('es')">🇲🇽 ES</button>
+    <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">🇲🇽 ES</button>
 
 </div>
 
@@ -54,23 +54,23 @@
 
     <div class="hero-right">
 
-        <h1>
+        <h1 data-i18n="hero_title">
     Protect Your <br>
     Heart Today
 </h1>
 
-<p>
+<p data-i18n="hero_intro">
     Understand your cardiovascular health through a personalized
     assessment based on your lifestyle, medical history, and daily habits.
 </p>
 
 <div class="trust-badges">
-    <span>⏱ Under 3 minutes</span>
-    <span>🩺 No medical prep needed</span>
-    <span>🔒 100% confidential & free</span>
+    <span data-i18n="badge_time">⏱ Under 3 minutes</span>
+    <span data-i18n="badge_prep">🩺 No medical prep needed</span>
+    <span data-i18n="badge_privacy">🔒 100% confidential & free</span>
 </div>
 
-<button onclick="startAssessment()">
+<button onclick="startAssessment()" data-i18n="cta_button">
     Check My Risk →
 </button>
 
