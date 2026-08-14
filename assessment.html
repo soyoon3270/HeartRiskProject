@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="footer.css">
 </head>
 <body>
+<div class="background-circle"></div>
 <div class="container">
 
     <h1 id="pageTitle">🫀 HeartGuard Assessment</h1>
@@ -82,7 +83,7 @@
 
 
         <!-- Question 4 -->
-        <div class="question">
+        <div class="question" id="q-diabetes">
 
             <h2 id="q4Title">4. Have you been diagnosed with diabetes?</h2>
 
@@ -95,7 +96,7 @@
 
 
         <!-- Question 5 -->
-        <div class="question">
+        <div class="question" id="q-duration">
 
             <h2 id="q5Title">5. How long have you been diagnosed?</h2>
 
@@ -109,7 +110,7 @@
 
         <!-- Question 6 -->
         <!-- Question 6 -->
-<div class="question">
+<div class="question" id="q-treatment">
     <h2>6. Do you take any medications or use glucose trackers?</h2>
     <p class="tip">Select all that apply.</p>
 
@@ -122,7 +123,7 @@
 </div>
 
             <!-- Question 7 -->
-<div class="question">
+<div class="question" id="q-exercise">
 
     <h2 id="q7Title">7. How many days per week do you engage in intense workouts?</h2>
 
@@ -220,7 +221,10 @@
     <label id="familyYesOption"><input type="radio" name="family" value="yes"> Yes</label><br>
     <label id="familyNoOption"><input type="radio" name="family" value="no"> No</label><br>
     <label id="familyUnsureOption"><input type="radio" name="family" value="unsure"> Unsure</label>
-
+      <div class="info-banner" id="familyUnsureBanner" style="display:none;">
+        ℹ️ Family history plays a significant role in cardiovascular risk.
+        If you're unsure, it's worth asking a parent or checking with your doctor.
+    </div>
 </div>
 <!-- Question 15 -->
 <div class="question">
@@ -270,7 +274,17 @@
     </label>
 
 </div>
+<!-- Question: Last Check-up -->
+<div class="question">
 
+    <h2>When was your last hospital check-up?</h2>
+
+    <label><input type="radio" name="checkup" value="lt1"> Within the last year</label><br>
+    <label><input type="radio" name="checkup" value="1to2"> 1–2 years ago</label><br>
+    <label><input type="radio" name="checkup" value="gt2"> More than 2 years ago</label><br>
+    <label><input type="radio" name="checkup" value="never"> I have never had one</label>
+
+</div>
 
 <div class="buttons">
 
@@ -286,10 +300,28 @@
 </div>
 
 <script src="assessment.js"></script>
-<div class="corner-footer">
-    🔒 Your responses are never shared or sold.<br>
-    Educational tool only — not a medical diagnosis.<br>
-    © 2026 HeartGuard
-</div>
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <p class="footer-brand">❤️ HeartGuard</p>
+
+        <p class="footer-contact">
+            📧 contact@heartguard.app
+        </p>
+
+        <p class="footer-privacy">
+            🔒 Your privacy matters to us. All responses are confidential and
+            are never shared, sold, or disclosed to third parties.
+        </p>
+
+        <p class="footer-disclaimer">
+            This tool is for educational purposes only and does not replace
+            professional medical diagnosis or treatment.
+        </p>
+
+        <p class="footer-copyright">© 2026 HeartGuard. All rights reserved.</p>
+
+    </div>
+</footer>
 </body>
 </html>

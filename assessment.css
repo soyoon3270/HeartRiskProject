@@ -1,22 +1,45 @@
-/* Background */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-body {
+body{
 
-    margin: 0;
-    padding: 0;
+    font-family:Arial, Helvetica, sans-serif;
 
-    font-family: Arial, Helvetica, sans-serif;
+    background:#eef6ff;
 
-    background: linear-gradient(135deg, #dff5ff, #eef9ff);
+    color:#22395d;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-height:100vh;
 
-    min-height: 100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    overflow-x:hidden;
 
 }
 
+.background-circle{
+
+    position:fixed;
+
+    width:700px;
+    height:700px;
+
+    background:rgba(83,125,255,.08);
+
+    border-radius:50%;
+
+    top:-250px;
+    left:-250px;
+
+    z-index:-1;
+
+}
 
 /* Main Card */
 
@@ -31,7 +54,7 @@ body {
 
     border-radius: 20px;
 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
 
 }
 
@@ -41,7 +64,7 @@ body {
 h1{
 
     text-align:center;
-    color:#1f4e79;
+    color:#20345d;
 
     margin-bottom:10px;
 
@@ -51,7 +74,7 @@ h1{
 
     text-align:center;
 
-    color:#666;
+    color:#5c677d;
 
     margin-bottom:25px;
 
@@ -82,7 +105,7 @@ h1{
 
     height:100%;
 
-    background:#4da3ff;
+    background:#3554b8;
 
     transition:0.4s;
 
@@ -105,7 +128,7 @@ h1{
 
 .question h2{
 
-    color:#1f4e79;
+    color:#23408d;
 
     margin-bottom:25px;
 
@@ -122,11 +145,14 @@ label{
 
     font-size:18px;
 
+    color:#5d687d;
+
     cursor:pointer;
 
 }
 
-input[type="radio"]{
+input[type="radio"],
+input[type="checkbox"]{
 
     margin-right:10px;
 
@@ -160,15 +186,15 @@ input[type="number"]{
 
 .tip{
 
-    background:#eef8ff;
+    background:#dcecff;
 
     padding:15px;
 
-    border-left:5px solid #4da3ff;
+    border-left:5px solid #3554b8;
 
     border-radius:8px;
 
-    color:#444;
+    color:#355;
 
     margin-bottom:20px;
 
@@ -189,27 +215,31 @@ input[type="number"]{
 
 button{
 
-    background:#4da3ff;
+    background:#22346b;
 
     color:white;
 
     border:none;
 
-    border-radius:10px;
+    border-radius:40px;
 
     padding:14px 28px;
 
     font-size:16px;
 
+    font-weight:600;
+
     cursor:pointer;
 
-    transition:0.3s;
+    transition:.25s;
 
 }
 
 button:hover{
 
-    background:#2b84e8;
+    background:#3554b8;
+
+    transform:translateY(-3px);
 
 }
 
@@ -222,6 +252,8 @@ button:hover{
 #prevBtn:hover{
 
     background:#9faab8;
+
+    transform:translateY(-3px);
 
 }
 
@@ -250,4 +282,14 @@ button:hover{
 
     }
 
+}
+.info-banner{
+    background:#fff4e0;
+    border-left:5px solid #F57C00;
+    padding:15px;
+    border-radius:8px;
+    margin-top:18px;
+    color:#7a5a20;
+    font-size:15px;
+    line-height:1.6;
 }

@@ -17,6 +17,140 @@ let bmi = 0;
 // 초기화
 // ==========================
 showQuestion();
+function calculateScore() {
+
+    let score = 0;
+
+    // Age
+    const age = document.querySelector("input[name='age']:checked")?.value;
+    const agePoints = {
+        "under30": 0,
+        "30-39": 1,
+        "40-49": 2,
+        "50-59": 3,
+        "60-69": 4,
+        "70plus": 5
+    };
+    score += agePoints[age] || 0;
+
+    // BMI
+    if (bmi > 30) score += 3;
+    else if (bmi >= 25) score += 2;
+    else if (bmi >= 18.5) score += 0;
+    else if (bmi > 0) score += 1; // under 18.5
+
+    // Diabetes
+    const diabetes = document.querySelector("input[name='diabetes']:checked")?.value;
+    const diabetesPoints = {
+        type1: 3,
+        type2: 4,
+        prediabetes: 2,
+        no: 0
+    };
+    score += diabetesPoints[diabetes] || 0;
+
+    // Duration
+    const duration = document.querySelector("input[name='duration']:checked")?.value;
+    const durationPoints = {
+        lt5: 1,
+        "5to10": 2,
+        gt10: 3,
+        na: 0
+    };
+    score += durationPoints[duration] || 0;
+
+    // Treatment (checkbox — sum all selected; only "none" carries weight)
+    const treatments = Array.from(
+        document.querySelectorAll("input[name='treatment']:checked")
+    ).map(t => t.value);
+
+    if (treatments.includes("none")) score += 1;
+    // oral, insulin, cgm, pump, multiple, na all = 0, no need to add
+
+    // Exercise
+    const exercise = document.querySelector("input[name='exercise']:checked")?.value;
+    const exercisePoints = {
+        "5": 0,
+        "3": 1,
+        "1": 2,
+        "0": 3
+    };
+    score += exercisePoints[exercise] || 0;
+
+    // Sugary Drinks
+    const sugar = document.querySelector("input[name='sugar']:checked")?.value;
+    const sugarPoints = {
+        never: 0,
+        "1-2": 1,
+        "3-6": 2,
+        daily: 3,
+        "3daily": 4
+    };
+    score += sugarPoints[sugar] || 0;
+
+    // Smoking
+    const smoking = document.querySelector("input[name='smoking']:checked")?.value;
+    const smokingPoints = {
+        never: 0,
+        former: 1,
+        sometimes: 2,
+        daily: 3
+    };
+    score += smokingPoints[smoking] || 0;
+
+    // Blood Pressure
+    const bp = document.querySelector("input[name='bp']:checked")?.value;
+    const bpPoints = { yes: 3, no: 0, unsure: 1 };
+    score += bpPoints[bp] || 0;
+
+    // Shortness of Breath
+    const breath = document.querySelector("input[name='breath']:checked")?.value;
+    if (breath === "yes") score += 3;
+
+    // Swelling
+    const swelling = document.querySelector("input[name='swelling']:checked")?.value;
+    if (swelling === "yes") score += 3;
+
+    // Cholesterol
+    const cholesterol = document.querySelector("input[name='cholesterol']:checked")?.value;
+    if (cholesterol === "yes") score += 2;
+
+    // Family History
+    const family = document.querySelector("input[name='family']:checked")?.value;
+    if (family === "yes") score += 2;
+    // no = 0, unsure = 0
+
+   // Diet Pattern
+    const diet = document.querySelector("input[name='diet']:checked")?.value;
+    const dietPoints = {
+        homecooked: 0,
+        mostlyhome: 1,
+        eatingout: 3,
+        processed: 4
+    };
+    score += dietPoints[diet] || 0;
+
+    // Daily Activity
+    const activity = document.querySelector("input[name='activity']:checked")?.value;
+    const activityPoints = {
+        sitting: 3,
+        standing: 2,
+        active: 0
+    };
+    score += activityPoints[activity] || 0;
+
+    // Last Check-up
+    const checkup = document.querySelector("input[name='checkup']:checked")?.value;
+    const checkupPoints = {
+        lt1: 0,
+        "1to2": 1,
+        gt2: 2,
+        never: 3
+    };
+    score += checkupPoints[checkup] || 0;
+
+    return score;
+}
 
 // ==========================
 // 화면 표시
@@ -128,407 +262,63 @@ function validateQuestion() {
     return true;
 }
 // ==========================
-// 점수 계산
-// ==========================
-function calculateScore() {
-
-    let score = 0;
-
-/* -----------------------
-   Age
------------------------ */
-
-const age = document.querySelector('input[name="age"]:checked')?.value;
-
-switch(age){
-
-    case "under30":
-        score += 0;
-        break;
-
-    case "30-39":
-        score += 1;
-        break;
-
-    case "40-49":
-        score += 2;
-        break;
-
-    case "50-59":
-        score += 3;
-        break;
-
-    case "60-69":
-        score += 4;
-        break;
-
-    case "70plus":
-        score += 5;
-        break;
-
-}
-
-
-/* -----------------------
-   BMI
------------------------ */
-
-const height = Number(document.getElementById("height").value);
-const weight = Number(document.getElementById("weight").value);
-
-if(height > 0 && weight > 0){
-
-    const bmi = weight / ((height / 100) ** 2);
-
-    if(bmi >= 30){
-
-        score += 3;
-
-    }
-
-    else if(bmi >= 25){
-
-        score += 2;
-
-    }
-
-    else if(bmi >= 18.5){
-
-        score += 1;
-
-    }
-
-}
-
-
-/* -----------------------
-   Diabetes
------------------------ */
-
-const diabetes = document.querySelector('input[name="diabetes"]:checked')?.value;
-
-switch(diabetes){
-
-    case "type1":
-        score += 3;
-        break;
-
-    case "type2":
-        score += 4;
-        break;
-
-    case "prediabetes":
-        score += 2;
-        break;
-
-}
-
-
-/* -----------------------
-   Duration
------------------------ */
-
-const duration = document.querySelector('input[name="duration"]:checked')?.value;
-
-switch(duration){
-
-    case "lt5":
-        score += 1;
-        break;
-
-    case "5to10":
-        score += 2;
-        break;
-
-    case "gt10":
-        score += 3;
-        break;
-
-}
-
-
-// Treatment
-    const treatments = Array.from(
-        document.querySelectorAll("input[name='treatment']:checked")
-    ).map(t => t.value);
-
-    if (treatments.includes("none")) score += 1;
-    if (treatments.length > 1 && !treatments.includes("na") && !treatments.includes("none")) {
-        score += 1; // multiple active treatments = more advanced management
-    }
-
-
-/* -----------------------
-   Exercise
------------------------ */
-
-const exercise = document.querySelector('input[name="exercise"]:checked')?.value;
-
-switch(exercise){
-
-    case "5":
-        score += 3;
-        break;
-
-    case "3":
-        score += 2;
-        break;
-
-    case "1":
-        score += 1;
-        break;
-
-}
-
-
-/* -----------------------
-   Sugary Drinks
------------------------ */
-
-const sugar = document.querySelector('input[name="sugar"]:checked')?.value;
-
-switch(sugar){
-
-    case "1-2":
-        score += 1;
-        break;
-
-    case "3-6":
-        score += 2;
-        break;
-
-    case "daily":
-        score += 3;
-        break;
-
-    case "3daily":
-        score += 4;
-        break;
-
-}
-
-
-/* -----------------------
-   Smoking
------------------------ */
-
-const smoking = document.querySelector('input[name="smoking"]:checked')?.value;
-
-switch(smoking){
-
-    case "former":
-        score += 1;
-        break;
-
-    case "sometimes":
-        score += 2;
-        break;
-
-    case "daily":
-        score += 3;
-        break;
-
-}
-
-
-/* -----------------------
-   Blood Pressure
------------------------ */
-
-const bp = document.querySelector('input[name="bp"]:checked')?.value;
-
-switch(bp){
-
-    case "yes":
-        score += 3;
-        break;
-
-    case "unsure":
-        score += 1;
-        break;
-
-}
-
-
-/* -----------------------
-   Shortness of Breath
------------------------ */
-
-if(document.querySelector('input[name="breath"]:checked')?.value === "yes"){
-
-    score += 3;
-
-}
-
-
-/* -----------------------
-   Swelling
------------------------ */
-
-if(document.querySelector('input[name="swelling"]:checked')?.value === "yes"){
-
-    score += 3;
-
-}
-
-
-/* -----------------------
-   Cholesterol
------------------------ */
-
-if(document.querySelector('input[name="cholesterol"]:checked')?.value === "yes"){
-
-    score += 2;
-
-}
-
-
-/* -----------------------
-   Family History
------------------------ */
-
-const family = document.querySelector('input[name="family"]:checked')?.value;
-
-switch(family){
-
-    case "yes":
-        score += 2;
-        break;
-
-    case "no":
-        score += 1;
-        break;
-
-}
-
-
-/* -----------------------
-   Daily Activity
------------------------ */
-
-const activity = document.querySelector('input[name="activity"]:checked')?.value;
-
-switch(activity){
-
-    case "sitting":
-        score += 3;
-        break;
-
-    case "standing":
-        score += 2;
-        break;
-
-    case "physical":
-        score += 0;
-        break;
-
-}
-
-
-/* -----------------------
-   Diet
------------------------ */
-
-const diet = document.querySelector('input[name="diet"]:checked')?.value;
-
-switch(diet){
-
-    case "healthy":
-        score += 0;
-        break;
-
-    case "mixed":
-        score += 1;
-        break;
-
-    case "fastfood":
-        score += 3;
-        break;
-
-    case "processed":
-        score += 4;
-        break;
-
-}
-return score;
-}
-
-const checkup = document.querySelector('input[name="checkup"]:checked')?.value;
-switch(checkup){
-    case "Within the last year":
-        score +=0;
-        break;
-    case "1–2 years ago":
-        score+=1;
-        break;
-    case "More than 2 years ago":
-        score+=2;
-        break;
-    case "I have never had one":
-        score+=3;
-        break;
-}
-
-// ==========================
 // Next 버튼
 // ==========================
 nextBtn.addEventListener("click", () => {
 
     if (!validateQuestion()) return;
 
-    if (currentQuestion < questions.length - 1) {
+    const current = questions[currentQuestion];
+    let nextIndex = currentQuestion + 1;
 
-        currentQuestion++;
+    // Diabetes = "No" → skip duration & treatment, jump straight to exercise
+    if (current.id === "q-diabetes") {
+        const diabetes = document.querySelector("input[name='diabetes']:checked")?.value;
+        if (diabetes === "no") {
+            nextIndex = Array.from(questions).findIndex(q => q.id === "q-exercise");
+        }
+    }
 
+    if (nextIndex < questions.length) {
+
+        currentQuestion = nextIndex;
         showQuestion();
 
     } else {
 
-       const score = calculateScore();
+        const score = calculateScore();
+        localStorage.setItem("heartguardScore", score);
 
-localStorage.setItem("heartguardScore", score);
+        const bmi = parseFloat(document.getElementById("bmiValue").textContent);
+        let bmiCategory;
 
-const bmi = parseFloat(document.getElementById("bmiValue").textContent);
+        if (bmi < 18.5) bmiCategory = "underweight";
+        else if (bmi < 25) bmiCategory = "healthy";
+        else if (bmi < 30) bmiCategory = "overweight";
+        else bmiCategory = "obese";
 
-let bmiCategory;
+        const answers = {
+            gender: document.querySelector('input[name="gender"]:checked')?.value,
+            age: document.querySelector('input[name="age"]:checked')?.value,
+            diabetes: document.querySelector('input[name="diabetes"]:checked')?.value,
+            duration: document.querySelector('input[name="duration"]:checked')?.value,
+            treatment: document.querySelector('input[name="treatment"]:checked')?.value,
+            exercise: document.querySelector('input[name="exercise"]:checked')?.value,
+            sugar: document.querySelector('input[name="sugar"]:checked')?.value,
+            smoking: document.querySelector('input[name="smoking"]:checked')?.value,
+            bp: document.querySelector('input[name="bp"]:checked')?.value,
+            breath: document.querySelector('input[name="breath"]:checked')?.value,
+            swelling: document.querySelector('input[name="swelling"]:checked')?.value,
+            cholesterol: document.querySelector('input[name="cholesterol"]:checked')?.value,
+            family: document.querySelector('input[name="family"]:checked')?.value,
+            activity: document.querySelector('input[name="activity"]:checked')?.value,
+            diet: document.querySelector('input[name="diet"]:checked')?.value,
+            bmi: bmiCategory
+        };
 
-if (bmi < 18.5) {
-    bmiCategory = "underweight";
-} else if (bmi < 25) {
-    bmiCategory = "healthy";
-} else if (bmi < 30) {
-    bmiCategory = "overweight";
-} else {
-    bmiCategory = "obese";
-}
+        localStorage.setItem("heartguardAnswers", JSON.stringify(answers));
 
-// Save all survey responses
-const answers = {
-    gender: document.querySelector('input[name="gender"]:checked')?.value,
-    age: document.querySelector('input[name="age"]:checked')?.value,
-    diabetes: document.querySelector('input[name="diabetes"]:checked')?.value,
-    duration: document.querySelector('input[name="duration"]:checked')?.value,
-    treatment: document.querySelector('input[name="treatment"]:checked')?.value,
-    exercise: document.querySelector('input[name="exercise"]:checked')?.value,
-    sugar: document.querySelector('input[name="sugar"]:checked')?.value,
-    smoking: document.querySelector('input[name="smoking"]:checked')?.value,
-    bp: document.querySelector('input[name="bp"]:checked')?.value,
-    breath: document.querySelector('input[name="breath"]:checked')?.value,
-    swelling: document.querySelector('input[name="swelling"]:checked')?.value,
-    cholesterol: document.querySelector('input[name="cholesterol"]:checked')?.value,
-    family: document.querySelector('input[name="family"]:checked')?.value,
-    activity: document.querySelector('input[name="activity"]:checked')?.value,
-    diet: document.querySelector('input[name="diet"]:checked')?.value,
-    bmi: bmiCategory
-
-};
-
-localStorage.setItem(
-    "heartguardAnswers",
-    JSON.stringify(answers)
-);
-
-window.location.href = "result.html";
+        window.location.href = "result.html";
     }
 
 });
@@ -538,12 +328,28 @@ window.location.href = "result.html";
 // ==========================
 prevBtn.addEventListener("click", () => {
 
-    if (currentQuestion > 0) {
+    const current = questions[currentQuestion];
+    let prevIndex = currentQuestion - 1;
 
-        currentQuestion--;
-
-        showQuestion();
-
+    // On exercise question and diabetes was "No" → go back straight to diabetes
+    if (current.id === "q-exercise") {
+        const diabetes = document.querySelector("input[name='diabetes']:checked")?.value;
+        if (diabetes === "no") {
+            prevIndex = Array.from(questions).findIndex(q => q.id === "q-diabetes");
+        }
     }
 
+    if (prevIndex >= 0) {
+        currentQuestion = prevIndex;
+        showQuestion();
+    }
+
+});
+document.querySelectorAll("input[name='family']").forEach(input => {
+    input.addEventListener("change", () => {
+        const banner = document.getElementById("familyUnsureBanner");
+        if (banner) {
+            banner.style.display = (input.value === "unsure" && input.checked) ? "block" : "none";
+        }
+    });
 });

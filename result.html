@@ -23,18 +23,34 @@
     <h1 id="pageTitle">
         Your Cardiovascular Risk
     </h1>
-
     <div class="risk-circle">
-        <span id="score">0</span>
+    <span id="score">0</span>
+</div>
+<p id="scoreOutOf" style="color:#7d8ba1;font-size:16px;margin-top:5px;">out of 49</p>
+<div class="donut-chart-section">
+
+    <h3>Your Health Snapshot</h3>
+
+    <div class="donut-wrapper">
+
+        <svg viewBox="0 0 200 200" class="donut-chart" id="donutChart"></svg>
+
+        <div class="donut-legend" id="donutLegend"></div>
+
     </div>
-    <p id="scoreOutOf" style="color:#7d8ba1;font-size:16px;margin-top:5px;">out of 40</p>
 
-
+</div>
     <div class="risk-bar-container">
+        <div class="risk-bar-labels">
+    <span>Low</span>
+    <span>Mild</span>
+    <span>Moderate</span>
+    <span>High</span>
+</div>
     <div class="risk-bar-gradient"></div>
     <div class="risk-bar-marker" id="riskMarker"></div>
 </div>
-<p id="rawScoreText" style="color:#7d8ba1;font-size:15px;margin-top:8px;"></p>
+<p id="rawScoreText"></p>
     <h2 id="riskLevel">
         Loading...
     </h2>
@@ -72,7 +88,12 @@
 
     <div class="conditions">
 
-        <h3 id="conditionsTitle">🫀 Possible Conditions</h3>
+        <h3 id="conditionsTitle">🫀 Learn About Lifestyle-Related Conditions</h3>
+
+            <p class="conditions-disclaimer">
+         These are conditions commonly associated with the lifestyle and health
+            factors in your answers — this is not a diagnosis of what you currently have.
+            </p>
 
         <div class="condition-grid">
 
@@ -133,20 +154,38 @@
         </ul>
 
     </div>
-
+<button id="retakeButton" onclick="retakeAssessment()">🔄 Retake Assessment</button>
     <button id="backButton" onclick="window.location.href='index.html'">
         Back Home
     </button>
 
 </div>
 
-<script src="translations.js"></script>
+<script src="language.js"></script>
 <script src="result.js"></script>
-<div class="corner-footer">
-    🔒 Your responses are never shared or sold.<br>
-    Educational tool only — not a medical diagnosis.<br>
-    © 2026 HeartGuard
-</div>
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <p class="footer-brand">❤️ HeartGuard</p>
+
+        <p class="footer-contact">
+            📧 contact@heartguard.app
+        </p>
+
+        <p class="footer-privacy">
+            🔒 Your privacy matters to us. All responses are confidential and
+            are never shared, sold, or disclosed to third parties.
+        </p>
+
+        <p class="footer-disclaimer">
+            This tool is for educational purposes only and does not replace
+            professional medical diagnosis or treatment.
+        </p>
+
+        <p class="footer-copyright">© 2026 HeartGuard. All rights reserved.</p>
+
+    </div>
+</footer>
 </body>
 
 </html>
