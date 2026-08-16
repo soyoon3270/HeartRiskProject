@@ -36,7 +36,7 @@ const translations = {
         badge_time: "⏱ Menos de 3 minutos",
         badge_prep: "🩺 Sin preparación médica",
         badge_privacy: "🔒 100% confidencial y gratis",
-        cta_button: "Examina Tu Riesgo →",
+        cta_button: "Revisa Tu Riesgo →",
         footer_privacy: "🔒 Tu privacidad es importante para nosotros. Todas las respuestas son confidenciales y nunca se comparten, venden ni divulgan a terceros.",
         footer_disclaimer: "Esta herramienta es solo para fines educativos y no reemplaza el diagnóstico o tratamiento médico profesional.",
         card1Title: "❤️ Evalúa Tu Riesgo",
