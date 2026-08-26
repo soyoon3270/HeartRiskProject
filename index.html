@@ -13,11 +13,8 @@
 <body>
 
 <div class="language-switch">
-
     <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">🇺🇸 EN</button>
-
     <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">🇲🇽 ES</button>
-
 </div>
 
 <section class="hero">
@@ -28,25 +25,11 @@
 
             <img src="images/heart.png" alt="Heart" class="heart">
 
-            <div class="tag oxygen" id="oxygenTag">
-                Oxygen Level
-            </div>
-
-            <div class="tag pressure" id="pressureTag">
-                Blood Pressure
-            </div>
-
-            <div class="tag sugar" id="sugarTag">
-                Blood Sugar
-            </div>
-
-            <div class="tag bmi" id="bmiTag">
-                BMI
-            </div>
-
-            <div class="tag smoking" id="smokingTag">
-                Smoking
-            </div>
+            <div class="tag oxygen" id="oxygenTag" data-i18n="oxygenTag">Oxygen Level</div>
+            <div class="tag pressure" id="pressureTag" data-i18n="pressureTag">Blood Pressure</div>
+            <div class="tag sugar" id="sugarTag" data-i18n="sugarTag">Blood Sugar</div>
+            <div class="tag bmi" id="bmiTag" data-i18n="bmiTag">BMI</div>
+            <div class="tag smoking" id="smokingTag" data-i18n="smokingTag">Smoking</div>
 
         </div>
 
@@ -55,101 +38,85 @@
     <div class="hero-right">
 
         <h1 data-i18n="hero_title">
-    Protect Your <br>
-    Heart Today
-</h1>
+            Protect Your <br>
+            Heart Today
+        </h1>
 
-<p data-i18n="hero_intro">
-    Understand your cardiovascular health through a personalized
-    assessment based on your lifestyle, medical history, and daily habits.
-</p>
+        <p data-i18n="hero_intro">
+            Understand your cardiovascular health through a personalized
+            assessment based on your lifestyle, medical history, and daily habits.
+        </p>
 
-<div class="trust-badges">
-    <span data-i18n="badge_time">⏱ Under 3 minutes</span>
-    <span data-i18n="badge_prep">🩺 No medical prep needed</span>
-    <span data-i18n="badge_privacy">🔒 100% confidential & free</span>
-</div>
+        <div class="trust-badges">
+            <span data-i18n="badge_time">⏱ Under 3 minutes</span>
+            <span data-i18n="badge_prep">🩺 No medical prep needed</span>
+            <span data-i18n="badge_privacy">🔒 100% confidential & free</span>
+        </div>
 
-<button onclick="startAssessment()" data-i18n="cta_button">
-    Check My Risk →
-</button>
+        <button onclick="startAssessment()" data-i18n="cta_button">
+            Check My Risk →
+        </button>
 
     </div>
 
 </section>
 
 <section class="cards">
-<div class="card">
-
-    <h3 id="card1Title">
-        ❤️ Assess Your Risk
-    </h3>
-
-    <p id="card1Text">
-        Complete a quick evidence-based assessment in
-        under 3 minutes.
-    </p>
-
-</div>
 
     <div class="card">
-
-        <h3 id="card2Title">📊 Personalized Results</h3>
-
-        <p id="card2Text">
-            Learn which lifestyle factors contribute most to
-            your cardiovascular risk.
-        </p>
-
+        <h3 id="card1Title" data-i18n="card1Title">❤️ Assess Your Risk</h3>
+        <p id="card1Text" data-i18n="card1Text">Complete a quick evidence-based assessment in under 3 minutes.</p>
     </div>
 
     <div class="card">
+        <h3 id="card2Title" data-i18n="card2Title">📊 Personalized Results</h3>
+        <p id="card2Text" data-i18n="card2Text">Learn which lifestyle factors contribute most to your cardiovascular risk.</p>
+    </div>
 
-        <h3 id="card3Title">💡 Prevention Tips</h3>
-
-        <p id="card3Text">
-            Receive practical recommendations for improving
-            long-term heart health.
-        </p>
-
+    <div class="card">
+        <h3 id="card3Title" data-i18n="card3Title">💡 Prevention Tips</h3>
+        <p id="card3Text" data-i18n="card3Text">Receive practical recommendations for improving long-term heart health.</p>
     </div>
 
 </section>
+
 <section class="sneak-peek">
 
-    <h2>See What You'll Get</h2>
+    <h2 data-i18n="sneakTitle">See What You'll Get</h2>
 
     <div class="sneak-card">
 
         <div class="sneak-score">
             <span>29</span>
-            <p>🟠 Moderate Risk</p>
+            <p data-i18n="sneakRisk">🟠 Moderate Risk</p>
         </div>
 
         <ul class="sneak-list">
-            <li>❤️ Your estimated cardiovascular health age</li>
-            <li>📊 Which lifestyle factors matter most for you</li>
-            <li>🫀 Your risk level for conditions like heart failure <br> & diabetic cardiomyopathy</li>
-            <li>💡 Personalized prevention tips based on your answers</li>
-        </ul>
+    <li data-i18n="sneakItem1">❤️ Your estimated cardiovascular health</li>
+    <li data-i18n="sneakItem2">📊 Which lifestyle factors matter most for you</li>
+    <li data-i18n="sneakItem3">🫀 Your risk level for conditions like heart failure <br> & diabetic cardiomyopathy</li>
+    <li data-i18n="sneakItem4">💡 Personalized prevention tips based on your answers</li>
+</ul>
 
     </div>
 
-    <p class="sneak-note">*Example only — your real results will be based on your own answers.</p>
+    <p class="sneak-note" data-i18n="sneakNote">*Example only — your real results will be based on your own answers.</p>
 
 </section>
+
 <script src="language.js"></script>
 <script src="index.js"></script>
+
 <footer class="site-footer">
     <div class="footer-inner">
 
         <p class="footer-brand">❤️ HeartGuard</p>
 
-        <p>📧 contact@heartguard.app</p>
+        <p data-i18n="footer_contact">📧 contact@heartguard.app</p>
 
-        <p>🔒 Your data is private and never sold or shared. All responses stay confidential.</p>
+        <p data-i18n="footer_privacy">🔒 Your privacy matters to us. All responses are confidential and are never shared, sold, or disclosed to third parties.</p>
 
-        <p class="footer-disclaimer">
+        <p class="footer-disclaimer" data-i18n="footer_disclaimer">
             This tool is for educational purposes only and does not replace professional medical diagnosis or treatment.
         </p>
 
@@ -157,6 +124,6 @@
 
     </div>
 </footer>
-</body>
 
+</body>
 </html>

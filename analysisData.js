@@ -299,3 +299,56 @@ sugar:{
 }
 
 };
+const categoryMechanisms = {
+
+    bmi:{
+        mechanism:"Excess body fat increases the heart's workload and raises blood pressure, cholesterol, and blood sugar — all of which strain the cardiovascular system over time.",
+        future:"Even a modest reduction in weight (5–10%) can lower blood pressure and improve cholesterol levels within months."
+    },
+
+    diet:{
+        mechanism:"Diets high in sugar and processed food raise blood glucose repeatedly, which over years forms compounds called AGEs that stiffen heart and blood vessel tissue (fibrosis).",
+        future:"Shifting toward more home-cooked, whole-food meals can slow this process and improve blood sugar control within weeks."
+    },
+
+    exercise:{
+        mechanism:"Physical inactivity weakens the heart muscle and reduces circulation efficiency, contributing to higher blood pressure and poorer blood sugar regulation.",
+        future:"Just 150 minutes of moderate exercise per week can meaningfully strengthen the heart and lower resting blood pressure."
+    },
+
+    smoking:{
+        mechanism:"Tobacco damages the lining of blood vessels, accelerates plaque buildup, and reduces oxygen delivery to the heart.",
+        future:"Blood vessel function begins improving within weeks of quitting, and cardiovascular risk drops significantly within a few years."
+    },
+
+    bp:{
+        mechanism:"Chronically high blood pressure forces the heart to work harder, thickening and eventually weakening the heart muscle over time.",
+        future:"Managing blood pressure through diet, exercise, and medication (if prescribed) reduces strain on the heart almost immediately."
+    },
+
+    sugar:{
+        mechanism:"Frequent sugary drinks cause repeated blood sugar spikes, contributing to insulin resistance and the same AGE-driven vascular stiffening seen in diabetes.",
+        future:"Cutting back on sugary drinks can improve blood sugar stability within days to weeks."
+    },
+
+    diabetes:{
+        mechanism:"Persistently high blood sugar damages small blood vessels and heart tissue, a process linked to diabetic cardiomyopathy.",
+        future:"Consistent blood sugar management significantly slows or prevents this damage over time."
+    },
+
+    activity:{
+        mechanism:"Prolonged sitting is linked to poorer circulation and metabolic changes that raise cardiovascular risk, independent of formal exercise.",
+        future:"Standing or moving briefly every hour can help offset the effects of a sedentary day."
+    },
+
+    cholesterol:{
+        mechanism:"Excess cholesterol contributes to plaque buildup inside artery walls, narrowing them and restricting blood flow to the heart.",
+        future:"Dietary changes, exercise, and medication when needed can lower cholesterol and reduce plaque progression."
+    },
+
+    family:{
+        mechanism:"A family history suggests inherited factors that may predispose you to cardiovascular disease, though lifestyle still plays a major role.",
+        future:"Knowing this risk earlier allows for more proactive monitoring and lifestyle choices to offset genetic predisposition."
+    }
+
+};

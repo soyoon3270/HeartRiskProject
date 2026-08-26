@@ -195,3 +195,35 @@ button:hover{
     transform:translateY(-3px);
 
 }
+.language-switch{
+    position:fixed;
+    top:30px;
+    right:40px;
+    display:flex;
+    gap:12px;
+    z-index:20;
+}
+
+.language-switch button{
+    background:white;
+    color:#22395d;
+    padding:12px 22px;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transition:.3s;
+}
+
+.language-switch button:hover{
+    transform:translateY(-3px);
+    background:#22346b;
+    color:white;
+}
+
+.language-switch button.active{
+    background:#22346b;
+    color:white;
+}

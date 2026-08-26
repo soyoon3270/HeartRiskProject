@@ -60,9 +60,19 @@ function calculateScore() {
     score += durationPoints[duration] || 0;
 
     // Treatment (checkbox — sum all selected; only "none" carries weight)
+       // Treatment
     const treatments = Array.from(
         document.querySelectorAll("input[name='treatment']:checked")
     ).map(t => t.value);
+
+    let treatmentScore = 0;
+    if (treatments.includes("none")) treatmentScore = 1;
+    else if (treatments.includes("pump")) treatmentScore = 3;
+    else if (treatments.includes("insulin")) treatmentScore = 3;
+    else if (treatments.includes("cgm")) treatmentScore = 2;
+    else if (treatments.includes("oral")) treatmentScore = 1;
+
+    score += treatmentScore;
 
     if (treatments.includes("none")) score += 1;
     // oral, insulin, cgm, pump, multiple, na all = 0, no need to add
@@ -161,8 +171,12 @@ function showQuestion() {
 
     questions[currentQuestion].classList.add("active");
 
+    const lang = localStorage.getItem("heartguardLang") || "en";
+    const questionLabel = lang === "es" ? "Pregunta" : "Question";
+    const ofLabel = lang === "es" ? "de" : "of";
+
     questionNumber.textContent =
-        `Question ${currentQuestion + 1} of ${questions.length}`;
+        `${questionLabel} ${currentQuestion + 1} ${ofLabel} ${questions.length}`;
 
     progressBar.style.width =
         ((currentQuestion + 1) / questions.length) * 100 + "%";
@@ -170,10 +184,11 @@ function showQuestion() {
     prevBtn.style.display =
         currentQuestion === 0 ? "none" : "inline-block";
 
-    nextBtn.textContent =
-        currentQuestion === questions.length - 1
-            ? "Submit Assessment"
-            : "Next →";
+    const nextLabel = lang === "es"
+        ? (currentQuestion === questions.length - 1 ? "Enviar Evaluación" : "Siguiente →")
+        : (currentQuestion === questions.length - 1 ? "Submit Assessment" : "Next →");
+
+    nextBtn.textContent = nextLabel;
 }
 
 // ==========================
@@ -225,36 +240,48 @@ weightInput.addEventListener("input", calculateBMI);
 // ==========================
 function validateQuestion() {
 
+    const lang = localStorage.getItem("heartguardLang") || "en";
+
+    const msgSelectAnswer = lang === "es" ? "Por favor selecciona una respuesta." : "Please select an answer.";
+    const msgSelectOption = lang === "es" ? "Por favor selecciona al menos una opción." : "Please select at least one option.";
+    const msgHeightWeight = lang === "es" ? "Por favor ingresa tu estatura y peso." : "Please enter your height and weight.";
+
     const current = questions[currentQuestion];
     const numbers = current.querySelectorAll("input[type='number']");
-    const radios = current.querySelectorAll("input[type='radio']");
-    const checkboxes = current.querySelectorAll("input[type='checkbox']");
+    const radioGroups = [...new Set(
+        Array.from(current.querySelectorAll("input[type='radio']")).map(r => r.name)
+    )];
+    const checkboxGroups = [...new Set(
+        Array.from(current.querySelectorAll("input[type='checkbox']")).map(c => c.name)
+    )];
 
+    // BMI 질문
     if (numbers.length > 0) {
         let complete = true;
         numbers.forEach(input => { if (input.value.trim() === "") complete = false; });
-        if (!complete) { alert("Please enter your height and weight."); return false; }
+        if (!complete) { alert(msgHeightWeight); return false; }
         calculateBMI();
         return true;
     }
 
-    if (radios.length > 0) {
-        const groupNames = [...new Set(Array.from(radios).map(r => r.name))];
-        for (const name of groupNames) {
-            const groupInputs = current.querySelectorAll(`input[name='${name}']`);
-            const isOptional = groupInputs[0].hasAttribute("data-optional");
-            const checked = Array.from(groupInputs).some(r => r.checked);
-            if (!checked && !isOptional) {
-                alert("Please select an answer.");
-                return false;
-            }
+    // Radio 그룹 (gender 등 필수 항목)
+    for (const name of radioGroups) {
+        const groupInputs = current.querySelectorAll(`input[name='${name}']`);
+        const isOptional = groupInputs[0].hasAttribute("data-optional");
+        const checked = Array.from(groupInputs).some(r => r.checked);
+        if (!checked && !isOptional) {
+            alert(msgSelectAnswer);
+            return false;
         }
     }
 
-    if (checkboxes.length > 0) {
-        const checked = Array.from(checkboxes).some(c => c.checked);
-        if (!checked) {
-            alert("Please select at least one option.");
+    // Checkbox 그룹 (treatment는 필수, ethnicity는 선택)
+    for (const name of checkboxGroups) {
+        const groupInputs = current.querySelectorAll(`input[name='${name}']`);
+        const isOptional = groupInputs[0].hasAttribute("data-optional");
+        const checked = Array.from(groupInputs).some(c => c.checked);
+        if (!checked && !isOptional) {
+            alert(msgSelectOption);
             return false;
         }
     }
@@ -272,12 +299,19 @@ nextBtn.addEventListener("click", () => {
     let nextIndex = currentQuestion + 1;
 
     // Diabetes = "No" → skip duration & treatment, jump straight to exercise
+       // Diabetes = "No" → skip duration & treatment, jump straight to exercise
     if (current.id === "q-diabetes") {
         const diabetes = document.querySelector("input[name='diabetes']:checked")?.value;
         if (diabetes === "no") {
+
+            // Clear stale duration/treatment answers so they don't get counted
+            document.querySelectorAll("input[name='duration']").forEach(r => r.checked = false);
+            document.querySelectorAll("input[name='treatment']").forEach(c => c.checked = false);
+
             nextIndex = Array.from(questions).findIndex(q => q.id === "q-exercise");
         }
     }
+    
 
     if (nextIndex < questions.length) {
 
@@ -351,5 +385,16 @@ document.querySelectorAll("input[name='family']").forEach(input => {
         if (banner) {
             banner.style.display = (input.value === "unsure" && input.checked) ? "block" : "none";
         }
+    });
+});
+document.querySelectorAll("input[name='swelling']").forEach(input => {
+    input.addEventListener("change", () => {
+        const banner = document.getElementById("swellingBanner");
+        if (banner) banner.style.display = (input.value === "yes" && input.checked) ? "block" : "none";
+    });
+});
+document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        setTimeout(showQuestion, 0);
     });
 });

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HeartGuard | Learn Before You Begin</title>
+    <title>HeartGuard | About Us</title>
 
     <link rel="stylesheet" href="about.css">
     <link rel="stylesheet" href="footer.css">
@@ -13,71 +13,95 @@
 <body>
 
 <div class="background-circle"></div>
-
+<div class="language-switch">
+    <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">🇺🇸 EN</button>
+    <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">🇲🇽 ES</button>
+</div>
 <div class="content">
 
-    <div class="badge">
-        ❤️ HeartGuard
+    <div class="badge" data-i18n="aboutBadge">
+        ❤️ About HeartGuard
     </div>
 
-    <h1>Understand Your Heart Before You Begin</h1>
+    <h1 data-i18n="aboutH1">Understand Your Heart Before You Begin</h1>
 
-    <p class="intro">
-        Cardiovascular disease is the leading cause of death worldwide.
-        Many risk factors—including diabetes, high blood pressure, smoking,
-        obesity, and high cholesterol—can silently damage the heart for years
-        before symptoms appear.
+    <p class="intro" data-i18n="aboutIntro">
+        HeartGuard was created to help people recognize cardiovascular risk
+        before it becomes a crisis. Heart disease often develops silently for
+        years, and by the time symptoms appear, significant damage may already
+        be done. Our goal is simple: give people a quick, private way to
+        understand their own risk factors and take action early.
     </p>
 
     <div class="card">
-        <h3>🩸 Diabetes & Blood Sugar</h3>
-        <p>
+        <h3 data-i18n="whyBuiltTitle">🎯 Why We Built This</h3>
+        <p data-i18n="whyBuiltText">
+            Most people underestimate their cardiovascular risk because it
+            rarely announces itself. We built HeartGuard to close that gap —
+            not by diagnosing disease, but by helping you see which everyday
+            habits are quietly shaping your heart health, and what you can do
+            about it starting today.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3 data-i18n="mexicoFocusTitle">🇲🇽 Focused on Mexico</h3>
+        <p data-i18n="mexicoFocusText">
+            Mexico has one of the highest rates of diabetes and sugar-sweetened
+            beverage consumption in the world, and diabetes is closely linked
+            to serious heart complications like diabetic cardiomyopathy. We
+            built HeartGuard with this reality in mind — using everyday habits
+            like diet, sugary drinks, and physical activity as a starting
+            point for a conversation people can have with themselves, and with
+            their doctors.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3 data-i18n="aboutCard1Title">🩸 Diabetes & Blood Sugar</h3>
+        <p data-i18n="aboutCard1Text">
             Persistently high blood sugar can damage blood vessels and heart
             muscle, increasing the risk of cardiovascular disease.
         </p>
     </div>
 
     <div class="card">
-        <h3>❤️ Many Risk Factors Work Together</h3>
-        <p>
+        <h3 data-i18n="aboutCard2Title">❤️ Many Risk Factors Work Together</h3>
+        <p data-i18n="aboutCard2Text">
             High blood pressure, smoking, unhealthy diet, lack of exercise,
             obesity, and family history all contribute to heart disease.
         </p>
     </div>
 
     <div class="card">
-        <h3>⚠️ Early Prevention Matters</h3>
-        <p>
+        <h3 data-i18n="aboutCard3Title">⚠️ Early Prevention Matters</h3>
+        <p data-i18n="aboutCard3Text">
             Understanding your personal risk can help you make healthier
             lifestyle choices and know when to seek medical advice.
         </p>
     </div>
 
-    <div class="notice">
+    <div class="notice" data-i18n="aboutNotice">
         💙 This assessment is designed for educational purposes only and
         does not replace professional medical diagnosis or treatment.
     </div>
 
-    <button onclick="location.href='assessment.html'">
+    <button onclick="location.href='assessment.html'" data-i18n="aboutButton">
         Continue to Assessment →
     </button>
 
 </div>
+
 <footer class="site-footer">
     <div class="footer-inner">
 
         <p class="footer-brand">❤️ HeartGuard</p>
 
-        <p class="footer-contact">
-            📧 contact@heartguard.app
-        </p>
+        <p data-i18n="footer_contact">📧 contact@heartguard.app</p>
 
-        <p class="footer-privacy">
-            🔒 Your privacy matters to us. All responses are confidential and
-            are never shared, sold, or disclosed to third parties.
-        </p>
+        <p data-i18n="footer_privacy">🔒 Your privacy matters to us. All responses are confidential and are never shared, sold, or disclosed to third parties.</p>
 
-        <p class="footer-disclaimer">
+        <p class="footer-disclaimer" data-i18n="footer_disclaimer">
             This tool is for educational purposes only and does not replace
             professional medical diagnosis or treatment.
         </p>
@@ -86,5 +110,8 @@
 
     </div>
 </footer>
+
+<script src="language.js"></script>
+
 </body>
 </html>

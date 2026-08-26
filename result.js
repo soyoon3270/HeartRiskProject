@@ -10,30 +10,48 @@ const reasonList = document.getElementById("reasonList");
 
 // Display score
 scoreText.textContent = score;
-if (scoreOutOf) scoreOutOf.textContent = "out of 49";
+if (scoreOutOf) scoreOutOf.textContent = "out of 51";
 
 // Display score
 scoreText.textContent = score;
 
 // Risk position on gradient bar
-const percentage = Math.min(Math.round((score / 49) * 100), 100);
+const percentage = Math.min(Math.round((score / 51) * 100), 100);
 if (riskMarker) riskMarker.style.left = `calc(${percentage}% - 2px)`;
-document.getElementById("rawScoreText").textContent =
-    `Your score: ${score} / 49 (${percentage}% estimated risk)`;
+// TODO: replace AVG_SCORE with a real average once Firebase data is collected
+const AVG_SCORE = 15;
+const comparisonEl = document.getElementById("comparisonText");
+
+if (comparisonEl) {
+    const diff = Math.round(((score - AVG_SCORE) / AVG_SCORE) * 100);
+    if (diff > 0) {
+        comparisonEl.textContent = `Your score is approximately ${diff}% higher than the average score among users so far.`;
+    } else if (diff < 0) {
+        comparisonEl.textContent = `Your score is approximately ${Math.abs(diff)}% lower than the average score among users so far.`;
+    } else {
+        comparisonEl.textContent = `Your score matches the average score among users so far.`;
+    }
+}
+const rawScoreText = document.getElementById("rawScoreText");
+const MAX_SCORE = 51;
+
+if (rawScoreText) {
+    rawScoreText.textContent = `Risk factor score: ${score} out of ${MAX_SCORE}`;
+}
 // Risk classification
-if(score <= 11){
+if(score <= 12){
 
     riskLevel.textContent = "🟢 Low Risk";
     circle.style.background = "#4CAF50";
 
 }
-else if(score <= 23){
+else if(score <= 24){
 
     riskLevel.textContent = "🟡 Mild Risk";
     circle.style.background = "#FBC02D";
 
 }
-else if(score <= 36){
+else if(score <= 38){
 
     riskLevel.textContent = "🟠 Moderate Risk";
     circle.style.background = "#F57C00";
@@ -124,6 +142,22 @@ function renderDonutChart() {
     });
 
 }
+function renderFactorSnapshot() {
+
+    const onTrackList = document.getElementById("onTrackList");
+    const needsAttentionList = document.getElementById("needsAttentionList");
+    if (!onTrackList || !needsAttentionList) return;
+
+    donutCategories.forEach(cat => {
+        const li = document.createElement("li");
+        li.textContent = cat.label;
+        if (cat.good) onTrackList.appendChild(li);
+        else needsAttentionList.appendChild(li);
+    });
+
+}
+
+renderFactorSnapshot();
 
 renderDonutChart();
 
@@ -150,7 +184,11 @@ const categoryPointTables = {
     cholesterol: { yes:2, no:0 },
     family: { yes:2, no:0, unsure:0 }
 };
-
+function toggleFlip(index) {
+    // Only needed for touch devices; hover handles desktop automatically via CSS
+    const inner = document.getElementById(`flipInner${index}`);
+    if (inner) inner.classList.toggle("flipped");
+}
 function renderAnalysis() {
 
     const highlightsEl = document.getElementById("analysisHighlights");
@@ -179,14 +217,34 @@ function renderAnalysis() {
     const highlighted = items.slice(0, HIGH_RISK_THRESHOLD_COUNT).filter(i => i.points > 0);
     const rest = items.filter(i => !highlighted.includes(i));
 
-    // Render highlighted cards
-    highlightsEl.innerHTML = highlighted.map(item => `
-        <div class="highlight-card">
-            <h4>⚠️ ${item.title}</h4>
-            <p><strong>${item.average}</strong></p>
-            <p>${item.explanation}</p>
+    // Render highlighted cards as flip cards
+    highlightsEl.innerHTML = highlighted.map((item, i) => {
+        const mech = categoryMechanisms[item.category] || {};
+        const stat = mexicodata[item.category];
+        const statLine = stat
+            ? `<p class="stat-line">🇲🇽 In Mexico: ${stat.label || stat.labelWomen} is ${stat.mexico ?? stat.mexicoWomen}${stat.unit === "%" ? "%" : " " + stat.unit}.</p>`
+            : "";
+
+        return `
+        <div class="flip-card" onclick="toggleFlip(${i})">
+            <div class="flip-card-inner" id="flipInner${i}">
+                <div class="flip-card-front">
+                    <h4>⚠️ ${item.title}</h4>
+                    <p><strong>${item.average}</strong></p>
+                    <p>${item.explanation}</p>
+                    <p class="flip-hint">🔄 Tap or hover for more</p>
+                </div>
+                <div class="flip-card-back">
+                    <h4>🫀 Why this matters</h4>
+                    <p>${mech.mechanism || "This factor contributes to cardiovascular strain over time."}</p>
+                    <h4>✅ If you improve this</h4>
+                    <p>${mech.future || "Addressing this factor can meaningfully lower your long-term risk."}</p>
+                    ${statLine}
+                </div>
+            </div>
         </div>
-    `).join("");
+        `;
+    }).join("");
 
     // Render accordion for the rest
     accordionEl.innerHTML = rest.map((item, i) => `
@@ -203,6 +261,50 @@ function renderAnalysis() {
     `).join("");
 
 }
+function renderMexicoStat() {
+
+    const card = document.getElementById("mexicodataCard");
+    if (!card || typeof mexicodata === "undefined") return;
+
+    // Pick the category with the highest risk points from the user's answers
+    let topCategory = null;
+    let topPoints = -1;
+
+    Object.keys(categoryPointTables).forEach(category => {
+        const answerValue = answers[category];
+        if (!answerValue) return;
+        const points = categoryPointTables[category][answerValue] ?? 0;
+        if (points > topPoints && mexicodata[category]) {
+            topPoints = points;
+            topCategory = category;
+        }
+    });
+
+    if (!topCategory || topPoints <= 0) return;
+
+    const stat = mexicodata[topCategory];
+    const label = stat.label || stat.labelWomen;
+    const mx = stat.mexico ?? stat.mexicoWomen;
+    const gl = stat.global ?? stat.globalWomen;
+
+    if (mx === undefined) return;
+
+    const maxVal = Math.max(mx, gl || mx) * 1.2;
+
+    document.getElementById("mexicodataLabel").textContent = `🇲🇽 ${label}`;
+    document.getElementById("mexicodataBarMx").style.width = `${(mx / maxVal) * 100}%`;
+    document.getElementById("mexicodataValMx").textContent = `${mx}${stat.unit === "%" ? "%" : ""}`;
+
+    if (gl !== undefined) {
+        document.getElementById("mexicodataBarGl").style.width = `${(gl / maxVal) * 100}%`;
+        document.getElementById("mexicodataValGl").textContent = `${gl}${stat.unit === "%" ? "%" : ""}`;
+    }
+
+    document.getElementById("mexicodataNote").textContent = stat.note;
+    card.style.display = "block";
+}
+
+renderMexicoStat();
 
 function toggleAccordion(index) {
     const body = document.getElementById(`accBody${index}`);

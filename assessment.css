@@ -55,6 +55,7 @@ body{
     border-radius: 20px;
 
     box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    position: relative;
 
 }
 
@@ -292,4 +293,56 @@ button:hover{
     color:#7a5a20;
     font-size:15px;
     line-height:1.6;
+}
+.info-banner.urgent{
+    background:#ffe5e5;
+    border-left:5px solid #D32F2F;
+    color:#8a1f1f;
+}
+.home-link{
+    position:absolute;
+    top:20px;
+    left:20px;
+    font-size:22px;
+    text-decoration:none;
+    background:white;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+.language-switch{
+    position:fixed;
+    top:30px;
+    right:40px;
+    display:flex;
+    gap:12px;
+    z-index:20;
+}
+
+.language-switch button{
+    background:white;
+    color:#22395d;
+    padding:10px 18px;
+    border:none;
+    border-radius:30px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transition:.3s;
+}
+
+.language-switch button:hover{
+    transform:translateY(-3px);
+    background:#22346b;
+    color:white;
+}
+
+.language-switch button.active{
+    background:#22346b;
+    color:white;
 }

@@ -9,48 +9,53 @@
 </head>
 <body>
 <div class="background-circle"></div>
+
+<div class="language-switch">
+    <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">🇺🇸 EN</button>
+    <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">🇲🇽 ES</button>
+</div>
+
 <div class="container">
-
-    <h1 id="pageTitle">🫀 HeartGuard Assessment</h1>
-
+<a href="index.html" class="home-link" title="Return to home">🏠</a>
+    <h1 id="pageTitle" data-i18n="assessmentH1">🫀 HeartGuard Assessment</h1>
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
     </div>
 
-    <p id="questionNumber">Question 1 of 14</p>
+    <p id="questionNumber">Question 1 of 16</p>
 
     <form id="assessmentForm">
 
         <!-- Question 1 -->
 <div class="question active">
-    <h2>1. What is your gender?</h2>
+    <h2 data-i18n="q1Title">1. What is your gender?</h2>
 
-    <label><input type="radio" name="gender" value="male"> Male</label><br>
-    <label><input type="radio" name="gender" value="female"> Female</label>
+    <label><input type="radio" name="gender" value="male"> <span data-i18n="genderMale">Male</span></label><br>
+    <label><input type="radio" name="gender" value="female"> <span data-i18n="genderFemale">Female</span></label>
 
 
-<h2 style="margin-top:35px;">Ethnicity <span style="font-weight:normal;font-size:16px;color:#888;">(optional, select all that apply)</span></h2>
+<h2 style="margin-top:35px;" data-i18n="q1Ethnicity">Ethnicity <span style="font-weight:normal;font-size:16px;color:#888;">(optional, select all that apply)</span></h2>
 
-    <label><input type="checkbox" name="ethnicity" value="hispanic" data-optional> Hispanic / Latino</label><br>
-    <label><input type="checkbox" name="ethnicity" value="indigenous" data-optional> Asian</label><br>
-    <label><input type="checkbox" name="ethnicity" value="indigenous" data-optional> White</label><br>
-    <label><input type="checkbox" name="ethnicity" value="indigenous" data-optional> Black</label><br>
-    <label><input type="checkbox" name="ethnicity" value="other" data-optional> Other</label><br>
-    <label><input type="checkbox" name="ethnicity" value="na" data-optional> Prefer not to say</label>
+    <label><input type="checkbox" name="ethnicity" value="hispanic" data-optional> <span data-i18n="ethnicityHispanic">Hispanic / Latino</span></label><br>
+    <label><input type="checkbox" name="ethnicity" value="indigenous" data-optional> <span data-i18n="ethnicityAsian">Asian</span></label><br>
+    <label><input type="checkbox" name="ethnicity" value="indigenous" data-optional> <span data-i18n="ethnicityWhite">White</span></label><br>
+    <label><input type="checkbox" name="ethnicity" value="indigenous" data-optional> <span data-i18n="ethnicityBlack">Black</span></label><br>
+    <label><input type="checkbox" name="ethnicity" value="other" data-optional> <span data-i18n="ethnicityOther">Other</span></label><br>
+    <label><input type="checkbox" name="ethnicity" value="na" data-optional> <span data-i18n="ethnicityNa">Prefer not to say</span></label>
 </div>
 
 
         <!-- Question 2 -->
         <div class="question">
 
-            <h2 id="q2Title">2. What is your age group?</h2>
+            <h2 id="q2Title" data-i18n="q2Title">2. What is your age group?</h2>
 
-            <label id="under30Option"><input type="radio" name="age" value="under30"> Under 30</label><br>
-            <label id="age30Option"><input type="radio" name="age" value="30-39"> 30–39</label><br>
-            <label id="age40Option"><input type="radio" name="age" value="40-49"> 40–49</label><br>
-            <label id="age50Option"><input type="radio" name="age" value="50-59"> 50–59</label><br>
-            <label id="age60Option"><input type="radio" name="age" value="60-69"> 60–69</label><br>
-            <label id="age70Option"><input type="radio" name="age" value="70plus"> 70+</label>
+            <label id="under30Option"><input type="radio" name="age" value="under30"> <span data-i18n="under30Option">Under 30</span></label><br>
+            <label id="age30Option"><input type="radio" name="age" value="30-39"> <span data-i18n="age30Option">30–39</span></label><br>
+            <label id="age40Option"><input type="radio" name="age" value="40-49"> <span data-i18n="age40Option">40–49</span></label><br>
+            <label id="age50Option"><input type="radio" name="age" value="50-59"> <span data-i18n="age50Option">50–59</span></label><br>
+            <label id="age60Option"><input type="radio" name="age" value="60-69"> <span data-i18n="age60Option">60–69</span></label><br>
+            <label id="age70Option"><input type="radio" name="age" value="70plus"> <span data-i18n="age70Option">70+</span></label>
 
         </div>
 
@@ -58,24 +63,24 @@
         <!-- Question 3 -->
         <div class="question">
 
-            <h2 id="q3Title">3. Height & Weight</h2>
+            <h2 id="q3Title" data-i18n="q3Title">3. Height & Weight</h2>
 
             <label id="heightLabel">
-                Height (cm)
+                <span data-i18n="heightLabel">Height (cm)</span>
                 <input type="number" id="height" placeholder="170">
             </label>
 
             <br><br>
 
             <label id="weightLabel">
-                Weight (kg)
+                <span data-i18n="weightLabel">Weight (kg)</span>
                 <input type="number" id="weight" placeholder="70">
             </label>
 
             <br><br>
 
             <p>
-                <strong id="bmiLabel">Your BMI:</strong> 
+                <strong id="bmiLabel" data-i18n="bmiLabel">Your BMI:</strong> 
                 <span id="bmiValue">--</span>
             </p>
 
@@ -85,12 +90,12 @@
         <!-- Question 4 -->
         <div class="question" id="q-diabetes">
 
-            <h2 id="q4Title">4. Have you been diagnosed with diabetes?</h2>
+            <h2 id="q4Title" data-i18n="q4Title">4. Have you been diagnosed with diabetes?</h2>
 
-            <label id="type1Option"><input type="radio" name="diabetes" value="type1"> Yes, Type 1</label><br>
-            <label id="type2Option"><input type="radio" name="diabetes" value="type2"> Yes, Type 2</label><br>
-            <label id="prediabetesOption"><input type="radio" name="diabetes" value="prediabetes"> Prediabetes</label><br>
-            <label id="noDiabetesOption"><input type="radio" name="diabetes" value="no"> No</label>
+            <label id="type1Option"><input type="radio" name="diabetes" value="type1"> <span data-i18n="type1Option">Yes, Type 1</span></label><br>
+            <label id="type2Option"><input type="radio" name="diabetes" value="type2"> <span data-i18n="type2Option">Yes, Type 2</span></label><br>
+            <label id="prediabetesOption"><input type="radio" name="diabetes" value="prediabetes"> <span data-i18n="prediabetesOption">Prediabetes</span></label><br>
+            <label id="noDiabetesOption"><input type="radio" name="diabetes" value="no"> <span data-i18n="noDiabetesOption">No</span></label>
 
         </div>
 
@@ -98,39 +103,38 @@
         <!-- Question 5 -->
         <div class="question" id="q-duration">
 
-            <h2 id="q5Title">5. How long have you been diagnosed?</h2>
+            <h2 id="q5Title" data-i18n="q5Title">5. How long have you been diagnosed?</h2>
 
-            <label id="lt5Option"><input type="radio" name="duration" value="lt5"> Less than 5 years</label><br>
-            <label id="fiveTenOption"><input type="radio" name="duration" value="5to10"> 5–10 years</label><br>
-            <label id="gt10Option"><input type="radio" name="duration" value="gt10"> More than 10 years</label><br>
-            <label id="naDurationOption"><input type="radio" name="duration" value="na"> Not applicable</label>
+            <label id="lt5Option"><input type="radio" name="duration" value="lt5"> <span data-i18n="lt5Option">Less than 5 years</span></label><br>
+            <label id="fiveTenOption"><input type="radio" name="duration" value="5to10"> <span data-i18n="fiveTenOption">5–10 years</span></label><br>
+            <label id="gt10Option"><input type="radio" name="duration" value="gt10"> <span data-i18n="gt10Option">More than 10 years</span></label><br>
+            <label id="naDurationOption"><input type="radio" name="duration" value="na"> <span data-i18n="naDurationOption">Not applicable</span></label>
 
         </div>
 
 
         <!-- Question 6 -->
-        <!-- Question 6 -->
 <div class="question" id="q-treatment">
-    <h2>6. Do you take any medications or use glucose trackers?</h2>
-    <p class="tip">Select all that apply.</p>
+    <h2 data-i18n="q6Title">6. Do you take any medications or use glucose trackers?</h2>
+    <p class="tip" data-i18n="q6Tip">Select all that apply.</p>
 
-    <label><input type="checkbox" name="treatment" value="none"> No treatment</label><br>
-    <label><input type="checkbox" name="treatment" value="oral"> Oral medication</label><br>
-    <label><input type="checkbox" name="treatment" value="insulin"> Insulin injections</label><br>
-    <label><input type="checkbox" name="treatment" value="cgm"> Continuous Glucose Monitor (CGM)</label><br>
-    <label><input type="checkbox" name="treatment" value="pump"> Insulin pump</label><br>
-    <label><input type="checkbox" name="treatment" value="na"> Not applicable (I don't have diabetes)</label>
+    <label><input type="checkbox" name="treatment" value="none"> <span data-i18n="treatmentNone">No treatment</span></label><br>
+    <label><input type="checkbox" name="treatment" value="oral"> <span data-i18n="treatmentOral">Oral medication</span></label><br>
+    <label><input type="checkbox" name="treatment" value="insulin"> <span data-i18n="treatmentInsulin">Insulin injections</span></label><br>
+    <label><input type="checkbox" name="treatment" value="cgm"> <span data-i18n="treatmentCgm">Continuous Glucose Monitor (CGM)</span></label><br>
+    <label><input type="checkbox" name="treatment" value="pump"> <span data-i18n="treatmentPump">Insulin pump</span></label><br>
+    <label><input type="checkbox" name="treatment" value="na"> <span data-i18n="treatmentNa">Not applicable (I don't have diabetes)</span></label>
 </div>
 
             <!-- Question 7 -->
 <div class="question" id="q-exercise">
 
-    <h2 id="q7Title">7. How many days per week do you engage in intense workouts?</h2>
+    <h2 id="q7Title" data-i18n="q7Title">7. How many days per week do you engage in intense workouts?</h2>
 
-    <label id="exercise5Option"><input type="radio" name="exercise" value="5"> 5–7 days</label><br>
-    <label id="exercise3Option"><input type="radio" name="exercise" value="3"> 3–4 days</label><br>
-    <label id="exercise1Option"><input type="radio" name="exercise" value="1"> 1–2 days</label><br>
-    <label id="exercise0Option"><input type="radio" name="exercise" value="0"> Rarely or never</label>
+    <label id="exercise5Option"><input type="radio" name="exercise" value="5"> <span data-i18n="exercise5Option">5–7 days</span></label><br>
+    <label id="exercise3Option"><input type="radio" name="exercise" value="3"> <span data-i18n="exercise3Option">3–4 days</span></label><br>
+    <label id="exercise1Option"><input type="radio" name="exercise" value="1"> <span data-i18n="exercise1Option">1–2 days</span></label><br>
+    <label id="exercise0Option"><input type="radio" name="exercise" value="0"> <span data-i18n="exercise0Option">Rarely or never</span></label>
 
 </div>
 
@@ -138,13 +142,13 @@
 <!-- Question 8 -->
 <div class="question">
 
-    <h2 id="q8Title">8. How often do you drink sugary beverages?</h2>
+    <h2 id="q8Title" data-i18n="q8Title">8. How often do you drink sugary beverages?</h2>
 
-    <label id="sugarNeverOption"><input type="radio" name="sugar" value="never"> Never</label><br>
-    <label id="sugar12Option"><input type="radio" name="sugar" value="1-2"> 1–2 times per week</label><br>
-    <label id="sugar36Option"><input type="radio" name="sugar" value="3-6"> 3–6 times per week</label><br>
-    <label id="sugarDailyOption"><input type="radio" name="sugar" value="daily"> Once a day</label><br>
-    <label id="sugar3DailyOption"><input type="radio" name="sugar" value="3daily"> More than three times a day</label>
+    <label id="sugarNeverOption"><input type="radio" name="sugar" value="never"> <span data-i18n="sugarNeverOption">Never</span></label><br>
+    <label id="sugar12Option"><input type="radio" name="sugar" value="1-2"> <span data-i18n="sugar12Option">1–2 times per week</span></label><br>
+    <label id="sugar36Option"><input type="radio" name="sugar" value="3-6"> <span data-i18n="sugar36Option">3–6 times per week</span></label><br>
+    <label id="sugarDailyOption"><input type="radio" name="sugar" value="daily"> <span data-i18n="sugarDailyOption">Once a day</span></label><br>
+    <label id="sugar3DailyOption"><input type="radio" name="sugar" value="3daily"> <span data-i18n="sugar3DailyOption">More than three times a day</span></label>
 
 </div>
 
@@ -152,12 +156,12 @@
 <!-- Question 9 -->
 <div class="question">
 
-    <h2 id="q9Title">9. Do you currently smoke or use tobacco products?</h2>
+    <h2 id="q9Title" data-i18n="q9Title">9. Do you currently smoke or use tobacco products?</h2>
 
-    <label id="smokingNeverOption"><input type="radio" name="smoking" value="never"> Never</label><br>
-    <label id="smokingFormerOption"><input type="radio" name="smoking" value="former"> Former smoker</label><br>
-    <label id="smokingSometimesOption"><input type="radio" name="smoking" value="sometimes"> Occasionally</label><br>
-    <label id="smokingDailyOption"><input type="radio" name="smoking" value="daily"> Daily</label>
+    <label id="smokingNeverOption"><input type="radio" name="smoking" value="never"> <span data-i18n="smokingNeverOption">Never</span></label><br>
+    <label id="smokingFormerOption"><input type="radio" name="smoking" value="former"> <span data-i18n="smokingFormerOption">Former smoker</span></label><br>
+    <label id="smokingSometimesOption"><input type="radio" name="smoking" value="sometimes"> <span data-i18n="smokingSometimesOption">Occasionally</span></label><br>
+    <label id="smokingDailyOption"><input type="radio" name="smoking" value="daily"> <span data-i18n="smokingDailyOption">Daily</span></label>
 
 </div>
 
@@ -165,11 +169,11 @@
 <!-- Question 10 -->
 <div class="question">
 
-    <h2 id="q10Title">10. Do you have high blood pressure?</h2>
+    <h2 id="q10Title" data-i18n="q10Title">10. Do you have high blood pressure?</h2>
 
-    <label id="bpYesOption"><input type="radio" name="bp" value="yes"> Yes</label><br>
-    <label id="bpNoOption"><input type="radio" name="bp" value="no"> No</label><br>
-    <label id="bpUnsureOption"><input type="radio" name="bp" value="unsure"> Unsure</label>
+    <label id="bpYesOption"><input type="radio" name="bp" value="yes"> <span data-i18n="bpYesOption">Yes</span></label><br>
+    <label id="bpNoOption"><input type="radio" name="bp" value="no"> <span data-i18n="bpNoOption">No</span></label><br>
+    <label id="bpUnsureOption"><input type="radio" name="bp" value="unsure"> <span data-i18n="bpUnsureOption">Unsure</span></label>
 
 </div>
 
@@ -177,10 +181,10 @@
 <!-- Question 11 -->
 <div class="question">
 
-    <h2 id="q11Title">11. Do you get short of breath regularly?</h2>
+    <h2 id="q11Title" data-i18n="q11Title">11. Do you get short of breath regularly?</h2>
 
-    <label id="breathYesOption"><input type="radio" name="breath" value="yes"> Yes</label><br>
-    <label id="breathNoOption"><input type="radio" name="breath" value="no"> No</label>
+    <label id="breathYesOption"><input type="radio" name="breath" value="yes"> <span data-i18n="breathYesOption">Yes</span></label><br>
+    <label id="breathNoOption"><input type="radio" name="breath" value="no"> <span data-i18n="breathNoOption">No</span></label>
 
 </div>
 
@@ -188,14 +192,18 @@
 <!-- Question 12 -->
 <div class="question">
 
-    <h2 id="q12Title">12. Have you noticed swelling in your ankles or feet?</h2>
+    <h2 id="q12Title" data-i18n="q12Title">12. Have you noticed swelling in your ankles or feet?</h2>
 
-    <p class="tip" id="swellingTip">
+    <p class="tip" id="swellingTip" data-i18n="swellingTip">
         Try pressing your skin gently for 5 seconds. If an indentation remains briefly after you remove your thumb, this may be a sign of swelling.
     </p>
 
-    <label id="swellingYesOption"><input type="radio" name="swelling" value="yes"> Yes</label><br>
-    <label id="swellingNoOption"><input type="radio" name="swelling" value="no"> No</label>
+    <label id="swellingYesOption"><input type="radio" name="swelling" value="yes"> <span data-i18n="swellingYesOption">Yes</span></label><br>
+    <label id="swellingNoOption"><input type="radio" name="swelling" value="no"> <span data-i18n="swellingNoOption">No</span></label>
+    <div class="info-banner urgent" id="swellingBanner" style="display:none;" data-i18n="swellingBanner">
+        🚨 Swelling in the ankles or feet can be a sign of fluid retention related to heart
+        function. We strongly recommend seeing a doctor soon to have this checked.
+    </div>
 
 </div>
 
@@ -203,10 +211,10 @@
 <!-- Question 13 -->
 <div class="question">
 
-    <h2 id="q13Title">13. Has a doctor ever told you that you have high cholesterol?</h2>
+    <h2 id="q13Title" data-i18n="q13Title">13. Has a doctor ever told you that you have high cholesterol?</h2>
 
-    <label id="cholesterolYesOption"><input type="radio" name="cholesterol" value="yes"> Yes</label><br>
-    <label id="cholesterolNoOption"><input type="radio" name="cholesterol" value="no"> No</label>
+    <label id="cholesterolYesOption"><input type="radio" name="cholesterol" value="yes"> <span data-i18n="cholesterolYesOption">Yes</span></label><br>
+    <label id="cholesterolNoOption"><input type="radio" name="cholesterol" value="no"> <span data-i18n="cholesterolNoOption">No</span></label>
 
 </div>
 
@@ -214,14 +222,14 @@
 <!-- Question 14 -->
 <div class="question">
 
-    <h2 id="q14Title">
+    <h2 id="q14Title" data-i18n="q14Title">
         14. Has an immediate family member (parent or sibling) been diagnosed with cardiovascular disease before age 55 (male) or age 65 (female)?
     </h2>
 
-    <label id="familyYesOption"><input type="radio" name="family" value="yes"> Yes</label><br>
-    <label id="familyNoOption"><input type="radio" name="family" value="no"> No</label><br>
-    <label id="familyUnsureOption"><input type="radio" name="family" value="unsure"> Unsure</label>
-      <div class="info-banner" id="familyUnsureBanner" style="display:none;">
+    <label id="familyYesOption"><input type="radio" name="family" value="yes"> <span data-i18n="familyYesOption">Yes</span></label><br>
+    <label id="familyNoOption"><input type="radio" name="family" value="no"> <span data-i18n="familyNoOption">No</span></label><br>
+    <label id="familyUnsureOption"><input type="radio" name="family" value="unsure"> <span data-i18n="familyUnsureOption">Unsure</span></label>
+      <div class="info-banner" id="familyUnsureBanner" style="display:none;" data-i18n="familyBanner">
         ℹ️ Family history plays a significant role in cardiovascular risk.
         If you're unsure, it's worth asking a parent or checking with your doctor.
     </div>
@@ -229,23 +237,23 @@
 <!-- Question 15 -->
 <div class="question">
 
-    <h2 id="q15Title">
+    <h2 id="q15Title" data-i18n="q15Title">
         15. During your typical school or work day, do you spend most of your time:
     </h2>
 
     <label id="activitySittingOption">
         <input type="radio" name="activity" value="sitting">
-        Mostly sitting
+        <span data-i18n="activitySittingOption">Mostly sitting</span>
     </label><br>
 
     <label id="activityStandingOption">
         <input type="radio" name="activity" value="standing">
-        Mostly standing
+        <span data-i18n="activityStandingOption">Mostly standing</span>
     </label><br>
 
     <label id="activityPhysicalOption">
         <input type="radio" name="activity" value="physical">
-        Doing physically demanding activities
+        <span data-i18n="activityPhysicalOption">Doing physically demanding activities</span>
     </label>
 
 </div>
@@ -253,46 +261,46 @@
 
 <!-- Question 16 -->
 <div class="question">
-<!-- Question: Diet Pattern -->
 
-    <h2>16. How would you describe your typical diet?</h2>
+    <h2 data-i18n="q16Title">16. How would you describe your typical diet?</h2>
 
     <label><input type="radio" name="diet" value="homecooked">
-        I eat home-cooked meals (vegetables, beans, grilled chicken or fish) almost every day, rarely eating out
+        <span data-i18n="dietHomecooked">I eat home-cooked meals (vegetables, beans, grilled chicken or fish) almost every day, rarely eating out</span>
     </label><br>
 
     <label><input type="radio" name="diet" value="mostlyhome">
-        I mostly eat home-cooked meals, but eat out or order food 1–2 times a week
+        <span data-i18n="dietMostlyhome">I mostly eat home-cooked meals, but eat out or order food 1–2 times a week</span>
     </label><br>
 
     <label><input type="radio" name="diet" value="eatingout">
-        I eat out, order delivery, or eat street food (tacos, tortas, pizza) 3–5 times a week
+        <span data-i18n="dietEatingout">I eat out, order delivery, or eat street food (tacos, tortas, pizza) 3–5 times a week</span>
     </label><br>
 
     <label><input type="radio" name="diet" value="processed">
-        I rarely cook at home — most days I eat fried, processed, or sugary foods
+        <span data-i18n="dietProcessed">I rarely cook at home — most days I eat fried, processed, or sugary foods</span>
     </label>
 
 </div>
-<!-- Question: Last Check-up -->
+
+<!-- Question 17 -->
 <div class="question">
 
-    <h2>When was your last hospital check-up?</h2>
+    <h2 data-i18n="q17Title">When was your last hospital check-up?</h2>
 
-    <label><input type="radio" name="checkup" value="lt1"> Within the last year</label><br>
-    <label><input type="radio" name="checkup" value="1to2"> 1–2 years ago</label><br>
-    <label><input type="radio" name="checkup" value="gt2"> More than 2 years ago</label><br>
-    <label><input type="radio" name="checkup" value="never"> I have never had one</label>
+    <label><input type="radio" name="checkup" value="lt1"> <span data-i18n="checkupLt1">Within the last year</span></label><br>
+    <label><input type="radio" name="checkup" value="1to2"> <span data-i18n="checkup1to2">1–2 years ago</span></label><br>
+    <label><input type="radio" name="checkup" value="gt2"> <span data-i18n="checkupGt2">More than 2 years ago</span></label><br>
+    <label><input type="radio" name="checkup" value="never"> <span data-i18n="checkupNever">I have never had one</span></label>
 
 </div>
 
 <div class="buttons">
 
-    <button id="prevBtn" type="button">
+    <button id="prevBtn" type="button" data-i18n="prevBtn">
         ← Previous
     </button>
 
-    <button id="nextBtn" type="button">
+    <button id="nextBtn" type="button" data-i18n="nextBtn">
         Next →
     </button>
 
@@ -300,21 +308,18 @@
 </div>
 
 <script src="assessment.js"></script>
+<script src="language.js"></script>
+
 <footer class="site-footer">
     <div class="footer-inner">
 
         <p class="footer-brand">❤️ HeartGuard</p>
 
-        <p class="footer-contact">
-            📧 contact@heartguard.app
-        </p>
+        <p data-i18n="footer_contact">📧 contact@heartguard.app</p>
 
-        <p class="footer-privacy">
-            🔒 Your privacy matters to us. All responses are confidential and
-            are never shared, sold, or disclosed to third parties.
-        </p>
+        <p data-i18n="footer_privacy">🔒 Your privacy matters to us. All responses are confidential and are never shared, sold, or disclosed to third parties.</p>
 
-        <p class="footer-disclaimer">
+        <p class="footer-disclaimer" data-i18n="footer_disclaimer">
             This tool is for educational purposes only and does not replace
             professional medical diagnosis or treatment.
         </p>
@@ -323,5 +328,6 @@
 
     </div>
 </footer>
+
 </body>
 </html>
