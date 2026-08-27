@@ -46,10 +46,14 @@ window.mexicodata = {
     exercise:{
         labelWomen:"Physical Activity Levels in Women (age 25+)",
         mexicoWomen:3601,
+        mexicoWomenNote:"(about 60 hours of light-intensity activity at 1 MET, or roughly 10 hours of moderate-intensity exercise at 6 METs)",
         globalWomen:4905,
+        globalWomenNote:"(about 82 hours of light-intensity activity at 1 MET, or roughly 14 hours of moderate-intensity exercise at 6 METs)",
         labelMen:"Physical Activity Levels in Men (age 25+)",
         mexicoMen:4871,
+        mexicoMenNote:"(about 81 hours of light-intensity activity at 1 MET, or roughly 14 hours of moderate-intensity exercise at 6 METs)",
         globalMen:5378,
+        globalMenNote:"(about 90 hours of light-intensity activity at 1 MET, or roughly 15 hours of moderate-intensity exercise at 6 METs)",
         unit:"MET/week",
         note:"Adults in Mexico are notably less physically active than the global average, especially women."
     },

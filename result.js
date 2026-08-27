@@ -215,8 +215,8 @@ function renderAnalysis() {
 
     const HIGH_RISK_THRESHOLD_COUNT = 4;
     const highlighted = items.slice(0, HIGH_RISK_THRESHOLD_COUNT).filter(i => i.points > 0);
+    window.highlightedFactors = highlighted; // 다른 함수에서 재사용하기 위해 저장
     const rest = items.filter(i => !highlighted.includes(i));
-
     // Render highlighted cards as flip cards
     highlightsEl.innerHTML = highlighted.map((item, i) => {
         const mech = categoryMechanisms[item.category] || {};
@@ -246,8 +246,14 @@ function renderAnalysis() {
         `;
     }).join("");
 
-    // Render accordion for the rest
-    accordionEl.innerHTML = rest.map((item, i) => `
+       // Render accordion for the rest
+    accordionEl.innerHTML = rest.map((item, i) => {
+        const stat = mexicodata[item.category];
+        const statLine = stat
+            ? `<p class="stat-line">🇲🇽 In Mexico: ${stat.label || stat.labelWomen} is ${stat.mexico ?? stat.mexicoWomen}${stat.unit === "%" ? "%" : " " + stat.unit}.</p>`
+            : "";
+
+        return `
         <div class="accordion-item">
             <button class="accordion-header" onclick="toggleAccordion(${i})">
                 <span>${item.title}</span>
@@ -256,9 +262,11 @@ function renderAnalysis() {
             <div class="accordion-body" id="accBody${i}">
                 <p>${item.average}</p>
                 <p>${item.explanation}</p>
+                ${statLine}
             </div>
         </div>
-    `).join("");
+        `;
+    }).join("");
 
 }
 function renderMexicoStat() {
@@ -266,45 +274,54 @@ function renderMexicoStat() {
     const card = document.getElementById("mexicodataCard");
     if (!card || typeof mexicodata === "undefined") return;
 
-    // Pick the category with the highest risk points from the user's answers
-    let topCategory = null;
-    let topPoints = -1;
+    const highlighted = window.highlightedFactors || [];
+    const statsToShow = highlighted
+        .map(item => ({ category: item.category, stat: mexicodata[item.category] }))
+        .filter(entry => entry.stat);
 
-    Object.keys(categoryPointTables).forEach(category => {
-        const answerValue = answers[category];
-        if (!answerValue) return;
-        const points = categoryPointTables[category][answerValue] ?? 0;
-        if (points > topPoints && mexicodata[category]) {
-            topPoints = points;
-            topCategory = category;
-        }
-    });
-
-    if (!topCategory || topPoints <= 0) return;
-
-    const stat = mexicodata[topCategory];
-    const label = stat.label || stat.labelWomen;
-    const mx = stat.mexico ?? stat.mexicoWomen;
-    const gl = stat.global ?? stat.globalWomen;
-
-    if (mx === undefined) return;
-
-    const maxVal = Math.max(mx, gl || mx) * 1.2;
-
-    document.getElementById("mexicodataLabel").textContent = `🇲🇽 ${label}`;
-    document.getElementById("mexicodataBarMx").style.width = `${(mx / maxVal) * 100}%`;
-    document.getElementById("mexicodataValMx").textContent = `${mx}${stat.unit === "%" ? "%" : ""}`;
-
-    if (gl !== undefined) {
-        document.getElementById("mexicodataBarGl").style.width = `${(gl / maxVal) * 100}%`;
-        document.getElementById("mexicodataValGl").textContent = `${gl}${stat.unit === "%" ? "%" : ""}`;
+    if (statsToShow.length === 0) {
+        card.style.display = "none";
+        return;
     }
 
-    document.getElementById("mexicodataNote").textContent = stat.note;
-    card.style.display = "block";
-}
+    card.innerHTML = `
+        <h4>🇲🇽 How Your Top Risk Factors Compare in Mexico</h4>
+        ${statsToShow.map(({ stat }) => {
 
-renderMexicoStat();
+                        const label = stat.label || stat.labelWomen;
+            const mx = stat.mexico ?? stat.mexicoWomen;
+            const gl = stat.global ?? stat.globalWomen;
+            const mxNote = stat.mexicoNote || stat.mexicoWomenNote;
+            const glNote = stat.globalNote || stat.globalWomenNote;
+            const maxVal = Math.max(mx, gl || mx) * 1.2;
+            const unitSuffix = stat.unit === "%" ? "%" : ` ${stat.unit}`;
+
+                    return `
+            <div class="mexico-stat-block">
+                <p class="mexico-stat-label">${label}</p>
+                <div class="stat-bar-row">
+                    <span class="stat-bar-tag">🇲🇽 Mexico</span>
+                    <div class="stat-bar-track"><div class="stat-bar-fill mexico" style="width:${(mx / maxVal) * 100}%"></div></div>
+                    <span>${mx}${unitSuffix}</span>
+                </div>
+                ${mxNote ? `<p class="mexico-stat-unitnote">${mxNote}</p>` : ""}
+                ${gl !== undefined ? `
+                <div class="stat-bar-row">
+                    <span class="stat-bar-tag">🌍 Global</span>
+                    <div class="stat-bar-track"><div class="stat-bar-fill global" style="width:${(gl / maxVal) * 100}%"></div></div>
+                    <span>${gl}${unitSuffix}</span>
+                </div>
+                ${glNote ? `<p class="mexico-stat-unitnote">${glNote}</p>` : ""}
+                ` : ""}
+                <p class="mexico-stat-note">${stat.note}</p>
+            </div>
+        `;          
+        
+        }).join("")}
+    `;
+
+    card.style.display = "block"; 
+}
 
 function toggleAccordion(index) {
     const body = document.getElementById(`accBody${index}`);
@@ -314,4 +331,84 @@ function toggleAccordion(index) {
     icon.textContent = isOpen ? "▾" : "▸";
 }
 
+// ==========================
+// Disease/Condition explanations
+// ==========================
+const conditionData = {
+
+    cad:{
+        title:"❤️ Coronary Artery Disease",
+        general:"Coronary artery disease develops when plaque builds up inside the arteries that supply blood to the heart, gradually narrowing them and restricting blood flow.",
+        relatedFactors:["cholesterol", "bp", "smoking", "diet", "bmi"]
+    },
+
+    hf:{
+        title:"🫀 Heart Failure",
+        general:"Heart failure occurs when the heart muscle becomes too weak or stiff to pump blood efficiently, often as a result of prolonged strain from other conditions.",
+        relatedFactors:["bp", "bmi", "exercise", "activity", "diabetes"]
+    },
+
+    stroke:{
+        title:"🧠 Stroke",
+        general:"A stroke happens when blood flow to part of the brain is interrupted, often due to a blocked or burst blood vessel — frequently linked to long-term vascular damage.",
+        relatedFactors:["bp", "smoking", "cholesterol", "diabetes"]
+    },
+
+    dcm:{
+        title:"🩸 Diabetic Cardiomyopathy",
+        general:"Diabetic cardiomyopathy is heart muscle damage caused by prolonged high blood sugar, which leads to stiffening and scarring (fibrosis) of heart tissue over time.",
+        relatedFactors:["diabetes", "sugar", "diet"]
+    }
+
+};
+
+const factorLabels = {
+    cholesterol:"high cholesterol",
+    bp:"high blood pressure",
+    smoking:"smoking",
+    diet:"your diet",
+    bmi:"your BMI",
+    exercise:"low exercise levels",
+    activity:"low daily activity",
+    diabetes:"diabetes",
+    sugar:"sugary beverage intake"
+};
+
+function renderConditions() {
+
+    Object.keys(conditionData).forEach(key => {
+
+        const textEl = document.getElementById(`${key}Text`);
+        if (!textEl) return;
+
+        const data = conditionData[key];
+
+        const matchedFactors = data.relatedFactors.filter(factor => {
+            const answerValue = answers[factor];
+            if (!answerValue) return false;
+            const points = categoryPointTables[factor]?.[answerValue] ?? 0;
+            return points > 0;
+        });
+
+        let personalizedNote = "";
+
+        if (matchedFactors.length > 0) {
+            const labels = matchedFactors.map(f => factorLabels[f] || f);
+            const labelText = labels.length === 1
+                ? labels[0]
+                : labels.slice(0, -1).join(", ") + " and " + labels[labels.length - 1];
+
+            personalizedNote = `Based on your answers, factors like ${labelText} may increase your risk for this condition.`;
+        } else {
+            personalizedNote = "Your current answers don't show strong risk indicators for this condition — keep up the healthy habits.";
+        }
+
+        textEl.innerHTML = `${data.general} <br><br> <strong>${personalizedNote}</strong>`;
+
+    });
+
+}
+
 renderAnalysis();
+renderMexicoStat();
+renderConditions();
