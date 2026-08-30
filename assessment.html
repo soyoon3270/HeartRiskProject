@@ -16,7 +16,7 @@
 </div>
 
 <div class="container">
-<a href="index.html" class="home-link" title="Return to home">🏠</a>
+<a href="index.html" class="home-link" title="Return to home">Home</a>
     <h1 id="pageTitle" data-i18n="assessmentH1">🫀 HeartGuard Assessment</h1>
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
@@ -31,9 +31,9 @@
     <h2 data-i18n="q1Title">1. What is your gender?</h2>
 
     <label><input type="radio" name="gender" value="male"> <span data-i18n="genderMale">Male</span></label><br>
-    <label><input type="radio" name="gender" value="female"> <span data-i18n="genderFemale">Female</span></label>
-
-
+<label><input type="radio" name="gender" value="female"> <span data-i18n="genderFemale">Female</span></label><br>
+<label><input type="radio" name="gender" value="other"> <span data-i18n="genderOther">Other</span></label><br>
+<label><input type="radio" name="gender" value="na"> <span data-i18n="genderNa">Prefer not to say</span></label>
 <h2 style="margin-top:35px;" data-i18n="q1Ethnicity">Ethnicity <span style="font-weight:normal;font-size:16px;color:#888;">(optional, select all that apply)</span></h2>
 
     <label><input type="checkbox" name="ethnicity" value="hispanic" data-optional> <span data-i18n="ethnicityHispanic">Hispanic / Latino</span></label><br>
@@ -180,14 +180,13 @@
 
 <!-- Question 11 -->
 <div class="question">
-
     <h2 id="q11Title" data-i18n="q11Title">11. Do you get short of breath regularly?</h2>
-
     <label id="breathYesOption"><input type="radio" name="breath" value="yes"> <span data-i18n="breathYesOption">Yes</span></label><br>
     <label id="breathNoOption"><input type="radio" name="breath" value="no"> <span data-i18n="breathNoOption">No</span></label>
-
+    <div class="info-banner urgent" id="breathBanner" style="display:none;" data-i18n="breathBanner">
+        🚨 Shortness of breath can be an early warning sign of cardiovascular strain, even if it may also stem from other causes. It's worth discussing with a doctor.
+    </div>
 </div>
-
 
 <!-- Question 12 -->
 <div class="question">

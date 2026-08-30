@@ -189,6 +189,15 @@ function showQuestion() {
         : (currentQuestion === questions.length - 1 ? "Submit Assessment" : "Next →");
 
     nextBtn.textContent = nextLabel;
+    questionNumber.innerHTML = `${questionLabel} <span class="q-jump" id="qJump">${currentQuestion + 1}</span> ${ofLabel} ${questions.length}`;
+document.getElementById("qJump").onclick = () => {
+    const input = prompt(`Jump to question (1–${questions.length}):`);
+    const num = parseInt(input);
+    if (num >= 1 && num <= questions.length) {
+        currentQuestion = num - 1;
+        showQuestion();
+    }
+};
 }
 
 // ==========================
@@ -396,5 +405,11 @@ document.querySelectorAll("input[name='swelling']").forEach(input => {
 document.querySelectorAll(".lang-btn").forEach(btn => {
     btn.addEventListener("click", () => {
         setTimeout(showQuestion, 0);
+    });
+});
+document.querySelectorAll("input[name='breath']").forEach(input => {
+    input.addEventListener("change", () => {
+        const banner = document.getElementById("breathBanner");
+        if (banner) banner.style.display = (input.value === "yes" && input.checked) ? "block" : "none";
     });
 });
