@@ -148,7 +148,7 @@ es: {
 
     tipsData: [
         { threshold: 0, action: " Haz al menos 150 minutos de ejercicio por semana.", outcome: "puede reducir la presión arterial en reposo y fortalecer tu corazón en pocos meses.", pointsReducible: 3 },
-        { threshold: 11, action: " Reduce las bebidas azucaradas y los alimentos procesados.", outcome: "ayuda a estabilizar el azúcar en sangre y reduce la tensión sobre tus vasos sanguíneos en cuestión de semanas.", pointsReducible: 4 },
+        { threshold: 11, action: " Reduce los consumos de bebidas azucaradas y los alimentos procesados.", outcome: "ayuda a estabilizar el azúcar en sangre y reduce la tensión sobre tus vasos sanguíneos en cuestión de semanas.", pointsReducible: 4 },
         { threshold: 23, action: " Monitorea tu presión arterial con regularidad.", outcome: "detecta picos peligrosos a tiempo, antes de que causen daño duradero.", pointsReducible: 3 },
         { threshold: 23, action: " Monitorea tus niveles de glucosa si tienes diabetes o prediabetes.", outcome: "desacelera el daño vascular relacionado con la cardiomiopatía diabética.", pointsReducible: 4 },
         { threshold: 36, action: " Programa una evaluación médica con un profesional de la salud.", outcome: "te brinda un panorama de riesgo personalizado y clínicamente preciso más allá de este análisis.", pointsReducible: 0 }
@@ -200,11 +200,11 @@ es: {
     summary: {
         low: `Tus resultados te ubican en el rango de <strong>Riesgo Bajo</strong>. En general, tus respuestas sugieren que ya tienes hábitos saludables trabajando a tu favor.`,
         mild: `Tus resultados te ubican en el rango de <strong>Riesgo Leve</strong>. La mayoría de los factores se ven razonables, pero algunas áreas merecen atención.`,
-        moderate: `Tus resultados te ubican en el rango de <strong>Riesgo Moderado</strong>. Varios factores de tus respuestas están elevando de manera significativa tu riesgo cardiovascular.`,
-        high: `Tus resultados te ubican en el rango de <strong>Riesgo Alto</strong>. Varios factores de tus respuestas se están combinando para elevar significativamente tu riesgo cardiovascular.`,
+        moderate: `Tus resultados te ubican en el rango de <strong>Riesgo Moderado</strong>. Varios factores de tus respuestas elevan tu riesgo cardiovascular de manera significativa.`,
+        high: `Tus resultados te ubican en el rango de <strong>Riesgo Alto</strong>. Varios factores de tus respuestas se combinan para elevar significativamente tu riesgo cardiovascular.`,
         factorSentence: listText => ` Los factores que más contribuyen a tu puntuación son <strong>${listText}</strong>.`,
         noFactor: ` Ningún factor individual se destacó como un motivo principal — tu riesgo está distribuido de manera bastante uniforme entre contribuyentes menores.`,
-        closing: ` Las secciones a continuación explican por qué cada factor es importante, cómo puede contribuir a una enfermedad cardíaca y qué pasos específicos puedes tomar para reducir tu riesgo.`
+        closing: ` Las secciones a continuación explicarán por qué cada factor es importante, cómo puede contribuir a una enfermedad cardíaca y qué pasos específicos puedes tomar para reducir tu riesgo.`
     }
 } // end es
 
