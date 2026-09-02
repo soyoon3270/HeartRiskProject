@@ -1,4 +1,7 @@
-const translations = {
+// IMPORTANT: use window.translations (not `const translations`) so that
+// result.js can read it as a global. A top-level `const`/`let` does NOT
+// attach to `window`, only `var` or explicit `window.x = ...` does.
+window.translations = {
     en: {
         hero_title: "PROTECT YOUR<br>HEART TODAY",
         hero_intro: "Understand your cardiovascular health through a personalized assessment based on your lifestyle, medical history, and daily habits.",
@@ -6,8 +9,6 @@ const translations = {
         badge_prep: "🩺 No medical prep needed",
         badge_privacy: "🔒 100% confidential & free",
         cta_button: "Check Your Risk →",
-        footer_privacy: "🔒 Your privacy matters to us. All responses are confidential and are never shared, sold, or disclosed to third parties.",
-        footer_disclaimer: "This tool is for educational purposes only and does not replace professional medical diagnosis or treatment.",
         card1Title: "❤️ Assess Your Risk",
         card1Text: "Complete a quick evidence-based assessment in under 3 minutes.",
         card2Title: "📊 Personalized Results",
@@ -21,20 +22,21 @@ const translations = {
         sneakItem2: "📊 Which lifestyle factors matter most for you",
         sneakItem3: "🫀 Your risk level for conditions like heart failure <br> & diabetic cardiomyopathy",
         sneakItem4: "💡 Personalized prevention tips based on your answers",
-          // --- oxygen/pressure/sugar/bmi/smoking tags ---
+
+        // --- oxygen/pressure/sugar/bmi/smoking tags ---
         oxygenTag: "Oxygen Level",
         pressureTag: "Blood Pressure",
         sugarTag: "Blood Sugar",
         bmiTag: "BMI",
         smokingTag: "Smoking",
 
-        // --- footer (모든 페이지 공통) ---
+        // --- footer (shared across all pages) ---
         footer_privacy: "🔒 Your privacy matters to us. All responses are confidential and are never shared, sold, or disclosed to third parties.",
         footer_disclaimer: "This tool is for educational purposes only and does not replace professional medical diagnosis or treatment.",
         footer_contact: "📧 contact@heartguard.app",
 
         // --- about us page ---
-                aboutBadge: "❤️ About HeartGuard",
+        aboutBadge: "❤️ About HeartGuard",
         aboutH1: "Understand Your Heart Before You Begin",
         aboutIntro: "HeartGuard was created to help people recognize cardiovascular risk before it becomes a crisis. Heart disease often develops silently for years, and by the time symptoms appear, significant damage may already be done. Our goal is simple: give people a quick, private way to understand their own risk factors and take action early.",
         whyBuiltTitle: "🎯 Why We Built This",
@@ -50,8 +52,8 @@ const translations = {
         aboutNotice: "💙 This assessment is designed for educational purposes only and does not replace professional medical diagnosis or treatment.",
         aboutButton: "Continue to Assessment →",
 
-        /// assessment page
-                genderMale: "Male",
+        // --- assessment page ---
+        genderMale: "Male",
         genderFemale: "Female",
         assessmentH1: "🫀 HeartGuard Assessment",
         q1Title: "1. What is your gender?",
@@ -143,37 +145,39 @@ const translations = {
         checkupNever: "I have never had one",
         prevBtn: "← Previous",
         nextBtn: "Next →",
-        badge: "❤️ HeartGuard Results", 
-        pageTitle: "Your Cardiovascular Risk", 
-        comparisonHigher: diff => `Your score is approximately ${diff}% higher than the average score among users so far.`, 
-        comparisonLower: diff => `Your score is approximately ${diff}% lower than the average score among users so far.`, 
-        comparisonSame: "Your score matches the average score among users so far.", 
-        rawScore: (score, max) => `Risk factor score: ${score} out of ${max}`, 
-        lowRisk: "🟢 Low Risk", 
-        mildRisk: "🟡 Mild Risk", 
-        moderateRisk: "🟠 Moderate Risk", 
-        highRisk: "🔴 High Risk", 
-        snapshot: "Your Health Snapshot", 
-        summaryTitle: "📝 Overall Summary", 
-        summaryText: "Loading summary...", 
-        analysisTitle: "📊 Personalized Analysis", 
-        conditionsTitle: "🫀 How Your Risk Factors Can Lead to Heart Disease", 
-        conditionsDisclaimer: "These are conditions commonly associated with the lifestyle and health factors in your answers — this is not a diagnosis of what you currently have.", 
-        preventionTitle: "💡 Prevention Tips", 
-        cadTitle: "❤️ Coronary Artery Disease", 
-        hfTitle: "🫀 Heart Failure", 
-        strokeTitle: "🧠 Stroke", 
+
+        // --- result page ---
+        badge: "❤️ HeartGuard Results",
+        pageTitle: "Your Cardiovascular Risk",
+        comparisonHigher: diff => `Your score is approximately ${diff}% higher than the average score among users so far.`,
+        comparisonLower: diff => `Your score is approximately ${diff}% lower than the average score among users so far.`,
+        comparisonSame: "Your score matches the average score among users so far.",
+        rawScore: (score, max) => `Risk factor score: ${score} out of ${max}`,
+        lowRisk: "🟢 Low Risk",
+        mildRisk: "🟡 Mild Risk",
+        moderateRisk: "🟠 Moderate Risk",
+        highRisk: "🔴 High Risk",
+        snapshot: "Your Health Snapshot",
+        summaryTitle: "📝 Overall Summary",
+        summaryText: "Loading summary...",
+        analysisTitle: "📊 Personalized Analysis",
+        conditionsTitle: "🫀 How Your Risk Factors Can Lead to Heart Disease",
+        conditionsDisclaimer: "These are conditions commonly associated with the lifestyle and health factors in your answers — this is not a diagnosis of what you currently have.",
+        preventionTitle: "💡 Prevention Tips",
+        cadTitle: "❤️ Coronary Artery Disease",
+        hfTitle: "🫀 Heart Failure",
+        strokeTitle: "🧠 Stroke",
         dcmTitle: "🩸 Diabetic Cardiomyopathy",
         mexicoTitle: "🇲🇽 How Your Risk Factors Compare in Mexico",
         mexico: "🇲🇽 Mexico",
-        global: "🌍 Global", 
-        whyMatters: "🫀 Why this matters", 
-        improve: "✅ If you improve this", 
-        tapMore: "🔄 Tap to see why this matters ▾", 
-        retake: "🔄 Retake Assessment", 
-        backHome: "Back Home", 
-        privacy: "🔒 Your privacy matters to us. All responses are confidential and are never shared, sold, or disclosed to third parties.", 
-        disclaimer: "This tool is for educational purposes only and does not replace professional medical diagnosis or treatment.", 
+        global: "🌍 Global",
+        whyMatters: "🫀 Why this matters",
+        improve: "✅ If you improve this",
+        tapMore: "🔄 Tap to see why this matters ▾",
+        retake: "🔄 Retake Assessment",
+        backHome: "Back Home",
+        privacy: "🔒 Your privacy matters to us. All responses are confidential and are never shared, sold, or disclosed to third parties.",
+        disclaimer: "This tool is for educational purposes only and does not replace professional medical diagnosis or treatment.",
         dataSource: "Statistics sourced from WORLD HEART FEDERATION."
     },
     es: {
@@ -183,8 +187,6 @@ const translations = {
         badge_prep: "🩺 Sin preparación médica",
         badge_privacy: "🔒 100% confidencial y gratis",
         cta_button: "Revisa Tu Riesgo →",
-        footer_privacy: "🔒 Tu privacidad es importante para nosotros. Todas las respuestas son confidenciales y nunca se comparten, venden ni divulgan a terceros.",
-        footer_disclaimer: "Esta herramienta es solo para fines educativos y no reemplaza el diagnóstico o tratamiento médico profesional.",
         card1Title: "❤️ Evalúa Tu Riesgo",
         card1Text: "Completa una evaluación rápida basada en evidencia en menos de 3 minutos.",
         card2Title: "📊 Resultados Personalizados",
@@ -209,9 +211,8 @@ const translations = {
         footer_disclaimer: "Esta herramienta es solo para fines educativos y no reemplaza el diagnóstico o tratamiento médico profesional.",
         footer_contact: "📧 contact@heartguard.app",
 
-        ///about us page
-
-                aboutBadge: "❤️ Sobre HeartGuard",
+        // --- about us page ---
+        aboutBadge: "❤️ Sobre HeartGuard",
         aboutH1: "Comprende Tu Corazón Antes de Comenzar",
         aboutIntro: "HeartGuard fue creado para ayudar a las personas a reconocer el riesgo cardiovascular antes de que se convierta en una crisis. Las enfermedades cardíacas a menudo se desarrollan silenciosamente durante años, y cuando aparecen los síntomas, el daño ya puede ser significativo. Nuestro objetivo es simple: dar a las personas una forma rápida y privada de entender sus propios factores de riesgo y actuar a tiempo.",
         whyBuiltTitle: "🎯 Por Qué Creamos Esto",
@@ -227,8 +228,8 @@ const translations = {
         aboutNotice: "💙 Esta evaluación es solo para fines educativos y no reemplaza el diagnóstico o tratamiento médico profesional.",
         aboutButton: "Continuar a la Evaluación →",
 
-        /// assessment page
-                genderMale: "Masculino",
+        // --- assessment page ---
+        genderMale: "Masculino",
         genderFemale: "Femenino",
         assessmentH1: "🫀 Evaluación HeartGuard",
         q1Title: "1. ¿Cuál es tu género?",
@@ -320,45 +321,49 @@ const translations = {
         checkupNever: "Nunca he tenido uno",
         prevBtn: "← Anterior",
         nextBtn: "Siguiente →",
-        badge: "❤️ Resultados de HeartGuard", 
-        pageTitle: "Tu Riesgo Cardiovascular", 
-        comparisonHigher: diff => `Tu puntuación es aproximadamente un ${diff}% más alta que la puntuación promedio de los usuarios hasta ahora.`, 
-        comparisonLower: diff => `Tu puntuación es aproximadamente un ${diff}% más baja que la puntuación promedio de los usuarios hasta ahora.`, 
-        comparisonSame: "Tu puntuación coincide con la puntuación promedio de los usuarios hasta ahora.", 
-        rawScore: (score, max) => `Puntuación de factores de riesgo: ${score} de ${max}`, 
-        lowRisk: "🟢 Riesgo Bajo", 
-        mildRisk: "🟡 Riesgo Leve", 
-        moderateRisk: "🟠 Riesgo Moderado", 
-        highRisk: "🔴 Riesgo Alto", 
-        snapshot: "Resumen de tu Salud", 
-        summaryTitle: "📝 Resumen General", 
-        summaryText: "Cargando resumen...", 
-        analysisTitle: "📊 Análisis Personalizado", 
-        conditionsTitle: "🫀 Cómo tus Factores de Riesgo Pueden Contribuir a una Enfermedad Cardíaca", 
-        conditionsDisclaimer: "Estas son condiciones comúnmente asociadas con los factores de estilo de vida y salud de tus respuestas; esto no es un diagnóstico de lo que tienes actualmente.", 
-        preventionTitle: "💡 Consejos de Prevención", 
-        cadTitle: "❤️ Enfermedad de las Arterias Coronarias", 
-        hfTitle: "🫀 Insuficiencia Cardíaca", 
-        strokeTitle: "🧠 Accidente Cerebrovascular", 
-        dcmTitle: "🩸 Miocardiopatía Diabética", 
-        mexicoTitle: "🇲🇽 Cómo se Comparan tus Factores de Riesgo en México", 
-        mexico: "🇲🇽 México", 
-        global: "🌍 Global", whyMatters: "🫀 Por qué es importante", 
-        improve: "✅ Si mejoras este factor", 
-        tapMore: "🔄 Toca para ver por qué es importante ▾", 
-        retake: "🔄 Repetir Evaluación", 
-        backHome: "Volver al Inicio", 
-        privacy: "🔒 Tu privacidad es importante para nosotros. Todas las respuestas son confidenciales y nunca se comparten, venden ni divulgan a terceros.", 
-        disclaimer: "Esta herramienta tiene fines educativos y no sustituye el diagnóstico ni el tratamiento médico profesional.", 
-        dataSource: "Estadísticas obtenidas de WORLD HEART FEDERATION." }
+
+        // --- result page ---
+        badge: "❤️ Resultados de HeartGuard",
+        pageTitle: "Tu Riesgo Cardiovascular",
+        comparisonHigher: diff => `Tu puntuación es aproximadamente un ${diff}% más alta que la puntuación promedio de los usuarios hasta ahora.`,
+        comparisonLower: diff => `Tu puntuación es aproximadamente un ${diff}% más baja que la puntuación promedio de los usuarios hasta ahora.`,
+        comparisonSame: "Tu puntuación coincide con la puntuación promedio de los usuarios hasta ahora.",
+        rawScore: (score, max) => `Puntuación de factores de riesgo: ${score} de ${max}`,
+        lowRisk: "🟢 Riesgo Bajo",
+        mildRisk: "🟡 Riesgo Leve",
+        moderateRisk: "🟠 Riesgo Moderado",
+        highRisk: "🔴 Riesgo Alto",
+        snapshot: "Resumen de tu Salud",
+        summaryTitle: "📝 Resumen General",
+        summaryText: "Cargando resumen...",
+        analysisTitle: "📊 Análisis Personalizado",
+        conditionsTitle: "🫀 Cómo tus Factores de Riesgo Pueden Contribuir a una Enfermedad Cardíaca",
+        conditionsDisclaimer: "Estas son condiciones comúnmente asociadas con los factores de estilo de vida y salud de tus respuestas; esto no es un diagnóstico de lo que tienes actualmente.",
+        preventionTitle: "💡 Consejos de Prevención",
+        cadTitle: "❤️ Enfermedad de las Arterias Coronarias",
+        hfTitle: "🫀 Insuficiencia Cardíaca",
+        strokeTitle: "🧠 Accidente Cerebrovascular",
+        dcmTitle: "🩸 Miocardiopatía Diabética",
+        mexicoTitle: "🇲🇽 Cómo se Comparan tus Factores de Riesgo en México",
+        mexico: "🇲🇽 México",
+        global: "🌍 Global",
+        whyMatters: "🫀 Por qué es importante",
+        improve: "✅ Si mejoras este factor",
+        tapMore: "🔄 Toca para ver por qué es importante ▾",
+        retake: "🔄 Repetir Evaluación",
+        backHome: "Volver al Inicio",
+        privacy: "🔒 Tu privacidad es importante para nosotros. Todas las respuestas son confidenciales y nunca se comparten, venden ni divulgan a terceros.",
+        disclaimer: "Esta herramienta tiene fines educativos y no sustituye el diagnóstico ni el tratamiento médico profesional.",
+        dataSource: "Estadísticas obtenidas de WORLD HEART FEDERATION."
+    }
 };
 
 function setLanguage(lang) {
 
     document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
-        if (translations[lang] && translations[lang][key]) {
-            el.innerHTML = translations[lang][key];
+        if (window.translations[lang] && window.translations[lang][key]) {
+            el.innerHTML = window.translations[lang][key];
         }
     });
 
@@ -367,6 +372,13 @@ function setLanguage(lang) {
     document.querySelectorAll(".lang-btn").forEach(btn => {
         btn.classList.toggle("active", btn.dataset.lang === lang);
     });
+
+    // If this page has result.js loaded, re-render its dynamic,
+    // answer-based content (summary, tips, conditions, charts, etc.)
+    // in the newly selected language.
+    if (typeof window.renderResultsPage === "function") {
+        window.renderResultsPage();
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {

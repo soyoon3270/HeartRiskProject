@@ -679,8 +679,6 @@ transform:translateY(-6px);
     transform:rotateY(180deg) translateZ(0);
 }
 
-.mexico-stat-card, .score-comparison{ max-width:650px; }
-.mexico-stat-card span{ width:auto; min-width:70px; white-space:nowrap; }
 
 .stat-bar-row{
     display:flex;
@@ -713,16 +711,87 @@ transform:translateY(-6px);
 .stat-bar-fill.mexico{ background:#F57C00; }
 .stat-bar-fill.global{ background:#8b96ab; }
 
-.mexico-stat-card span{
-    font-size:13px;
-    font-weight:600;
-    color:#3d4e6e;
-    width:50px;
-    text-align:right;
+.mexico-stat-card .stat-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 8px;
 }
 
-.mexico-stat-card p{
-    margin-top:12px;
+.mexico-stat-card .stat-bar-tag {
+    width: 80px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 600;
+    color: #5d6c7b;
+}
+
+.mexico-stat-card .stat-bar-track {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 13px;
+    background: #eef1f6;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.mexico-stat-card .stat-bar-fill {
+    height: 100%;
+    border-radius: 6px;
+}
+
+.mexico-stat-card .stat-bar-fill.mexico{ background:#F57C00; }
+.mexico-stat-card .stat-bar-fill.global{ background:#8b96ab; }
+
+.mexico-stat-card .stat-bar-row > span:last-child {
+    flex-shrink: 0;
+    white-space: nowrap;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 600;
+    color: #3d4e6e;
+}
+.mexico-stat-block{
+    margin-bottom:22px;
+    padding:20px;
+    border-radius:12px;
+    background:#f7f9fc;
+    border:1px solid #e5e9f2;
+}
+
+.mexico-stat-block:last-child{
+    margin-bottom:0;
+}
+
+.mexico-stat-label{
+    font-size:14px;
+    font-weight:600;
+    color:#3d4e6e;
+    margin-bottom:16px;   /* 라벨과 첫 막대 사이 여백 ↑ */
+}
+
+.mexico-stat-card .stat-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 10px;   /* 막대와 그 아래 설명 텍스트 사이 여백 */
+}
+
+/* result.js가 만드는 괄호 설명 텍스트 — 지금 CSS에 정의가 없어서 여백이 0이었음 */
+.mexico-stat-unitnote{
+    font-size:12px;
+    color:#8b96ab;
+    line-height:1.6;
+    margin:2px 0 20px 90px;   /* 막대 시작 위치(라벨 너비 80px+gap)에 맞춰 들여쓰기, 다음 요소와 여백 */
+}
+
+.mexico-stat-note{
+    margin-top:18px;         /* 마지막 종합 설명과 위 블록 사이 여백 ↑ */
+    padding-top:14px;
+    border-top:1px solid #e5e9f2;
     font-size:13px;
     color:#7d8ba1;
     line-height:1.6;
@@ -812,4 +881,41 @@ transform:translateY(-6px);
     font-size:12px;
     color:#a8763d;
     font-weight:normal;
+}
+.data-source{
+    font-size:12px;
+    color:#8b9bcf;
+    margin-top:8px;
+}
+.language-switch{
+    position:fixed;
+    top:30px;
+    right:40px;
+    display:flex;
+    gap:12px;
+    z-index:20;
+}
+
+.language-switch button{
+    background:white;
+    color:#22395d;
+    padding:10px 18px;
+    border:none;
+    border-radius:30px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transition:.3s;
+}
+
+.language-switch button:hover{
+    transform:translateY(-3px);
+    background:#22346b;
+    color:white;
+}
+
+.language-switch button.active{
+    background:#22346b;
+    color:white;
 }

@@ -13,32 +13,36 @@
 <body>
 
 <div class="background-circle"></div>
+<div class="language-switch">
+    <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">🇺🇸 EN</button>
+    <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">🇲🇽 ES</button>
+</div>
 
 <div class="container">
 
-    <div class="badge" id="badge">
-        ❤️ HeartGuard Results
-    </div>
+   <div class="badge" id="badge" data-i18n="badge">
+     HeartGuard Results
+</div>
 
-    <h1 id="pageTitle">
+    <h1 id="pageTitle" data-i18n="pageTitle">
         Your Cardiovascular Risk
     </h1>
     <div class="risk-circle">
     <span id="score">0</span>
 </div>
 <div class="score-comparison">
-    <p id="comparisonText">Loading comparison...</p>
+    <p id="comparisonText" data-i18n="comparisonText">Loading comparison...</p>
 </div>
 <div class="mexico-stat-card" id="mexicodataCard" style="display:none;">
-    <h4 id="mexicodataLabel"></h4>
+    <h4 id="mexicodataLabel" data-i18n="mexicodataLabel"></h4>
     <div class="mexico-stat-bars">
         <div class="stat-bar-row">
-            <span class="stat-bar-tag">🇲🇽 Mexico</span>
+            <span class="stat-bar-tag"> Mexico</span>
             <div class="stat-bar-track"><div class="stat-bar-fill mexico" id="mexicodataBarMx"></div></div>
             <span id="mexicodataValMx"></span>
         </div>
         <div class="stat-bar-row">
-            <span class="stat-bar-tag">🌍 Global</span>
+            <span class="stat-bar-tag"> Global</span>
             <div class="stat-bar-track"><div class="stat-bar-fill global" id="mexicodataBarGl"></div></div>
             <span id="mexicodataValGl"></span>
         </div>
@@ -47,7 +51,9 @@
 </div>
 <div class="donut-chart-section">
 
-    <h3>Your Health Snapshot</h3>
+    <h3 id="snapshotTitle" data-i18n="snapshot">
+    Your Health Snapshot
+</h3>
 
     <div class="donut-wrapper">
 
@@ -87,7 +93,9 @@
 
     <div class="summary">
 
-        <h3 id="summaryTitle">📝 Overall Summary</h3>
+       <h3 id="summaryTitle" data-i18n="summaryTitle">
+    📝 Overall Summary
+</h3>
 
         <p id="summaryText">
             Loading summary...
@@ -99,7 +107,9 @@
 
     <div class="analysis">
 
-    <h3 id="analysisTitle">📊 Personalized Analysis</h3>
+   <h3 id="analysisTitle" data-i18n="analysisTitle">
+    📊 Personalized Analysis
+</h3>
 
     <div id="analysisHighlights"></div>
 
@@ -111,18 +121,22 @@
 
     <div class="conditions">
 
-        <h3 id="conditionsTitle">🫀 How Your Risk Factors Can Lead to Heart Disease</h3>
+        <h3 id="conditionsTitle" data-i18n="conditionsTitle">
+     How Your Risk Factors Can Lead to Heart Disease
+</h3>
 
-            <p class="conditions-disclaimer">
-         These are conditions commonly associated with the lifestyle and health
-            factors in your answers — this is not a diagnosis of what you currently have.
-            </p>
+<p class="conditions-disclaimer" data-i18n="conditionsDisclaimer">
+    These are conditions commonly associated with the lifestyle and health
+    factors in your answers — this is not a diagnosis of what you currently have.
+</p>
 
         <div class="condition-grid">
 
             <div class="condition-card">
 
-                <h4 id="cadTitle">❤️ Coronary Artery Disease</h4>
+                <h4 id="cadTitle" data-i18n="cadTitle">
+     Coronary Artery Disease
+</h4>
 
                 <p id="cadText">
                     Loading...
@@ -132,7 +146,9 @@
 
             <div class="condition-card">
 
-                <h4 id="hfTitle">🫀 Heart Failure</h4>
+                <h4 id="hfTitle" data-i18n="hfTitle">
+     Heart Failure
+</h4>
 
                 <p id="hfText">
                     Loading...
@@ -142,7 +158,9 @@
 
             <div class="condition-card">
 
-                <h4 id="strokeTitle">🧠 Stroke</h4>
+                <h4 id="strokeTitle" data-i18n="strokeTitle">
+     Stroke
+</h4>
 
                 <p id="strokeText">
                     Loading...
@@ -152,7 +170,9 @@
 
             <div class="condition-card">
 
-                <h4 id="dcmTitle">🩸 Diabetic Cardiomyopathy</h4>
+                <h4 id="dcmTitle" data-i18n="dcmTitle">
+     Diabetic Cardiomyopathy
+</h4>
 
                 <p id="dcmText">
                     Loading...
@@ -168,52 +188,59 @@
 
     <div class="recommendations">
 
-        <h3 id="preventionTitle">
-            💡 Prevention Tips
-        </h3>
+        <h3 id="preventionTitle" data-i18n="preventionTitle">
+     Prevention Tips
+</h3>
 
         <ul id="preventionList">
 
         </ul>
 
     </div>
-<button id="retakeButton" onclick="retakeAssessment()">🔄 Retake Assessment</button>
-    <button id="backButton" onclick="window.location.href='index.html'">
-        Back Home
-    </button>
+<button id="retakeButton"
+        data-i18n="retake"
+        onclick="retakeAssessment()">
+    🔄 Retake Assessment
+</button> 
+
+<button id="backButton"
+        data-i18n="backHome"
+        onclick="window.location.href='index.html'">
+    Back Home
+</button>
 
 </div>
+</div>
+
 <footer class="site-footer">
     <div class="footer-inner">
 
-        <p class="footer-brand">❤️ HeartGuard</p>
+        <p class="footer-brand"> HeartGuard</p>
 
-        <p class="footer-contact">
-            📧 contact@heartguard.app
-        </p>
+        <p class="footer-contact" data-i18n="footer_contact">📧 contact@heartguard.app</p>
 
-        <p class="footer-privacy">
+        <p class="footer-privacy" data-i18n="privacy">
             🔒 Your privacy matters to us. All responses are confidential and
             are never shared, sold, or disclosed to third parties.
         </p>
 
-        <p class="footer-disclaimer">
+        <p class="footer-disclaimer" data-i18n="disclaimer">
             This tool is for educational purposes only and does not replace
             professional medical diagnosis or treatment.
+        </p>
+
+        <p class="data-source" data-i18n="dataSource">
+            Statistics sourced from World Heart Federation.
         </p>
 
         <p class="footer-copyright">© 2026 HeartGuard. All rights reserved.</p>
 
     </div>
 </footer>
-<div class="language-switch">
-    <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">🇺🇸 EN</button>
-    <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">🇲🇽 ES</button>
-</div>
-<p class="data-source">Statistics sourced from WORLD HEART FEDERATION.</p>
+
 <script src="analysisData.js"></script>
 <script src="mexicodata.js"></script>
-<script src="result.js"></script>
 <script src="language.js"></script>
+<script src="result.js"></script>
 </body>
 </html>
