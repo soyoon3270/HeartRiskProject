@@ -24,7 +24,7 @@ en: {
     factorsIdentified: labelText => `Factors identified: ${labelText}.`,
     and: " and ",
     evidenceStat: (value, unit) => `(Statistic: ${value}${unit} in Mexico)`,
-    statLine: (label, value, unit) => `🇲🇽 In Mexico: ${label} is ${value}${unit}.`,
+    statLine: (label, value, unit) => ` In Mexico: ${label} is ${value}${unit}.`,
     tapOutcomePrefix: "→ This ",
     projectionTip: (score, projectedScore, maxScore, pct) =>
         `📉 If you act on all of these, your risk factor score could drop from ${score} to approximately ${projectedScore} out of ${maxScore} (~${pct}%).`,
@@ -52,41 +52,41 @@ en: {
     },
 
     tipsData: [
-        { threshold: 0, action: "🏃 Exercise at least 150 minutes per week.", outcome: "can lower resting blood pressure and strengthen your heart within a few months.", pointsReducible: 3 },
-        { threshold: 11, action: "🥤 Reduce sugary beverages and processed foods.", outcome: "helps stabilize blood sugar and reduces strain on your blood vessels within weeks.", pointsReducible: 4 },
-        { threshold: 23, action: "🩺 Monitor your blood pressure regularly.", outcome: "catches dangerous spikes early, before they cause lasting damage.", pointsReducible: 3 },
-        { threshold: 23, action: "🩸 Monitor your blood glucose levels if you have diabetes or prediabetes.", outcome: "slows the vascular damage linked to diabetic cardiomyopathy.", pointsReducible: 4 },
-        { threshold: 36, action: "👨‍⚕️ Schedule a medical evaluation with a healthcare professional.", outcome: "gives you a personalized, clinically accurate risk picture beyond this screening.", pointsReducible: 0 }
+        { threshold: 0, action: " Exercise at least 150 minutes per week.", outcome: "can lower resting blood pressure and strengthen your heart within a few months.", pointsReducible: 3 },
+        { threshold: 11, action: " Reduce sugary beverages and processed foods.", outcome: "helps stabilize blood sugar and reduces strain on your blood vessels within weeks.", pointsReducible: 4 },
+        { threshold: 23, action: " Monitor your blood pressure regularly.", outcome: "catches dangerous spikes early, before they cause lasting damage.", pointsReducible: 3 },
+        { threshold: 23, action: " Monitor your blood glucose levels if you have diabetes or prediabetes.", outcome: "slows the vascular damage linked to diabetic cardiomyopathy.", pointsReducible: 4 },
+        { threshold: 36, action: " Schedule a medical evaluation with a healthcare professional.", outcome: "gives you a personalized, clinically accurate risk picture beyond this screening.", pointsReducible: 0 }
     ],
 
     answerBasedTips: {
-        smoking: { action: "🚭 Consider a plan to quit smoking.", outcome: "even partial reduction significantly lowers your risk of heart attack and stroke over time." },
-        diet: { action: "🍽️ Try replacing 2–3 meals a week with home-cooked options.", outcome: "reduces your intake of excess sodium and unhealthy fats that strain your heart." },
-        sugar: { action: "🥤 Cut back on sugary drinks specifically — even switching every other one to water helps.", outcome: "reduces blood sugar spikes linked to insulin resistance." },
-        activitySitting: { action: "🧍 Stand or walk for a few minutes every hour.", outcome: "offsets some of the cardiovascular risk associated with prolonged sitting." },
-        exerciseLow: { action: "🚶 Start with short walks a few times a week and build up gradually.", outcome: "is often more sustainable than an intense routine and still meaningfully lowers risk." },
-        diabetes: { action: "🩸 Pair diet changes with regular glucose monitoring.", outcome: "helps catch and correct blood sugar spikes before they cause lasting vascular damage." },
-        bp: { action: "🧂 Reduce sodium intake, especially from processed and street food.", outcome: "can noticeably lower blood pressure within a few weeks." }
+        smoking: { action: " Consider a plan to quit smoking.", outcome: "even partial reduction significantly lowers your risk of heart attack and stroke over time." },
+        diet: { action: " Try replacing 2–3 meals a week with home-cooked options.", outcome: "reduces your intake of excess sodium and unhealthy fats that strain your heart." },
+        sugar: { action: " Cut back on sugary drinks specifically — even switching every other one to water helps.", outcome: "reduces blood sugar spikes linked to insulin resistance." },
+        activitySitting: { action: " Stand or walk for a few minutes every hour.", outcome: "offsets some of the cardiovascular risk associated with prolonged sitting." },
+        exerciseLow: { action: " Start with short walks a few times a week and build up gradually.", outcome: "is often more sustainable than an intense routine and still meaningfully lowers risk." },
+        diabetes: { action: " Pair diet changes with regular glucose monitoring.", outcome: "helps catch and correct blood sugar spikes before they cause lasting vascular damage." },
+        bp: { action: " Reduce sodium intake, especially from processed and street food.", outcome: "can noticeably lower blood pressure within a few weeks." }
     },
 
     conditionData: {
         cad: {
-            title: "❤️ Coronary Artery Disease",
+            title: " Coronary Artery Disease",
             general: "Coronary artery disease develops when plaque builds up inside the arteries that supply blood to the heart, gradually narrowing them and restricting blood flow.",
             relatedFactors: ["cholesterol", "bp", "smoking", "diet", "bmi"]
         },
         hf: {
-            title: "🫀 Heart Failure",
+            title: " Heart Failure",
             general: "Heart failure occurs when the heart muscle becomes too weak or stiff to pump blood efficiently, often as a result of prolonged strain from other conditions.",
             relatedFactors: ["bp", "bmi", "exercise", "activity", "diabetes"]
         },
         stroke: {
-            title: "🧠 Stroke",
+            title: " Stroke",
             general: "A stroke happens when blood flow to part of the brain is interrupted, often due to a blocked or burst blood vessel — frequently linked to long-term vascular damage.",
             relatedFactors: ["bp", "smoking", "cholesterol", "diabetes"]
         },
         dcm: {
-            title: "🩸 Diabetic Cardiomyopathy",
+            title: " Diabetic Cardiomyopathy",
             general: "Diabetic cardiomyopathy is heart muscle damage caused by prolonged high blood sugar, which leads to stiffening and scarring (fibrosis) of heart tissue over time.",
             relatedFactors: ["diabetes", "sugar", "diet"]
         }
@@ -119,7 +119,7 @@ es: {
     factorsIdentified: labelText => `Factores identificados: ${labelText}.`,
     and: " y ",
     evidenceStat: (value, unit) => `(Estadística: ${value}${unit} en México)`,
-    statLine: (label, value, unit) => `🇲🇽 En México: ${label} es ${value}${unit}.`,
+    statLine: (label, value, unit) => ` En México: ${label} es ${value}${unit}.`,
     tapOutcomePrefix: "→ Esto ",
     projectionTip: (score, projectedScore, maxScore, pct) =>
         `📉 Si actúas en todo esto, tu puntuación de factores de riesgo podría bajar de ${score} a aproximadamente ${projectedScore} de ${maxScore} (~${pct}%).`,
@@ -147,41 +147,41 @@ es: {
     },
 
     tipsData: [
-        { threshold: 0, action: "🏃 Haz al menos 150 minutos de ejercicio por semana.", outcome: "puede reducir la presión arterial en reposo y fortalecer tu corazón en pocos meses.", pointsReducible: 3 },
-        { threshold: 11, action: "🥤 Reduce las bebidas azucaradas y los alimentos procesados.", outcome: "ayuda a estabilizar el azúcar en sangre y reduce la tensión sobre tus vasos sanguíneos en cuestión de semanas.", pointsReducible: 4 },
-        { threshold: 23, action: "🩺 Monitorea tu presión arterial con regularidad.", outcome: "detecta picos peligrosos a tiempo, antes de que causen daño duradero.", pointsReducible: 3 },
-        { threshold: 23, action: "🩸 Monitorea tus niveles de glucosa si tienes diabetes o prediabetes.", outcome: "desacelera el daño vascular relacionado con la cardiomiopatía diabética.", pointsReducible: 4 },
-        { threshold: 36, action: "👨‍⚕️ Programa una evaluación médica con un profesional de la salud.", outcome: "te brinda un panorama de riesgo personalizado y clínicamente preciso más allá de este análisis.", pointsReducible: 0 }
+        { threshold: 0, action: " Haz al menos 150 minutos de ejercicio por semana.", outcome: "puede reducir la presión arterial en reposo y fortalecer tu corazón en pocos meses.", pointsReducible: 3 },
+        { threshold: 11, action: " Reduce las bebidas azucaradas y los alimentos procesados.", outcome: "ayuda a estabilizar el azúcar en sangre y reduce la tensión sobre tus vasos sanguíneos en cuestión de semanas.", pointsReducible: 4 },
+        { threshold: 23, action: " Monitorea tu presión arterial con regularidad.", outcome: "detecta picos peligrosos a tiempo, antes de que causen daño duradero.", pointsReducible: 3 },
+        { threshold: 23, action: " Monitorea tus niveles de glucosa si tienes diabetes o prediabetes.", outcome: "desacelera el daño vascular relacionado con la cardiomiopatía diabética.", pointsReducible: 4 },
+        { threshold: 36, action: " Programa una evaluación médica con un profesional de la salud.", outcome: "te brinda un panorama de riesgo personalizado y clínicamente preciso más allá de este análisis.", pointsReducible: 0 }
     ],
 
     answerBasedTips: {
-        smoking: { action: "🚭 Considera un plan para dejar de fumar.", outcome: "incluso una reducción parcial disminuye significativamente tu riesgo de infarto y accidente cerebrovascular con el tiempo." },
-        diet: { action: "🍽️ Intenta reemplazar 2–3 comidas a la semana con opciones caseras.", outcome: "reduce tu consumo de exceso de sodio y grasas poco saludables que sobrecargan tu corazón." },
-        sugar: { action: "🥤 Reduce específicamente las bebidas azucaradas — incluso cambiar una de cada dos por agua ayuda.", outcome: "reduce los picos de azúcar en sangre relacionados con la resistencia a la insulina." },
-        activitySitting: { action: "🧍 Ponte de pie o camina unos minutos cada hora.", outcome: "contrarresta parte del riesgo cardiovascular asociado con estar sentado por periodos prolongados." },
-        exerciseLow: { action: "🚶 Comienza con caminatas cortas varias veces por semana y aumenta gradualmente.", outcome: "suele ser más sostenible que una rutina intensa y aun así reduce significativamente el riesgo." },
-        diabetes: { action: "🩸 Combina cambios en la dieta con monitoreo regular de glucosa.", outcome: "ayuda a detectar y corregir los picos de azúcar en sangre antes de que causen daño vascular duradero." },
-        bp: { action: "🧂 Reduce el consumo de sodio, especialmente de alimentos procesados y comida callejera.", outcome: "puede reducir notablemente la presión arterial en pocas semanas." }
+        smoking: { action: " Considera un plan para dejar de fumar.", outcome: "incluso una reducción parcial disminuye significativamente tu riesgo de infarto y accidente cerebrovascular con el tiempo." },
+        diet: { action: " Intenta reemplazar 2–3 comidas a la semana con opciones caseras.", outcome: "reduce tu consumo de exceso de sodio y grasas poco saludables que sobrecargan tu corazón." },
+        sugar: { action: " Reduce específicamente las bebidas azucaradas — incluso cambiar una de cada dos por agua ayuda.", outcome: "reduce los picos de azúcar en sangre relacionados con la resistencia a la insulina." },
+        activitySitting: { action: " Ponte de pie o camina unos minutos cada hora.", outcome: "contrarresta parte del riesgo cardiovascular asociado con estar sentado por periodos prolongados." },
+        exerciseLow: { action: " Comienza con caminatas cortas varias veces por semana y aumenta gradualmente.", outcome: "suele ser más sostenible que una rutina intensa y aun así reduce significativamente el riesgo." },
+        diabetes: { action: " Combina cambios en la dieta con monitoreo regular de glucosa.", outcome: "ayuda a detectar y corregir los picos de azúcar en sangre antes de que causen daño vascular duradero." },
+        bp: { action: " Reduce el consumo de sodio, especialmente de alimentos procesados y comida callejera.", outcome: "puede reducir notablemente la presión arterial en pocas semanas." }
     },
 
     conditionData: {
         cad: {
-            title: "❤️ Enfermedad de las Arterias Coronarias",
+            title: " Enfermedad de las Arterias Coronarias",
             general: "La enfermedad de las arterias coronarias se desarrolla cuando se acumula placa dentro de las arterias que suministran sangre al corazón, estrechándolas gradualmente y restringiendo el flujo sanguíneo.",
             relatedFactors: ["cholesterol", "bp", "smoking", "diet", "bmi"]
         },
         hf: {
-            title: "🫀 Insuficiencia Cardíaca",
+            title: " Insuficiencia Cardíaca",
             general: "La insuficiencia cardíaca ocurre cuando el músculo del corazón se debilita o se vuelve demasiado rígido para bombear sangre eficientemente, a menudo como resultado de una tensión prolongada por otras condiciones.",
             relatedFactors: ["bp", "bmi", "exercise", "activity", "diabetes"]
         },
         stroke: {
-            title: "🧠 Accidente Cerebrovascular",
+            title: "Accidente Cerebrovascular",
             general: "Un accidente cerebrovascular ocurre cuando se interrumpe el flujo sanguíneo a una parte del cerebro, a menudo debido a un vaso sanguíneo bloqueado o roto — frecuentemente relacionado con daño vascular a largo plazo.",
             relatedFactors: ["bp", "smoking", "cholesterol", "diabetes"]
         },
         dcm: {
-            title: "🩸 Miocardiopatía Diabética",
+            title: " Miocardiopatía Diabética",
             general: "La miocardiopatía diabética es un daño al músculo cardíaco causado por el azúcar en sangre elevado de forma prolongada, lo que provoca rigidez y cicatrización (fibrosis) del tejido cardíaco con el tiempo.",
             relatedFactors: ["diabetes", "sugar", "diet"]
         }
@@ -597,7 +597,7 @@ function renderMexicoStat(lang) {
     const gender = answers.gender;
 
     card.innerHTML = `
-        <h4>${t.mexicoTitle || "🇲🇽 How Your Risk Factors Compare in Mexico"}</h4>
+        <h4>${t.mexicoTitle || " How Your Risk Factors Compare in Mexico"}</h4>
         ${statsToShow.map(({ stat }) => {
 
             const g = getGenderedStat(stat, gender);
@@ -610,14 +610,14 @@ function renderMexicoStat(lang) {
             <div class="mexico-stat-block">
                 <p class="mexico-stat-label">${g.label}</p>
                 <div class="stat-bar-row">
-                    <span class="stat-bar-tag">${t.mexico || "🇲🇽 Mexico"}</span>
+                    <span class="stat-bar-tag">${t.mexico || " Mexico"}</span>
                     <div class="stat-bar-track"><div class="stat-bar-fill mexico" style="width:${(g.mx / maxVal) * 100}%"></div></div>
                     <span>${g.mx}${unitSuffix}</span>
                 </div>
                 ${g.mxNote ? `<p class="mexico-stat-unitnote">${g.mxNote}</p>` : ""}
                 ${g.gl !== undefined ? `
                 <div class="stat-bar-row">
-                    <span class="stat-bar-tag">${t.global || "🌍 Global"}</span>
+                    <span class="stat-bar-tag">${t.global || " Global"}</span>
                     <div class="stat-bar-track"><div class="stat-bar-fill global" style="width:${(g.gl / maxVal) * 100}%"></div></div>
                     <span>${g.gl}${unitSuffix}</span>
                 </div>
