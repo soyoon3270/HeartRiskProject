@@ -721,3 +721,94 @@ function renderResultsPage() {
 window.renderResultsPage = renderResultsPage;
 
 renderResultsPage();
+async function generatePDF() {
+
+    const btn = event.target;
+    const originalText = btn.textContent;
+    btn.textContent = "⏳ Generating PDF...";
+    btn.disabled = true;
+
+    // PDF에 안 들어갈 요소들 임시로 숨기기
+    const hideEls = document.querySelectorAll(".language-switch, #retakeButton, #backButton, .background-circle, .flip-hint");
+    hideEls.forEach(el => el.style.visibility = "hidden");
+
+    // Flip card는 뒷면(mechanism)까지 다 보이게 임시로 펼치기
+    const flipInners = document.querySelectorAll(".flip-card-inner");
+    flipInners.forEach(el => {
+        el.style.transform = "none";
+        el.style.position = "static";
+        el.style.height = "auto";
+    });
+    const flipBacks = document.querySelectorAll(".flip-card-back");
+    flipBacks.forEach(el => {
+        el.style.position = "static";
+        el.style.transform = "none";
+        el.style.marginTop = "10px";
+    });
+
+    // 아코디언 전부 펼치기
+    const accBodies = document.querySelectorAll(".accordion-body");
+    accBodies.forEach(el => {
+        el.style.maxHeight = "none";
+    });
+
+    const target = document.querySelector(".container");
+
+    try {
+
+        const canvas = await html2canvas(target, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        });
+
+        const imgData = canvas.toDataURL("image/png");
+        const { jsPDF } = window.jspdf;
+
+        const pdf = new jsPDF("p", "mm", "a4");
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+
+        const imgWidth = pageWidth;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        let heightLeft = imgHeight;
+        let position = 0;
+
+        pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        while (heightLeft > 0) {
+            position = heightLeft - imgHeight;
+            pdf.addPage();
+            pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+        }
+
+        pdf.save(`HeartGuard-Result-${new Date().toISOString().slice(0,10)}.pdf`);
+
+    } catch (err) {
+        console.error("PDF generation failed:", err);
+        alert("Something went wrong generating the PDF. Please try again.");
+    } finally {
+        // 원래 상태로 복구
+        hideEls.forEach(el => el.style.visibility = "");
+        flipInners.forEach(el => {
+            el.style.transform = "";
+            el.style.position = "";
+            el.style.height = "";
+        });
+        flipBacks.forEach(el => {
+            el.style.position = "";
+            el.style.transform = "";
+            el.style.marginTop = "";
+        });
+        accBodies.forEach(el => {
+            el.style.maxHeight = "";
+        });
+
+        btn.textContent = originalText;
+        btn.disabled = false;
+    }
+
+}
