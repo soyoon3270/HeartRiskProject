@@ -721,7 +721,7 @@ function renderResultsPage() {
 window.renderResultsPage = renderResultsPage;
 
 renderResultsPage();
-async function generatePDF() {
+async function downloadResultsPDF() {
 
     const btn = event.target;
     const originalText = btn.textContent;
