@@ -34,39 +34,42 @@ body{
     width:420px;
 }
 
-/* Floating Tags */
+.heart-container{
+    position:relative;
+    display:inline-block;
+}
+
 .tag{
     position:absolute;
     background:white;
     padding:12px 18px;
-    border-radius:30px;
+    border-radius:999px;
     box-shadow:0 10px 25px rgba(0,0,0,.08);
     font-weight:600;
+    white-space:nowrap;
+    z-index:2;
 }
 
-.oxygen{
-    top:30px;
-    left:-80px;
-}
-
+/* 심장 둘레에 비대칭으로 자연스럽게 흩어진 배치.
+   퍼센트 기반이라 .heart 크기가 줄어들어도 같은 비율로 따라 축소됨 */
 .pressure{
-    right:-70px;
-    top:170px;
+    top:10%;
+    right:-4%;
 }
 
 .sugar{
-    left:-70px;
-    bottom:180px;
+    top:48%;
+    left:-8%;
 }
 
 .bmi{
-    right:-30px;
-    bottom:40px;
+    bottom:16%;
+    right:0%;
 }
 
 .smoking{
-    left:30px;
-    bottom:-40px;
+    bottom:0%;
+    left:18%;
 }
 
 /* RIGHT */
@@ -279,5 +282,94 @@ body{
     .sneak-card{
         flex-direction:column;
         text-align:center;
+    }
+}
+/* ===== Mobile ===== */
+@media (max-width:900px){
+    .hero{
+        flex-direction:column;
+        padding:60px 30px 40px;
+        min-height:auto;
+        gap:50px;
+    }
+    .hero-left, .hero-right{
+        width:100%;
+    }
+    .hero-right{
+        text-align:center;
+    }
+
+    /* 절대위치 태그들을 심장 아래 줄바꿈되는 칩 형태로 전환 */
+    .heart-container{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+    .tag{
+        position:static;
+        margin:4px;
+        display:inline-flex;
+    }
+    .heart{
+        width:240px;
+    }
+
+    .hero-right h1{
+        font-size:40px;
+    }
+    .hero-right p{
+        font-size:18px;
+        margin:25px 0;
+    }
+    .trust-badges{
+        justify-content:center;
+    }
+    .hero-right button{
+        width:100%;
+        padding:16px 20px;
+        font-size:18px;
+    }
+
+    .cards{
+        flex-direction:column;
+        align-items:center;
+        padding:50px 25px;
+    }
+    .card{
+        width:100%;
+        max-width:400px;
+    }
+
+    .sneak-peek{
+        padding:40px 25px 10px;
+    }
+    .sneak-peek h2{
+        font-size:28px;
+    }
+}
+
+@media (max-width:480px){
+    .hero-right h1{
+        font-size:32px;
+    }
+    .heart{
+        width:190px;
+    }
+    .language-switch{
+        top:16px;
+        right:16px;
+        gap:8px;
+    }
+    .language-switch button{
+        padding:8px 14px;
+        font-size:14px;
+    }
+    .sneak-score{
+        width:110px;
+        height:110px;
+        font-size:28px;
+    }
+    .sneak-card{
+        padding:25px;
     }
 }

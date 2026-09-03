@@ -227,3 +227,41 @@ button:hover{
     background:#22346b;
     color:white;
 }
+@media (max-width:700px){
+    .content{
+        padding:50px 20px;
+    }
+    h1{
+        font-size:34px;
+    }
+    .intro{
+        font-size:17px;
+    }
+    .card{
+        padding:20px;
+    }
+    .card h3{
+        font-size:20px;
+    }
+    .card p{
+        font-size:15px;
+    }
+    .notice{
+        font-size:15px;
+        padding:16px;
+    }
+    button{
+        width:100%;
+        padding:16px 20px;
+        font-size:18px;
+    }
+    .language-switch{
+        top:16px;
+        right:16px;
+        gap:8px;
+    }
+    .language-switch button{
+        padding:8px 14px;
+        font-size:14px;
+    }
+}

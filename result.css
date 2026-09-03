@@ -919,3 +919,75 @@ transform:translateY(-6px);
     background:#22346b;
     color:white;
 }
+@media (max-width:700px){
+    .container{
+        padding:50px 18px;
+    }
+    h1{
+        font-size:32px;
+        margin-bottom:25px;
+    }
+    .risk-circle{
+        width:140px;
+        height:140px;
+        font-size:42px;
+    }
+    #riskLevel{
+        font-size:26px;
+    }
+    .description{
+        font-size:17px;
+    }
+    .condition-grid{
+        grid-template-columns:1fr;
+    }
+    .donut-chart{
+        width:170px;
+        height:170px;
+    }
+    .donut-wrapper{
+        gap:20px;
+    }
+    .analysis, .summary, .donut-chart-section,
+    .recommendations, .factor-snapshot, .mexico-stat-card{
+        padding:24px;
+        border-radius:18px;
+    }
+    .analysis h3, .summary h3, .conditions h3{
+        font-size:22px;
+    }
+    button{
+        width:100%;
+        padding:16px 20px;
+        font-size:18px;
+    }
+    #retakeButton{
+        margin-right:0;
+    }
+    .language-switch{
+        top:16px;
+        right:16px;
+        gap:8px;
+    }
+    .language-switch button{
+        padding:8px 14px;
+        font-size:14px;
+    }
+    /* 모바일에서 텍스트가 더 많이 줄바꿈되므로 앞/뒷면이 잘리지 않게 여유 확보 */
+    .flip-card-inner{
+        min-height:260px;
+    }
+}
+
+@media (max-width:420px){
+    .risk-circle{
+        width:120px;
+        height:120px;
+        font-size:36px;
+    }
+    .stat-bar-tag,
+    .mexico-stat-card .stat-bar-tag{
+        width:60px;
+        font-size:12px;
+    }
+}

@@ -48,3 +48,15 @@
     border-top:1px solid rgba(255,255,255,.1);
     padding-top:18px;
 }
+@media (max-width:480px){
+    .site-footer{
+        padding:35px 20px 20px;
+        margin-top:40px;
+    }
+    .footer-brand{
+        font-size:17px;
+    }
+    .footer-contact, .footer-privacy, .footer-disclaimer{
+        font-size:13px;
+    }
+}
