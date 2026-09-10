@@ -60,3 +60,10 @@
         font-size:13px;
     }
 }
+.footer-link{
+    color:#c9d3ea;
+    text-decoration:underline;
+}
+.footer-link:hover{
+    color:white;
+}

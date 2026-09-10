@@ -179,7 +179,10 @@ window.translations = {
         backHome: "Back Home",
         privacy: "🔒 Your privacy matters to us. All responses are confidential and are never shared, sold, or disclosed to third parties.",
         disclaimer: "This tool is for educational purposes only and does not replace professional medical diagnosis or treatment.",
-        dataSource: "Statistics sourced from WORLD HEART FEDERATION."
+        dataSource: "Statistics sourced from WORLD HEART FEDERATION.",
+        resultDescription: "Your assessment indicates several lifestyle and health factors that may influence your future cardiovascular risk.",
+        scoreDisclaimer: "This score is based on the risk factors identified from your answers. It does not estimate your probability of developing disease — it's meant to raise awareness of these factors and how to help prevent or improve them.",
+        riskLow: "Low", riskMild: "Mild", riskModerate: "Moderate", riskHigh: "High",
     },
     es: {
         hero_title: "PROTEGE TU<br>CORAZÓN HOY",
@@ -356,7 +359,10 @@ window.translations = {
         backHome: "Volver al Inicio",
         privacy: "🔒 Tu privacidad es importante para nosotros. Todas las respuestas son confidenciales y nunca se comparten, venden ni divulgan a terceros.",
         disclaimer: "Esta herramienta tiene fines educativos y no sustituye el diagnóstico ni el tratamiento médico profesional.",
-        dataSource: "Estadísticas obtenidas de WORLD HEART FEDERATION."
+        dataSource: "Estadísticas obtenidas de WORLD HEART FEDERATION.",
+        resultDescription: "Tu evaluación indica varios factores de estilo de vida y salud que pueden influir en tu riesgo cardiovascular futuro.",
+        scoreDisclaimer: "Esta puntuación se basa en los factores de riesgo identificados en tus respuestas. No estima tu probabilidad de desarrollar una enfermedad — su propósito es aumentar la conciencia sobre estos factores y cómo ayudar a prevenirlos o mejorarlos.",
+        riskLow: "Bajo", riskMild: "Leve", riskModerate: "Moderado", riskHigh: "Alto",
     }
 };
 
@@ -384,6 +390,6 @@ function setLanguage(lang) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const saved = localStorage.getItem("heartguardLang") || "en";
+    const saved = localStorage.getItem("heartguardLang") || "es";
     setLanguage(saved);
 });

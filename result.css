@@ -991,3 +991,8 @@ transform:translateY(-6px);
         font-size:12px;
     }
 }
+.summary p, .analysis > p, .highlight-card p, .flip-card-back p, .accordion-body p{
+    margin-bottom:14px;
+}
+.consequence-note{ margin-top:12px; }
+.mexico-stat-block{ margin-bottom:22px; }

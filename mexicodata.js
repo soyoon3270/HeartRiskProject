@@ -42,6 +42,7 @@ label: "Mean Dietary Sodium Intake (age 25+, men)",
 mexico: 3.6,
 global: 3.6,
 unit: "g/day",
+unitNote:"(roughly one teaspoon of salt is about 6g — this reflects total sodium from all foods, not just added salt)",
 note: "High sodium intake — often from processed and street foods — directly raises blood pressure."
 },
 

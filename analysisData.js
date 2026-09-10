@@ -6,36 +6,14 @@ window.analysisData = {
 en: {
 
 age: {
-under30: {
-title: "Age: Under 30",
-average: "Cardiovascular disease is relatively uncommon in this age group.",
-explanation: "Although the short-term risk is generally low, developing healthy habits early—such as regular exercise, a balanced diet, and avoiding smoking—helps reduce lifetime cardiovascular risk."
+age:{
+    "under30":{ title:"Age: Under 30", average:"Cardiovascular disease is relatively uncommon in this age group.", explanation:"Although the short-term risk is generally low, developing healthy habits early helps reduce lifetime cardiovascular risk." },
+    "30-39":{ title:"Age: 30–39", average:"Cardiovascular risk begins to increase gradually during adulthood.", explanation:"Risk factors like elevated cholesterol or high blood pressure may start developing silently. Routine health screenings become increasingly important." },
+    "40-49":{ title:"Age: 40–49", average:"Heart disease becomes noticeably more common after age 40.", explanation:"Maintaining healthy blood pressure, cholesterol, and body weight can significantly lower future cardiovascular risk." },
+    "50-59":{ title:"Age: 50–59", average:"Many cardiovascular events begin occurring more frequently during this decade.", explanation:"Lifestyle choices continue to have a major influence. Regular medical checkups are strongly recommended." },
+    "60-69":{ title:"Age: 60–69", average:"Older adults experience substantially higher rates of cardiovascular disease.", explanation:"Arteries naturally stiffen with age, increasing blood pressure and cardiovascular strain. Healthy habits remain highly beneficial." },
+    "70plus":{ title:"Age: 70+", average:"Cardiovascular disease becomes increasingly common in this age group.", explanation:"Age is a major non-modifiable risk factor, but treatment adherence and lifestyle choices continue to improve long-term outcomes." }
 },
-"30-39": {
-title: "Age: 30–39",
-average: "Cardiovascular risk begins to increase gradually during adulthood.",
-explanation: "Risk factors like elevated cholesterol or high blood pressure may start developing silently. Routine health screenings become increasingly important."
-},
-"40-49": {
-title: "Age: 40–49",
-average: "Heart disease becomes noticeably more common after age 40.",
-explanation: "Maintaining healthy blood pressure, cholesterol, and body weight can significantly lower future cardiovascular risk."
-},
-"50-59": {
-title: "Age: 50–59",
-average: "Many cardiovascular events begin occurring more frequently during this decade.",
-explanation: "Lifestyle choices continue to have a major influence. Regular medical checkups are strongly recommended."
-},
-"60-69": {
-title: "Age: 60–69",
-average: "Older adults experience substantially higher rates of cardiovascular disease.",
-explanation: "Arteries naturally stiffen with age, increasing blood pressure and cardiovascular strain. Healthy habits remain highly beneficial."
-},
-"70plus": {
-title: "Age: 70+",
-average: "Cardiovascular disease becomes increasingly common in this age group.",
-explanation: "Age is a major non-modifiable risk factor, but treatment adherence and lifestyle choices continue to improve long-term outcomes."
-}
 },
 
 bmi: {
@@ -548,6 +526,14 @@ future: "Knowing this risk earlier allows for more proactive monitoring and life
 },
 
 es: {
+age:{
+    "under30":{ title:"Edad: Menos de 30", average:"La enfermedad cardiovascular es relativamente poco común en este grupo de edad.", explanation:"Aunque el riesgo a corto plazo es generalmente bajo, desarrollar hábitos saludables temprano ayuda a reducir el riesgo cardiovascular de por vida." },
+    "30-39":{ title:"Edad: 30–39", average:"El riesgo cardiovascular comienza a aumentar gradualmente durante la adultez.", explanation:"Factores de riesgo como colesterol elevado o presión arterial alta pueden empezar a desarrollarse silenciosamente. Los chequeos médicos rutinarios se vuelven cada vez más importantes." },
+    "40-49":{ title:"Edad: 40–49", average:"La enfermedad cardíaca se vuelve notablemente más común después de los 40 años.", explanation:"Mantener una presión arterial, colesterol y peso corporal saludables puede reducir significativamente el riesgo cardiovascular futuro." },
+    "50-59":{ title:"Edad: 50–59", average:"Muchos eventos cardiovasculares comienzan a ocurrir con mayor frecuencia durante esta década.", explanation:"Las decisiones de estilo de vida siguen teniendo una influencia importante. Se recomiendan encarecidamente los chequeos médicos regulares." },
+    "60-69":{ title:"Edad: 60–69", average:"Los adultos mayores experimentan tasas sustancialmente más altas de enfermedad cardiovascular.", explanation:"Las arterias se endurecen naturalmente con la edad, aumentando la presión arterial y la tensión cardiovascular. Los hábitos saludables siguen siendo muy beneficiosos." },
+    "70plus":{ title:"Edad: 70+", average:"La enfermedad cardiovascular se vuelve cada vez más común en este grupo de edad.", explanation:"La edad es un factor de riesgo no modificable importante, pero la adherencia al tratamiento y las decisiones de estilo de vida continúan mejorando los resultados a largo plazo." }
+},
 bmi: {
 mechanism: "El exceso de grasa corporal aumenta la carga de trabajo del corazón y eleva la presión arterial, el colesterol y el azúcar en sangre — todo lo cual sobrecarga el sistema cardiovascular con el tiempo.",
 future: "Incluso una reducción modesta de peso (5–10%) puede disminuir la presión arterial y mejorar los niveles de colesterol en pocos meses."

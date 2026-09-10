@@ -7,7 +7,7 @@ const answers = JSON.parse(localStorage.getItem("heartguardAnswers") || "{}");
 // NOTE: this file must load AFTER language.js so window.translations exists.
 // ==========================
 function getCurrentLang() {
-    return localStorage.getItem("heartguardLang") || "en";
+    return localStorage.getItem("heartguardLang") || "es";
 }
 
 // ==========================
@@ -26,8 +26,14 @@ en: {
     evidenceStat: (value, unit) => `(Statistic: ${value}${unit} in Mexico)`,
     statLine: (label, value, unit) => ` In Mexico: ${label} is ${value}${unit}.`,
     tapOutcomePrefix: "→ This ",
-    projectionTip: (score, projectedScore, maxScore, pct) =>
-        `📉 If you act on all of these, your risk factor score could drop from ${score} to approximately ${projectedScore} out of ${maxScore} (~${pct}%).`,
+
+    // Two-tier prevention projection: "quick wins this month" vs "full plan over time"
+    projectionTier1: (fromScore, toScore, level) =>
+        `📅 In the first month, focusing on the biggest changes could bring your score from ${fromScore} to about ${toScore} — into the ${level} range.`,
+    projectionTierFull: (toScore, level) =>
+        `📉 Sticking with all of these over time could bring it down further to approximately ${toScore} — into the ${level} range.`,
+    projectionSingleTier: (fromScore, toScore, level) =>
+        `📉 If you act on these, your score could drop from ${fromScore} to about ${toScore} — into the ${level} range.`,
 
     donutLabels: {
         bmi: "BMI",
@@ -64,7 +70,9 @@ en: {
         diet: { action: " Try replacing 2–3 meals a week with home-cooked options.", outcome: "reduces your intake of excess sodium and unhealthy fats that strain your heart." },
         sugar: { action: " Cut back on sugary drinks specifically — even switching every other one to water helps.", outcome: "reduces blood sugar spikes linked to insulin resistance." },
         activitySitting: { action: " Stand or walk for a few minutes every hour.", outcome: "offsets some of the cardiovascular risk associated with prolonged sitting." },
-        exerciseLow: { action: " Start with short walks a few times a week and build up gradually.", outcome: "is often more sustainable than an intense routine and still meaningfully lowers risk." },
+        exerciseLow: { action: " Start with short walks a few times a week and build up gradually.",outcome: "building activity gradually can make regular exercise easier to maintain." },
+        exerciseModerate: {action: " Add one or two extra active sessions to your week.",outcome: "increasing your weekly activity can further improve cardiovascular fitness and help support healthy blood pressure."},
+        exerciseHigh: {action: " Keep your exercise routine consistent and include both aerobic and strength-based activities.",outcome: "a varied routine helps maintain cardiovascular fitness, muscle strength, and overall heart health."},
         diabetes: { action: " Pair diet changes with regular glucose monitoring.", outcome: "helps catch and correct blood sugar spikes before they cause lasting vascular damage." },
         bp: { action: " Reduce sodium intake, especially from processed and street food.", outcome: "can noticeably lower blood pressure within a few weeks." }
     },
@@ -109,6 +117,7 @@ en: {
         high: `Your results place you in the <strong>High Risk</strong> range. A number of factors from your answers are combining to significantly raise your cardiovascular risk.`,
         factorSentence: listText => ` The factors contributing most to your score are <strong>${listText}</strong>.`,
         noFactor: ` No single factor stood out as a major driver — your risk is spread fairly evenly across smaller contributors.`,
+        formerSmokerNote: " As a former smoker, your risk from smoking-related conditions may still be somewhat higher than someone who never smoked, even though quitting has already lowered your risk.",
         closing: ` The sections below break down why each factor matters, how it can lead to heart disease, and specific steps you can take to lower your risk.`
     }
 }, // end en
@@ -121,8 +130,13 @@ es: {
     evidenceStat: (value, unit) => `(Estadística: ${value}${unit} en México)`,
     statLine: (label, value, unit) => ` En México: ${label} es ${value}${unit}.`,
     tapOutcomePrefix: "→ Esto ",
-    projectionTip: (score, projectedScore, maxScore, pct) =>
-        `📉 Si actúas en todo esto, tu puntuación de factores de riesgo podría bajar de ${score} a aproximadamente ${projectedScore} de ${maxScore} (~${pct}%).`,
+
+    projectionTier1: (fromScore, toScore, level) =>
+        `📅 En el primer mes, enfocarte en los cambios más grandes podría bajar tu puntuación de ${fromScore} a aproximadamente ${toScore} — dentro del rango de ${level}.`,
+    projectionTierFull: (toScore, level) =>
+        `📉 Mantener todos estos cambios con el tiempo podría bajarla aún más, a aproximadamente ${toScore} — dentro del rango de ${level}.`,
+    projectionSingleTier: (fromScore, toScore, level) =>
+        `📉 Si actúas en esto, tu puntuación podría bajar de ${fromScore} a aproximadamente ${toScore} — dentro del rango de ${level}.`,
 
     donutLabels: {
         bmi: "IMC",
@@ -159,7 +173,19 @@ es: {
         diet: { action: " Intenta reemplazar 2–3 comidas a la semana con opciones caseras.", outcome: "reduce tu consumo de exceso de sodio y grasas poco saludables que sobrecargan tu corazón." },
         sugar: { action: " Reduce específicamente las bebidas azucaradas — incluso cambiar una de cada dos por agua ayuda.", outcome: "reduce los picos de azúcar en sangre relacionados con la resistencia a la insulina." },
         activitySitting: { action: " Ponte de pie o camina unos minutos cada hora.", outcome: "contrarresta parte del riesgo cardiovascular asociado con estar sentado por periodos prolongados." },
-        exerciseLow: { action: " Comienza con caminatas cortas varias veces por semana y aumenta gradualmente.", outcome: "suele ser más sostenible que una rutina intensa y aun así reduce significativamente el riesgo." },
+       exerciseLow: {
+    action: " Comienza con caminatas cortas varias veces por semana y aumenta gradualmente.",
+    outcome: "aumentar la actividad poco a poco puede hacer que sea más fácil mantener el ejercicio de forma regular."
+},
+
+exerciseModerate: {
+    action: " Agrega una o dos sesiones adicionales de actividad a tu semana.",
+    outcome: "aumentar tu actividad semanal puede mejorar aún más tu condición cardiovascular y ayudar a mantener una presión arterial saludable."
+},
+
+exerciseHigh: {
+    action: " Mantén tu rutina de ejercicio y combina actividades aeróbicas con ejercicios de fuerza.",
+    outcome: "una rutina variada ayuda a mantener la condición cardiovascular, la fuerza muscular y la salud general del corazón."},
         diabetes: { action: " Combina cambios en la dieta con monitoreo regular de glucosa.", outcome: "ayuda a detectar y corregir los picos de azúcar en sangre antes de que causen daño vascular duradero." },
         bp: { action: " Reduce el consumo de sodio, especialmente de alimentos procesados y comida callejera.", outcome: "puede reducir notablemente la presión arterial en pocas semanas." }
     },
@@ -204,6 +230,7 @@ es: {
         high: `Tus resultados te ubican en el rango de <strong>Riesgo Alto</strong>. Varios factores de tus respuestas se combinan para elevar significativamente tu riesgo cardiovascular.`,
         factorSentence: listText => ` Los factores que más contribuyen a tu puntuación son <strong>${listText}</strong>.`,
         noFactor: ` Ningún factor individual se destacó como un motivo principal — tu riesgo está distribuido de manera bastante uniforme entre contribuyentes menores.`,
+        formerSmokerNote: " Como exfumador(a), tu riesgo relacionado con condiciones asociadas al tabaquismo puede seguir siendo un poco más alto que el de alguien que nunca fumó, aunque dejar de fumar ya ha reducido tu riesgo.",
         closing: ` Las secciones a continuación explicarán por qué cada factor es importante, cómo puede contribuir a una enfermedad cardíaca y qué pasos específicos puedes tomar para reducir tu riesgo.`
     }
 } // end es
@@ -236,11 +263,23 @@ const AVG_SCORE = 15;
 // ==========================
 // Risk classification (language-independent thresholds)
 // ==========================
-function getRiskBucket() {
-    if (score <= 12) return { key: "lowRisk", color: "#4CAF50" };
-    if (score <= 24) return { key: "mildRisk", color: "#FBC02D" };
-    if (score <= 38) return { key: "moderateRisk", color: "#F57C00" };
+function getRiskBucketForScore(s) {
+    if (s <= 12) return { key: "lowRisk", color: "#4CAF50" };
+    if (s <= 24) return { key: "mildRisk", color: "#FBC02D" };
+    if (s <= 38) return { key: "moderateRisk", color: "#F57C00" };
     return { key: "highRisk", color: "#D32F2F" };
+}
+
+function getRiskBucket() {
+    return getRiskBucketForScore(score);
+}
+
+// 이모지 없이 "Mild Risk" 같은 순수 레벨 텍스트만 뽑아주는 헬퍼
+function getLevelLabel(lang, forScore) {
+    const t = (window.translations && window.translations[lang]) || {};
+    const bucket = getRiskBucketForScore(forScore);
+    const raw = t[bucket.key] || bucket.key;
+    return raw.replace(/^[^\w]+/, "").trim();
 }
 
 // ==========================
@@ -270,7 +309,7 @@ function renderLanguageDependentBasics(lang) {
 }
 
 // ==========================
-// Prevention tips (enhanced with outcomes + projected score)
+// Prevention tips (enhanced with outcomes + two-tier projected score)
 // ==========================
 function renderPreventionTips(lang) {
     const s = resultStrings[lang];
@@ -291,9 +330,13 @@ function renderPreventionTips(lang) {
     if (answers.activity === "sitting") {
         answerBasedTips.push(s.answerBasedTips.activitySitting);
     }
-    if (answers.exercise === "0" || answers.exercise === "1") {
-        answerBasedTips.push(s.answerBasedTips.exerciseLow);
-    }
+  if (answers.exercise === "0" || answers.exercise === "1") {
+    answerBasedTips.push(s.answerBasedTips.exerciseLow);
+} else if (answers.exercise === "3") {
+    answerBasedTips.push(s.answerBasedTips.exerciseModerate);
+} else if (answers.exercise === "5") {
+    answerBasedTips.push(s.answerBasedTips.exerciseHigh);
+}
     if (answers.diabetes === "type2" || answers.diabetes === "prediabetes") {
         answerBasedTips.push(s.answerBasedTips.diabetes);
     }
@@ -304,14 +347,28 @@ function renderPreventionTips(lang) {
     const applicableTips = s.tipsData.filter(t => score >= t.threshold);
     const totalReducible = applicableTips.reduce((sum, t) => sum + t.pointsReducible, 0);
     const projectedScore = Math.max(0, score - totalReducible);
-    const projectedPct = Math.round((projectedScore / MAX_SCORE) * 100);
+
+    const earlyTips = applicableTips.filter(t => t.pointsReducible >= 3);
+    const earlyReducible = earlyTips.reduce((sum, t) => sum + t.pointsReducible, 0);
+    const earlyScore = Math.max(0, score - earlyReducible);
+
+    let projectionHTML = "";
+    if (totalReducible > 0) {
+        if (earlyReducible > 0 && projectedScore < earlyScore) {
+            const earlyLevel = getLevelLabel(lang, earlyScore);
+            const fullLevel = getLevelLabel(lang, projectedScore);
+            projectionHTML =
+                `<li class="tip-projection">${s.projectionTier1(score, earlyScore, earlyLevel)}<br>${s.projectionTierFull(projectedScore, fullLevel)}</li>`;
+        } else {
+            const fullLevel = getLevelLabel(lang, projectedScore);
+            projectionHTML = `<li class="tip-projection">${s.projectionSingleTier(score, projectedScore, fullLevel)}</li>`;
+        }
+    }
 
     preventionListEl.innerHTML =
         applicableTips.map(t => `<li><strong>${t.action}</strong><br><span class="tip-outcome">${s.tapOutcomePrefix}${t.outcome}</span></li>`).join("")
         + answerBasedTips.map(t => `<li><strong>${t.action}</strong><br><span class="tip-outcome">${s.tapOutcomePrefix}${t.outcome}</span></li>`).join("")
-        + (totalReducible > 0
-            ? `<li class="tip-projection">${s.projectionTip(score, projectedScore, MAX_SCORE, projectedPct)}</li>`
-            : "");
+        + projectionHTML;
 }
 
 // ==========================
@@ -320,7 +377,7 @@ function renderPreventionTips(lang) {
 function getDonutCategories(lang) {
     const s = resultStrings[lang];
     return [
-        { key: "bmi", label: s.donutLabels.bmi, color: "#4CAF50", good: answers.bmi === "healthy" },
+        { key: "bmi", label: `${s.donutLabels.bmi} (${answers.bmi || "—"})`, color: "#4CAF50", good: answers.bmi === "healthy" },
         { key: "diet", label: s.donutLabels.diet, color: "#F57C00", good: answers.diet === "homecooked" || answers.diet === "mostlyhome" },
         { key: "exercise", label: s.donutLabels.exercise, color: "#1E88E5", good: answers.exercise === "5" || answers.exercise === "3" },
         { key: "smoking", label: s.donutLabels.smoking, color: "#8E24AA", good: answers.smoking === "never" || answers.smoking === "former" },
@@ -552,6 +609,13 @@ function renderSummary(lang) {
     const s = resultStrings[lang].summary;
     const highlighted = window.highlightedFactors || [];
 
+    if (score === 0) {
+        summaryEl.innerHTML = (getCurrentLang() === "es")
+            ? "¡Excelente! Tu puntuación es 0 — tus respuestas no muestran factores de riesgo identificados. ¡Sigue así!"
+            : "Great news! Your score is 0 — your answers show no identified risk factors. Keep it up!";
+        return;
+    }
+
     let opening = "";
     if (score <= 12) opening = s.low;
     else if (score <= 24) opening = s.mild;
@@ -570,7 +634,12 @@ function renderSummary(lang) {
         factorSentence = s.noFactor;
     }
 
-    summaryEl.innerHTML = opening + factorSentence + s.closing;
+    let formerSmokerAddendum = "";
+    if (answers.smoking === "former" && s.formerSmokerNote) {
+        formerSmokerAddendum = s.formerSmokerNote;
+    }
+
+    summaryEl.innerHTML = opening + factorSentence + formerSmokerAddendum + s.closing;
 
 }
 
@@ -721,6 +790,10 @@ function renderResultsPage() {
 window.renderResultsPage = renderResultsPage;
 
 renderResultsPage();
+
+// ==========================
+// PDF export (screenshot-based via html2canvas + jsPDF)
+// ==========================
 async function downloadResultsPDF() {
 
     const btn = event.target;
