@@ -38,7 +38,7 @@ window.translations = {
         // --- about us page ---
         aboutBadge: " About HeartGuard",
         aboutH1: "Understand Your Heart Before You Begin",
-        aboutIntro: "HeartGuard was created to help people recognize cardiovascular risk before it becomes a crisis. Heart disease often develops silently for years, and by the time symptoms appear, significant damage may already be done. Our goal is simple: give people a quick, private way to understand their own risk factors and take action early.",
+        aboutIntro: "Cardiovascular disease is the leading cause of death worldwide. Many risk factors—including diabetes, high blood pressure, smoking, obesity, and high cholesterol—can silently damage the heart for years before symptoms appear.",
         whyBuiltTitle: " Why We Built This",
         whyBuiltText: "Most people underestimate their cardiovascular risk because it rarely announces itself. We built HeartGuard to close that gap — not by diagnosing disease, but by helping you see which everyday habits are quietly shaping your heart health, and what you can do about it starting today.",
         mexicoFocusTitle: " Focused on Mexico",
@@ -184,6 +184,7 @@ window.translations = {
         resultDescription: "Your assessment indicates several lifestyle and health factors that may influence your future cardiovascular risk.",
         scoreDisclaimer: "This score is based on the risk factors identified from your answers. It does not estimate your probability of developing disease — it's meant to raise awareness of these factors and how to help prevent or improve them.",
         riskLow: "Low", riskMild: "Mild", riskModerate: "Moderate", riskHigh: "High",
+        pdfButton: "📄 Download PDF Summary",
     },
     es: {
         hero_title: "PROTEGE TU<br>CORAZÓN HOY",
@@ -219,7 +220,7 @@ window.translations = {
         // --- about us page ---
         aboutBadge: " Sobre HeartGuard",
         aboutH1: "Comprende Tu Corazón Antes de Comenzar",
-        aboutIntro: "HeartGuard fue creado para ayudar a las personas a reconocer el riesgo cardiovascular antes de que se convierta en una crisis. Las enfermedades cardíacas a menudo se desarrollan silenciosamente durante años, y cuando aparecen los síntomas, el daño ya puede ser significativo. Nuestro objetivo es simple: dar a las personas una forma rápida y privada de entender sus propios factores de riesgo y actuar a tiempo.",
+        aboutIntro: "La enfermedad cardiovascular es la principal causa de muerte en el mundo. Muchos factores de riesgo —incluyendo la diabetes, la presión arterial alta, el tabaquismo, la obesidad y el colesterol alto— pueden dañar el corazón silenciosamente durante años antes de que aparezcan los síntomas.",
         whyBuiltTitle: " Por Qué Creamos Esto",
         whyBuiltText: "La mayoría de las personas subestiman su riesgo cardiovascular porque rara vez se manifiesta. Creamos HeartGuard para cerrar esa brecha — no para diagnosticar enfermedades, sino para ayudarte a ver qué hábitos cotidianos están afectando silenciosamente la salud de tu corazón, y qué puedes hacer al respecto desde hoy.",
         mexicoFocusTitle: " Enfocado en México",
@@ -365,6 +366,7 @@ window.translations = {
         scoreDisclaimer: "Esta puntuación se basa en los factores de riesgo identificados en tus respuestas. No estima tu probabilidad de desarrollar una enfermedad — su propósito es aumentar la conciencia sobre estos factores y cómo ayudar a prevenirlos o mejorarlos.",
         riskLow: "Bajo", riskMild: "Leve", riskModerate: "Moderado", riskHigh: "Alto",
         viewMethodology: "📋 Ver Metodología",
+        pdfButton: "📄 Descargar Resumen en PDF",
     }
 };
 
@@ -394,4 +396,19 @@ function setLanguage(lang) {
 document.addEventListener("DOMContentLoaded", () => {
     const saved = localStorage.getItem("heartguardLang") || "es";
     setLanguage(saved);
+});
+// Smart "back" button used on about-us.html and methodology.html:
+// returns to result.html if that's where the user came from, otherwise home.
+document.addEventListener("DOMContentLoaded", () => {
+    const backLink = document.getElementById("backLink");
+    if (!backLink) return;
+
+    const ref = document.referrer || "";
+    if (ref.includes("result.html")) {
+        backLink.href = "result.html";
+        backLink.title = "Back to your results";
+    } else {
+        backLink.href = "index.html";
+        backLink.title = "Back to home";
+    }
 });

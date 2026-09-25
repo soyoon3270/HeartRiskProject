@@ -198,6 +198,10 @@ document.getElementById("qJump").onclick = () => {
         showQuestion();
     }
 };
+const backToAboutBtn = document.getElementById("backToAboutBtn");
+if (backToAboutBtn) {
+    backToAboutBtn.style.display = currentQuestion === 0 ? "inline-block" : "none";
+}
 }
 
 // ==========================

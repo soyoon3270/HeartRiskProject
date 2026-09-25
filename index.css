@@ -290,14 +290,28 @@ body{
         flex-direction:column;
         padding:60px 30px 40px;
         min-height:auto;
-        gap:50px;
+        gap:2px;
+        text-align:center;   /* hero-right가 사라져도 정렬 유지되게 */
     }
-    .hero-left, .hero-right{
+
+    .hero-left{
         width:100%;
+        order:2;             /* 심장은 두 번째 */
     }
+
+    /* hero-right 박스 자체는 사라지고, 안의 요소들이 .hero의 직속 자식처럼 취급됨 */
     .hero-right{
-        text-align:center;
+        display:contents;
     }
+
+    .hero-right h1{
+        order:1;              /* 제목이 맨 위 */
+    }
+
+    .hero-right > *:not(h1){
+        order:3;               /* 문구(intro), 배지, 버튼 등 나머지는 심장 다음 */
+    }
+
 
     /* 절대위치 태그들을 심장 아래 줄바꿈되는 칩 형태로 전환 */
     .heart-container{

@@ -259,8 +259,14 @@ button:hover{
 }
 
 @media (max-width:700px){
+    body{
+        display:block;         /* flex 중앙정렬 대신 일반 흐름으로 */
+        padding:56px 0 24px;      /* 위아래 여백 확보 → 연파랑이 남음 */
+        min-height:100vh;
+    }
     .container{
         width:95%;
+        margin:0 auto;
         padding:25px;
     }
     h1{
@@ -364,4 +370,17 @@ button:hover{
 .language-switch button.active{
     background:#22346b;
     color:white;
+}
+.back-to-about-btn{
+    background:#bfc8d3;
+    color:white;
+    border:none;
+    border-radius:10px;
+    padding:14px 28px;
+    font-size:16px;
+    text-decoration:none;
+    display:inline-block;
+}
+.back-to-about-btn:hover{
+    background:#9faab8;
 }
