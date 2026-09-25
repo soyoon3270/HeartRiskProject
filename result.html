@@ -8,9 +8,11 @@
 
     <link rel="stylesheet" href="result.css">
     <link rel="stylesheet" href="footer.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 <body>
 
 <div class="background-circle"></div>
@@ -21,163 +23,148 @@
 
 <div class="container">
 
-   <div class="badge" id="badge" data-i18n="badge">
-     HeartGuard Results
-</div>
+    <div class="badge" id="badge" data-i18n="badge">
+        HeartGuard Results
+    </div>
 
     <h1 id="pageTitle" data-i18n="pageTitle">
         Your Cardiovascular Risk
     </h1>
+
     <div class="risk-circle">
-    <span id="score">0</span>
-</div>
-<div class="score-comparison">
-    <p id="comparisonText" data-i18n="comparisonText">Loading comparison...</p>
-</div>
-<div class="mexico-stat-card" id="mexicodataCard" style="display:none;">
-    <h4 id="mexicodataLabel" data-i18n="mexicodataLabel"></h4>
-    <div class="mexico-stat-bars">
-        <div class="stat-bar-row">
-            <span class="stat-bar-tag"> Mexico</span>
-            <div class="stat-bar-track"><div class="stat-bar-fill mexico" id="mexicodataBarMx"></div></div>
-            <span id="mexicodataValMx"></span>
-        </div>
-        <div class="stat-bar-row">
-            <span class="stat-bar-tag"> Global</span>
-            <div class="stat-bar-track"><div class="stat-bar-fill global" id="mexicodataBarGl"></div></div>
-            <span id="mexicodataValGl"></span>
-        </div>
-    </div>
-    <p id="mexicodataNote"></p>
-</div>
-<div class="donut-chart-section">
-
-    <h3 id="snapshotTitle" data-i18n="snapshot">
-    Your Health Snapshot
-</h3>
-
-    <div class="donut-wrapper">
-
-        <svg viewBox="0 0 200 200" class="donut-chart" id="donutChart"></svg>
-
-        <div class="donut-legend" id="donutLegend"></div>
-
+        <span id="score">0</span>
     </div>
 
-</div>
+    <div class="mexico-stat-card" id="mexicodataCard" style="display:none;">
+        <h4 id="mexicodataLabel" data-i18n="mexicodataLabel"></h4>
+        <div class="mexico-stat-bars">
+            <div class="stat-bar-row">
+                <span class="stat-bar-tag"> Mexico</span>
+                <div class="stat-bar-track"><div class="stat-bar-fill mexico" id="mexicodataBarMx"></div></div>
+                <span id="mexicodataValMx"></span>
+            </div>
+            <div class="stat-bar-row">
+                <span class="stat-bar-tag"> Global</span>
+                <div class="stat-bar-track"><div class="stat-bar-fill global" id="mexicodataBarGl"></div></div>
+                <span id="mexicodataValGl"></span>
+            </div>
+        </div>
+        <p id="mexicodataNote"></p>
+    </div>
+
+    <!-- Risk bar: labels + track (track wraps ONLY the gradient/marker so the
+         marker's absolute position is calculated against the bar itself,
+         not the labels above it) -->
     <div class="risk-bar-container">
-      <div class="risk-bar-labels">
-    <span data-i18n="riskLow">Low</span>
-    <span data-i18n="riskMild">Mild</span>
-    <span data-i18n="riskModerate">Moderate</span>
-    <span data-i18n="riskHigh">High</span>
-</div>
-    <div class="risk-bar-gradient"></div>
-    <div class="risk-bar-marker" id="riskMarker"></div>
-</div>
-<p id="rawScoreText"></p>
+        <div class="risk-bar-labels">
+            <span data-i18n="riskLow">Low</span>
+            <span data-i18n="riskMild">Mild</span>
+            <span data-i18n="riskModerate">Moderate</span>
+            <span data-i18n="riskHigh">High</span>
+        </div>
+        <div class="risk-bar-track">
+            <div class="risk-bar-gradient"></div>
+            <div class="risk-bar-marker" id="riskMarker"></div>
+        </div>
+    </div>
+
+    <!-- Donut chart section: closes right after the donut itself, so the
+         sections below (summary, analysis, conditions, etc.) are NOT
+         nested inside this white card -->
+    <div class="donut-chart-section">
+        <h3 id="snapshotTitle" data-i18n="snapshot">
+            Your Health Snapshot
+        </h3>
+        <div class="donut-wrapper">
+            <svg viewBox="0 0 200 200" class="donut-chart" id="donutChart"></svg>
+            <div class="donut-legend" id="donutLegend"></div>
+        </div>
+    </div>
+
+    <p id="rawScoreText"></p>
+
     <h2 id="riskLevel">
         Loading...
     </h2>
+
     <p class="score-disclaimer" data-i18n="scoreDisclaimer">
-    This score is based on the risk factors identified from your answers.
-    It does not estimate your probability of developing disease — it's meant
-    to raise awareness of these factors and how to help prevent or improve them.
-</p>
+        This score is based on the risk factors identified from your answers.
+        It does not estimate your probability of developing disease — it's meant
+        to raise awareness of these factors and how to help prevent or improve them.
+    </p>
 
     <p class="description" id="description" data-i18n="resultDescription">
-    Your assessment indicates several lifestyle and health
-    factors that may influence your future cardiovascular risk.
-</p>
+        Your assessment indicates several lifestyle and health
+        factors that may influence your future cardiovascular risk.
+    </p>
+
     <!-- Overall Summary -->
-
     <div class="summary">
-
-       <h3 id="summaryTitle" data-i18n="summaryTitle">
-    📝 Overall Summary
-</h3>
-
+        <h3 id="summaryTitle" data-i18n="summaryTitle">
+            📝 Overall Summary
+        </h3>
         <p id="summaryText">
             Loading summary...
         </p>
-
     </div>
 
     <!-- Personalized Analysis -->
-
     <div class="analysis">
-
-   <h3 id="analysisTitle" data-i18n="analysisTitle">
-    📊 Personalized Analysis
-</h3>
-
-    <div id="analysisHighlights"></div>
-
-    <div id="analysisAccordion"></div>
-
-</div>
+        <h3 id="analysisTitle" data-i18n="analysisTitle">
+            📊 Personalized Analysis
+        </h3>
+        <div id="analysisHighlights"></div>
+        <div id="analysisAccordion"></div>
+    </div>
 
     <!-- Possible Conditions -->
-
     <div class="conditions">
 
         <h3 id="conditionsTitle" data-i18n="conditionsTitle">
-     How Your Risk Factors Can Lead to Heart Disease
-</h3>
+            How Your Risk Factors Can Lead to Heart Disease
+        </h3>
 
-<p class="conditions-disclaimer" data-i18n="conditionsDisclaimer">
-    These are conditions commonly associated with the lifestyle and health
-    factors in your answers — this is not a diagnosis of what you currently have.
-</p>
+        <p class="conditions-disclaimer" data-i18n="conditionsDisclaimer">
+            These are conditions commonly associated with the lifestyle and health
+            factors in your answers — this is not a diagnosis of what you currently have.
+        </p>
 
         <div class="condition-grid">
 
             <div class="condition-card">
-
                 <h4 id="cadTitle" data-i18n="cadTitle">
-     Coronary Artery Disease
-</h4>
-
+                    Coronary Artery Disease
+                </h4>
                 <p id="cadText">
                     Loading...
                 </p>
-
             </div>
 
             <div class="condition-card">
-
                 <h4 id="hfTitle" data-i18n="hfTitle">
-     Heart Failure
-</h4>
-
+                    Heart Failure
+                </h4>
                 <p id="hfText">
                     Loading...
                 </p>
-
             </div>
 
             <div class="condition-card">
-
                 <h4 id="strokeTitle" data-i18n="strokeTitle">
-     Stroke
-</h4>
-
+                    Stroke
+                </h4>
                 <p id="strokeText">
                     Loading...
                 </p>
-
             </div>
 
             <div class="condition-card">
-
                 <h4 id="dcmTitle" data-i18n="dcmTitle">
-     Diabetic Cardiomyopathy
-</h4>
-
+                    Diabetic Cardiomyopathy
+                </h4>
                 <p id="dcmText">
                     Loading...
                 </p>
-
             </div>
 
         </div>
@@ -185,32 +172,29 @@
     </div>
 
     <!-- Prevention -->
-
     <div class="recommendations">
-
         <h3 id="preventionTitle" data-i18n="preventionTitle">
-     Prevention Tips
-</h3>
-
+            Prevention Tips
+        </h3>
         <ul id="preventionList">
-
         </ul>
-
     </div>
-<button id="retakeButton"
-        data-i18n="retake"
-        onclick="retakeAssessment()">
-    🔄 Retake Assessment
-</button> 
 
-<button id="backButton"
-        data-i18n="backHome"
-        onclick="window.location.href='index.html'">
-    Back Home
-</button>
-<button id="pdfButton" data-i18n="pdfButton" onclick="downloadResultsPDF()">📄 Download PDF Summary</button>
+    <button id="retakeButton"
+            data-i18n="retake"
+            onclick="retakeAssessment()">
+        🔄 Retake Assessment
+    </button>
 
-</div>
+    <button id="backButton"
+            data-i18n="backHome"
+            onclick="window.location.href='index.html'">
+        Back Home
+    </button>
+
+    <button id="pdfButton" data-i18n="pdfButton" onclick="downloadResultsPDF()">📄 Download PDF Summary</button>
+    <button id="methodologyButton" data-i18n="viewMethodology" onclick="window.location.href='methodology.html'">📋 View Methodology</button>
+
 </div>
 
 <footer class="site-footer">

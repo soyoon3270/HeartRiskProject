@@ -70,11 +70,21 @@ en: {
         diet: { action: " Try replacing 2–3 meals a week with home-cooked options.", outcome: "reduces your intake of excess sodium and unhealthy fats that strain your heart." },
         sugar: { action: " Cut back on sugary drinks specifically — even switching every other one to water helps.", outcome: "reduces blood sugar spikes linked to insulin resistance." },
         activitySitting: { action: " Stand or walk for a few minutes every hour.", outcome: "offsets some of the cardiovascular risk associated with prolonged sitting." },
-        exerciseLow: { action: " Start with short walks a few times a week and build up gradually.",outcome: "building activity gradually can make regular exercise easier to maintain." },
-        exerciseModerate: {action: " Add one or two extra active sessions to your week.",outcome: "increasing your weekly activity can further improve cardiovascular fitness and help support healthy blood pressure."},
-        exerciseHigh: {action: " Keep your exercise routine consistent and include both aerobic and strength-based activities.",outcome: "a varied routine helps maintain cardiovascular fitness, muscle strength, and overall heart health."},
+        exercise0: { action: "Start with short walks a few times a week and build up gradually. Aim for about 60–90 minutes per week to start.", outcome: "Building activity gradually can make regular exercise easier to maintain." },
+        exercise3: { action: "Add one or two extra active sessions to your week, aiming for 90–150 minutes total.", outcome: "Increasing your weekly activity can further improve cardiovascular fitness and help support healthy blood pressure." },
+        exercise5: { action: "Keep your exercise routine consistent (150+ minutes/week) and include both aerobic and strength-based activities.", outcome: "A varied routine helps maintain cardiovascular fitness, muscle strength, and overall heart health." },
         diabetes: { action: " Pair diet changes with regular glucose monitoring.", outcome: "helps catch and correct blood sugar spikes before they cause lasting vascular damage." },
-        bp: { action: " Reduce sodium intake, especially from processed and street food.", outcome: "can noticeably lower blood pressure within a few weeks." }
+        breathSpecial: { action: "Since exercise may feel harder right now, start with very light activity (like slow walking or stretching) and check with a doctor before increasing intensity.", outcome: "This protects you from overexertion while still building activity safely." },
+        bp: { action: " Reduce sodium intake, especially from processed and street food.", outcome: "can noticeably lower blood pressure within a few weeks." },
+        // en 안에 추가
+breath:{
+    mechanism:"Shortness of breath can signal that your heart or lungs are working harder than they should to move oxygen through your body.",
+    future:"Addressing the underlying cause — whether cardiovascular, respiratory, or otherwise — can meaningfully improve daily comfort and long-term heart health."
+},
+swelling:{
+    mechanism:"Swelling in the ankles or feet can indicate fluid buildup, often linked to how efficiently your heart is pumping blood.",
+    future:"A medical evaluation can identify the cause early, when it's often easier to manage."
+}
     },
 
     conditionData: {
@@ -173,21 +183,21 @@ es: {
         diet: { action: " Intenta reemplazar 2–3 comidas a la semana con opciones caseras.", outcome: "reduce tu consumo de exceso de sodio y grasas poco saludables que sobrecargan tu corazón." },
         sugar: { action: " Reduce específicamente las bebidas azucaradas — incluso cambiar una de cada dos por agua ayuda.", outcome: "reduce los picos de azúcar en sangre relacionados con la resistencia a la insulina." },
         activitySitting: { action: " Ponte de pie o camina unos minutos cada hora.", outcome: "contrarresta parte del riesgo cardiovascular asociado con estar sentado por periodos prolongados." },
-       exerciseLow: {
-    action: " Comienza con caminatas cortas varias veces por semana y aumenta gradualmente.",
-    outcome: "aumentar la actividad poco a poco puede hacer que sea más fácil mantener el ejercicio de forma regular."
-},
-
-exerciseModerate: {
-    action: " Agrega una o dos sesiones adicionales de actividad a tu semana.",
-    outcome: "aumentar tu actividad semanal puede mejorar aún más tu condición cardiovascular y ayudar a mantener una presión arterial saludable."
-},
-
-exerciseHigh: {
-    action: " Mantén tu rutina de ejercicio y combina actividades aeróbicas con ejercicios de fuerza.",
-    outcome: "una rutina variada ayuda a mantener la condición cardiovascular, la fuerza muscular y la salud general del corazón."},
+        exercise0: { action: "Comienza con caminatas cortas varias veces por semana y aumenta gradualmente. Apunta a unos 60–90 minutos por semana para empezar.", outcome: "Aumentar la actividad gradualmente facilita mantener el ejercicio regular." },
+        exercise3: { action: "Agrega una o dos sesiones activas más a tu semana, apuntando a 90–150 minutos en total.", outcome: "Aumentar tu actividad semanal puede mejorar aún más tu condición cardiovascular y ayudar a mantener una presión arterial saludable." },
+        exercise5: { action: "Mantén tu rutina de ejercicio constante (150+ minutos/semana) e incluye actividades aeróbicas y de fuerza.", outcome: "Una rutina variada ayuda a mantener la condición cardiovascular, la fuerza muscular y la salud del corazón en general." },
         diabetes: { action: " Combina cambios en la dieta con monitoreo regular de glucosa.", outcome: "ayuda a detectar y corregir los picos de azúcar en sangre antes de que causen daño vascular duradero." },
-        bp: { action: " Reduce el consumo de sodio, especialmente de alimentos procesados y comida callejera.", outcome: "puede reducir notablemente la presión arterial en pocas semanas." }
+        breathSpecial: { action: "Ya que el ejercicio puede sentirse más difícil en este momento, comienza con actividad muy ligera (como caminar despacio o estirar) y consulta con un médico antes de aumentar la intensidad.", outcome: "Esto te protege del sobreesfuerzo mientras sigues construyendo actividad de forma segura." },
+        bp: { action: " Reduce el consumo de sodio, especialmente de alimentos procesados y comida callejera.", outcome: "puede reducir notablemente la presión arterial en pocas semanas." },
+        // es 안에 추가
+breath:{
+    mechanism:"La falta de aire puede indicar que tu corazón o pulmones están trabajando más de lo debido para mover oxígeno por tu cuerpo.",
+    future:"Abordar la causa subyacente — ya sea cardiovascular, respiratoria o de otro tipo — puede mejorar significativamente la comodidad diaria y la salud del corazón a largo plazo."
+},
+swelling:{
+    mechanism:"La hinchazón en los tobillos o pies puede indicar acumulación de líquidos, a menudo relacionada con la eficiencia con la que tu corazón bombea sangre.",
+    future:"Una evaluación médica puede identificar la causa temprano, cuando suele ser más fácil de manejar."
+}
     },
 
     conditionData: {
@@ -274,7 +284,7 @@ function getRiskBucket() {
     return getRiskBucketForScore(score);
 }
 
-// 이모지 없이 "Mild Risk" 같은 순수 레벨 텍스트만 뽑아주는 헬퍼
+// Plain level label ("Mild Risk") without the emoji, for use inside sentences
 function getLevelLabel(lang, forScore) {
     const t = (window.translations && window.translations[lang]) || {};
     const bucket = getRiskBucketForScore(forScore);
@@ -290,17 +300,6 @@ function renderLanguageDependentBasics(lang) {
 
     if (rawScoreText && typeof t.rawScore === "function") {
         rawScoreText.textContent = t.rawScore(score, MAX_SCORE);
-    }
-
-    if (comparisonEl && typeof t.comparisonHigher === "function") {
-        const diff = Math.round(((score - AVG_SCORE) / AVG_SCORE) * 100);
-        if (diff > 0) {
-            comparisonEl.textContent = t.comparisonHigher(diff);
-        } else if (diff < 0) {
-            comparisonEl.textContent = t.comparisonLower(Math.abs(diff));
-        } else {
-            comparisonEl.textContent = t.comparisonSame;
-        }
     }
 
     const bucket = getRiskBucket();
@@ -330,18 +329,21 @@ function renderPreventionTips(lang) {
     if (answers.activity === "sitting") {
         answerBasedTips.push(s.answerBasedTips.activitySitting);
     }
-  if (answers.exercise === "0" || answers.exercise === "1") {
-    answerBasedTips.push(s.answerBasedTips.exerciseLow);
-} else if (answers.exercise === "3") {
-    answerBasedTips.push(s.answerBasedTips.exerciseModerate);
-} else if (answers.exercise === "5") {
-    answerBasedTips.push(s.answerBasedTips.exerciseHigh);
-}
+    if (answers.exercise === "0" || answers.exercise === "1") {
+        answerBasedTips.push(s.answerBasedTips.exercise0);
+    } else if (answers.exercise === "3") {
+        answerBasedTips.push(s.answerBasedTips.exercise3);
+    } else if (answers.exercise === "5") {
+        answerBasedTips.push(s.answerBasedTips.exercise5);
+    }
     if (answers.diabetes === "type2" || answers.diabetes === "prediabetes") {
         answerBasedTips.push(s.answerBasedTips.diabetes);
     }
     if (answers.bp === "yes" || answers.bp === "unsure") {
         answerBasedTips.push(s.answerBasedTips.bp);
+    }
+    if (answers.breath === "yes") {
+        answerBasedTips.push(s.answerBasedTips.breathSpecial);
     }
 
     const applicableTips = s.tipsData.filter(t => score >= t.threshold);
@@ -468,7 +470,9 @@ const categoryPointTables = {
     smoking: { never: 0, former: 1, sometimes: 2, daily: 3 },
     bp: { yes: 3, no: 0, unsure: 1 },
     cholesterol: { yes: 2, no: 0 },
-    family: { yes: 2, no: 0, unsure: 0 }
+    family: { yes: 2, no: 0, unsure: 0 },
+    breath: { yes: 5, no: 0 },
+    swelling: { yes: 5, no: 0 }
 };
 
 function toggleFlip(index) {

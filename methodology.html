@@ -10,6 +10,7 @@
 <body>
 
 <div class="background-circle"></div>
+<a href="index.html" class="home-link" title="Return to home">🏠</a>
 
 <div class="content">
 
@@ -18,10 +19,11 @@
     <h1>How Your Score Is Calculated</h1>
 
     <p class="intro">
-        HeartGuard's risk score is a simplified, educational estimate — not a
-        clinical diagnosis. It combines points from 16 lifestyle and health
-        questions, loosely inspired by established risk frameworks like the
-        Framingham Risk Score and ASCVD guidelines, adapted for accessibility.
+        HeartGuard's score combines points from 16 lifestyle and health questions,
+        loosely inspired by established risk frameworks such as the Framingham
+        Risk Score and the American College of Cardiology/American Heart
+        Association's ASCVD (Atherosclerotic Cardiovascular Disease) Risk
+        Estimator, adapted here for accessibility and educational use.
     </p>
 
     <div class="card">
@@ -30,7 +32,17 @@
             Age, BMI, blood pressure, cholesterol, smoking, diabetes status,
             diet, physical activity, and family history are all established
             contributors to cardiovascular risk in medical literature. Each
-            question maps to a specific, evidence-based risk factor.
+            question maps to a specific, evidence-based risk factor: for
+            example, blood pressure and cholesterol both directly affect how
+            hard the heart has to work and how much plaque builds up in the
+            arteries, while diet and physical activity influence those same
+            numbers indirectly over time. The point values in the table below
+            were set by ranking each answer option from lowest to highest
+            associated risk within its own category (for example, "never
+            smoked" scores lower than "smokes daily"), then scaling that
+            ranking so no single factor can outweigh the others by more than
+            a few points — the goal is a balanced snapshot across many
+            factors, not a precise clinical calculation.
         </p>
     </div>
 
@@ -38,10 +50,10 @@
         <h3>How Points Are Assigned</h3>
         <p>
             Each answer is assigned a point value (0 to 5) based on how
-            strongly that factor is associated with cardiovascular risk in
-            general population data. For example, daily smoking scores higher
-            than occasional smoking; a longstanding Type 2 diabetes diagnosis
-            scores higher than prediabetes.
+            strongly that factor is associated with cardiovascular risk. For
+            example, daily smoking scores higher than occasional smoking; a
+            longstanding Type 2 diabetes diagnosis scores higher than
+            prediabetes.
         </p>
     </div>
 
@@ -49,15 +61,99 @@
         <h3>Risk Categories</h3>
         <p>
             Total scores range from 0–51 and are grouped into four bands:
-            Low (0–12), Mild (13–24), Moderate (25–38), and High (39–51).
-            These thresholds are simplified cutoffs for educational clarity,
+        </p>
+        <table class="score-table">
+            <tr><th>Band</th><th>Score Range</th><th>Share of Total Range</th></tr>
+            <tr><td>Low</td><td>0–12</td><td>~25%</td></tr>
+            <tr><td>Mild</td><td>13–24</td><td>~24%</td></tr>
+            <tr><td>Moderate</td><td>25–38</td><td>~27%</td></tr>
+            <tr><td>High</td><td>39–51</td><td>~25%</td></tr>
+        </table>
+        <p>
+            These bands divide the 0–51 point scale into four roughly equal
+            segments. They are simplified cutoffs for educational clarity,
             not clinically validated diagnostic boundaries.
         </p>
     </div>
 
+    <div class="card">
+        <h3>About Framingham &amp; ASCVD (Atherosclerotic Cardiovascular Disease) Risk Estimator</h3>
+        <p>
+            The Framingham Risk Score comes from the Framingham Heart Study, a
+            population study that has followed the residents of Framingham,
+            Massachusetts across multiple generations since 1948 — one of the
+            longest-running cardiovascular studies in the world. The ASCVD
+            Risk Estimator was developed by the American College of
+            Cardiology and American Heart Association and is built into
+            official clinical guidelines used by doctors across the United
+            States today. Both are among the most widely used and clinically
+            validated cardiovascular risk tools in medicine, and both remain
+            in active use in clinical practice decades after their
+            introduction.
+        </p>
+        <p>
+            HeartGuard does not use either tool's original formula. Instead,
+            we borrowed their general structure — combining age, blood
+            pressure, cholesterol, smoking, and diabetes status into a single
+            score — because that structure is well established and easy to
+            explain, and adapted the math into a simpler point system that
+            doesn't require lab values most people don't have on hand (like
+            an exact cholesterol reading). This makes HeartGuard more
+            accessible, but also means it is not a substitute for either of
+            these clinical tools or for an in-person medical risk assessment.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>What Does MET Mean?</h3>
+        <p>
+            MET stands for Metabolic Equivalent of Task — a way of measuring how
+            much energy an activity takes compared to resting. Sitting quietly is
+            1 MET; brisk walking is about 3–4 METs; running is 8+ METs. "MET/week"
+            totals combine activity intensity and duration into one number.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Full Scoring Table</h3>
+        <table class="score-table">
+            <tr><th>Category</th><th>Points</th></tr>
+            <tr><td>Age</td><td>0–5</td></tr>
+            <tr><td>BMI</td><td>0–3</td></tr>
+            <tr><td>Diabetes status</td><td>0–4</td></tr>
+            <tr><td>Diabetes duration</td><td>0–3</td></tr>
+            <tr><td>Exercise frequency</td><td>0–3</td></tr>
+            <tr><td>Sugary drink intake</td><td>0–4</td></tr>
+            <tr><td>Smoking</td><td>0–3</td></tr>
+            <tr><td>Blood pressure</td><td>0–3</td></tr>
+            <tr><td>Shortness of breath</td><td>0–5</td></tr>
+            <tr><td>Swelling</td><td>0–5</td></tr>
+            <tr><td>Cholesterol</td><td>0–2</td></tr>
+            <tr><td>Family history</td><td>0–2</td></tr>
+            <tr><td>Daily activity level</td><td>0–3</td></tr>
+            <tr><td>Diet pattern</td><td>0–4</td></tr>
+            <tr><td>Last check-up</td><td>0–3</td></tr>
+        </table>
+        <p style="font-size:13px;color:#8b96ab;margin-top:10px;">
+            Note: diabetes treatment type (medication, insulin, CGM, pump) is
+            recorded in your answers but currently carries 0 points — it does
+            not add to or subtract from your score.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Data Sources</h3>
+        <p>
+            Mexico-specific statistics referenced throughout HeartGuard are drawn
+            from the World Heart Federation and World Health Organization Global
+            Health Observatory data.
+        </p>
+    </div>
+
     <div class="notice">
-        💙 This methodology is provided for transparency. HeartGuard is an
-        educational tool and does not replace a professional cardiovascular
+        💙 We built this page so anyone can see exactly how their score is
+        calculated — no hidden formulas. HeartGuard remains an educational
+        screening tool and does not replace a professional cardiovascular
         risk assessment.
     </div>
 

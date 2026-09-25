@@ -146,6 +146,7 @@ window.translations = {
         prevBtn: "← Previous",
         nextBtn: "Next →",
         breathBanner: "🚨 Shortness of breath can be a sign of heart or lung problems. If you experience this regularly, we strongly recommend seeing a doctor soon to have this checked.",
+        viewMethodology: "📋 View Methodology",
 
         // --- result page ---
         badge: " HeartGuard Results",
@@ -363,6 +364,7 @@ window.translations = {
         resultDescription: "Tu evaluación indica varios factores de estilo de vida y salud que pueden influir en tu riesgo cardiovascular futuro.",
         scoreDisclaimer: "Esta puntuación se basa en los factores de riesgo identificados en tus respuestas. No estima tu probabilidad de desarrollar una enfermedad — su propósito es aumentar la conciencia sobre estos factores y cómo ayudar a prevenirlos o mejorarlos.",
         riskLow: "Bajo", riskMild: "Leve", riskModerate: "Moderado", riskHigh: "Alto",
+        viewMethodology: "📋 Ver Metodología",
     }
 };
 

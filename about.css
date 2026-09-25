@@ -265,3 +265,70 @@ button:hover{
         font-size:14px;
     }
 }
+.team-member{ margin-bottom:14px; }
+.team-name{ font-weight:600; color:#23395d; }
+.score-table{ width:100%; border-collapse:collapse; margin-top:10px; }
+.score-table th, .score-table td{ text-align:left; padding:8px 12px; border-bottom:1px solid #e5e9f2; }
+.score-table th{ color:#23395d; }
+/* Home button (used on about.html, aboutus.html, methodology.html) */
+.home-link{
+    position:fixed;
+    top:30px;
+    left:40px;
+    font-size:22px;
+    text-decoration:none;
+    background:white;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+    z-index:20;
+}
+
+.home-link:hover{
+    transform:translateY(-3px);
+}
+
+/* Score table (used on methodology.html) */
+.score-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:14px;
+    font-size:15px;
+}
+
+.score-table th, .score-table td{
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:1px solid #e5e9f2;
+}
+
+.score-table th{
+    color:#23408d;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+}
+
+.score-table tr:last-child td{
+    border-bottom:none;
+}
+
+/* Team member cards (used on aboutus.html) */
+.team-member{
+    padding:14px 0;
+    border-bottom:1px solid #e5e9f2;
+}
+
+.team-member:last-child{
+    border-bottom:none;
+}
+
+.team-name{
+    font-size:16px;
+    color:#3d4e6e;
+    font-weight:600;
+}
