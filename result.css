@@ -616,7 +616,6 @@ transform:translateY(-6px);
     transition:transform 0.65s cubic-bezier(0.4, 0.0, 0.2, 1);
     transform-style:preserve-3d;
     -webkit-transform-style:preserve-3d;
-    will-change:transform;
 }
 
 .flip-card-front, .flip-card-back{
